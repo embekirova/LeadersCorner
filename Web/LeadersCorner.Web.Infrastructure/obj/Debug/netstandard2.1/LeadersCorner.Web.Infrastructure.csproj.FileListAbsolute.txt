@@ -7,3 +7,12 @@ C:\Users\Lenovo\Desktop\ASP.NET_Core\Web\LeadersCorner.Web.Infrastructure\obj\De
 C:\Users\Lenovo\Desktop\ASP.NET_Core\Web\LeadersCorner.Web.Infrastructure\obj\Debug\netstandard2.1\LeadersCorner.Web.Infrastructure.csproj.CoreCompileInputs.cache
 C:\Users\Lenovo\Desktop\ASP.NET_Core\Web\LeadersCorner.Web.Infrastructure\obj\Debug\netstandard2.1\LeadersCorner.Web.Infrastructure.dll
 C:\Users\Lenovo\Desktop\ASP.NET_Core\Web\LeadersCorner.Web.Infrastructure\obj\Debug\netstandard2.1\LeadersCorner.Web.Infrastructure.pdb
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web.Infrastructure\bin\Debug\netstandard2.1\LeadersCorner.Web.Infrastructure.deps.json
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web.Infrastructure\bin\Debug\netstandard2.1\LeadersCorner.Web.Infrastructure.dll
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web.Infrastructure\bin\Debug\netstandard2.1\LeadersCorner.Web.Infrastructure.pdb
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web.Infrastructure\obj\Debug\netstandard2.1\LeadersCorner.Web.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web.Infrastructure\obj\Debug\netstandard2.1\LeadersCorner.Web.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web.Infrastructure\obj\Debug\netstandard2.1\LeadersCorner.Web.Infrastructure.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web.Infrastructure\obj\Debug\netstandard2.1\LeadersCorner.Web.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web.Infrastructure\obj\Debug\netstandard2.1\LeadersCorner.Web.Infrastructure.dll
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web.Infrastructure\obj\Debug\netstandard2.1\LeadersCorner.Web.Infrastructure.pdb

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeadersCorner.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210712140810_ArticlesAndRelatedTables")]
-    partial class ArticlesAndRelatedTables
+    [Migration("20210712154502_ArticlesRaletedTables")]
+    partial class ArticlesRaletedTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -148,12 +148,12 @@ namespace LeadersCorner.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AuthorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
+                    b.Property<string>("ArticleContent")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -252,28 +252,22 @@ namespace LeadersCorner.Data.Migrations
 
             modelBuilder.Entity("LeadersCorner.Data.Models.CategoryArticle", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ArticleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ArticleId1")
+                    b.Property<int>("ArticleId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CategoriID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArticleId1");
+                    b.HasIndex("ArticleId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("CategoriesAndArticles");
                 });
@@ -288,7 +282,7 @@ namespace LeadersCorner.Data.Migrations
                     b.Property<int>("ArticleID")
                         .HasColumnType("int");
 
-                    b.Property<string>("Content")
+                    b.Property<string>("CommentContent")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -330,7 +324,7 @@ namespace LeadersCorner.Data.Migrations
                     b.Property<bool>("Certified")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Content")
+                    b.Property<string>("CourseContent")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -517,11 +511,15 @@ namespace LeadersCorner.Data.Migrations
                 {
                     b.HasOne("LeadersCorner.Data.Models.Article", "Article")
                         .WithMany("CategoriesOfArticle")
-                        .HasForeignKey("ArticleId1");
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("LeadersCorner.Data.Models.Category", "Category")
                         .WithMany("ArticlesInCategory")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Article");
 

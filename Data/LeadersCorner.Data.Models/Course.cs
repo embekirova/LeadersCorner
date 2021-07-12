@@ -21,9 +21,11 @@
         public int Price { get; set; }
 
         [Required]
-        public string Content { get; set; }
+        public string CourseContent { get; set; }
 
         [Required]
-        public Author Author { get; set; }
+        public int AuthorId { get; set; }
+
+        public virtual Author Author { get; set; }
     }
 }

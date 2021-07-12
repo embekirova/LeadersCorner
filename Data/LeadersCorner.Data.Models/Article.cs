@@ -25,7 +25,7 @@
         public string Title { get; set; }
 
         [Required]
-        public string Content { get; set; }
+        public string ArticleContent { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
 

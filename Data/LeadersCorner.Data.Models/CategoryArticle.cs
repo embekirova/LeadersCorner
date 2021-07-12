@@ -11,16 +11,16 @@
     {
         [Key]
         [Required]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public string CategoriID { get; set; }
+        public int CategoryID { get; set; }
 
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
         [Required]
-        public string ArticleId { get; set; }
+        public int ArticleId { get; set; }
 
-        public Article Article { get; set; }
+        public virtual Article Article { get; set; }
     }
 }

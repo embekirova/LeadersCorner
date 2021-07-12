@@ -13,7 +13,7 @@
         public string UseName { get; set; }
 
         [Required]
-        public string Content { get; set; }
+        public string CommentContent { get; set; }
 
         public int ArticleID { get; set; }
 

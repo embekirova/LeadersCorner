@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LeadersCorner.Data.Migrations
 {
-    public partial class ArticlesAndRelatedTables : Migration
+    public partial class ArticlesRaletedTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -223,7 +223,7 @@ namespace LeadersCorner.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AuthorId = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArticleContent = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -250,7 +250,7 @@ namespace LeadersCorner.Data.Migrations
                     DurationInMonths = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Certified = table.Column<bool>(type: "bit", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CourseContent = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AuthorId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -272,24 +272,23 @@ namespace LeadersCorner.Data.Migrations
                 name: "CategoriesAndArticles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CategoriID = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: true),
-                    ArticleId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArticleId1 = table.Column<int>(type: "int", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoryID = table.Column<int>(type: "int", nullable: false),
+                    ArticleId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CategoriesAndArticles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CategoriesAndArticles_Articles_ArticleId1",
-                        column: x => x.ArticleId1,
+                        name: "FK_CategoriesAndArticles_Articles_ArticleId",
+                        column: x => x.ArticleId,
                         principalTable: "Articles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_CategoriesAndArticles_Categories_CategoryId",
-                        column: x => x.CategoryId,
+                        name: "FK_CategoriesAndArticles_Categories_CategoryID",
+                        column: x => x.CategoryID,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -302,12 +301,12 @@ namespace LeadersCorner.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CommentContent = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ArticleID = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -390,14 +389,14 @@ namespace LeadersCorner.Data.Migrations
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoriesAndArticles_ArticleId1",
+                name: "IX_CategoriesAndArticles_ArticleId",
                 table: "CategoriesAndArticles",
-                column: "ArticleId1");
+                column: "ArticleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoriesAndArticles_CategoryId",
+                name: "IX_CategoriesAndArticles_CategoryID",
                 table: "CategoriesAndArticles",
-                column: "CategoryId");
+                column: "CategoryID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_ArticleID",
