@@ -1,0 +1,291 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Web\\LeadersCorner.Web.ViewModels\\LeadersCorner.Web.ViewModels.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Data\\LeadersCorner.Data.Common\\LeadersCorner.Data.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Data\\LeadersCorner.Data.Common\\LeadersCorner.Data.Common.csproj",
+        "projectName": "LeadersCorner.Data.Common",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Data\\LeadersCorner.Data.Common\\LeadersCorner.Data.Common.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Data\\LeadersCorner.Data.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            },
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Data\\LeadersCorner.Data.Models\\LeadersCorner.Data.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Data\\LeadersCorner.Data.Models\\LeadersCorner.Data.Models.csproj",
+        "projectName": "LeadersCorner.Data.Models",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Data\\LeadersCorner.Data.Models\\LeadersCorner.Data.Models.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Data\\LeadersCorner.Data.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Data\\LeadersCorner.Data.Common\\LeadersCorner.Data.Common.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Data\\LeadersCorner.Data.Common\\LeadersCorner.Data.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Services\\LeadersCorner.Services.Mapping\\LeadersCorner.Services.Mapping.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Services\\LeadersCorner.Services.Mapping\\LeadersCorner.Services.Mapping.csproj",
+        "projectName": "LeadersCorner.Services.Mapping",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Services\\LeadersCorner.Services.Mapping\\LeadersCorner.Services.Mapping.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Services\\LeadersCorner.Services.Mapping\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Web\\LeadersCorner.Web.ViewModels\\LeadersCorner.Web.ViewModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Web\\LeadersCorner.Web.ViewModels\\LeadersCorner.Web.ViewModels.csproj",
+        "projectName": "LeadersCorner.Web.ViewModels",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Web\\LeadersCorner.Web.ViewModels\\LeadersCorner.Web.ViewModels.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Web\\LeadersCorner.Web.ViewModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Data\\LeadersCorner.Data.Models\\LeadersCorner.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Data\\LeadersCorner.Data.Models\\LeadersCorner.Data.Models.csproj"
+              },
+              "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Services\\LeadersCorner.Services.Mapping\\LeadersCorner.Services.Mapping.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Services\\LeadersCorner.Services.Mapping\\LeadersCorner.Services.Mapping.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

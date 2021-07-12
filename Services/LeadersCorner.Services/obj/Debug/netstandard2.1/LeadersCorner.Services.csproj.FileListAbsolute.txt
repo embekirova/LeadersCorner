@@ -1,0 +1,9 @@
+C:\Users\Lenovo\Desktop\ASP.NET_Core\Services\LeadersCorner.Services\bin\Debug\netstandard2.1\LeadersCorner.Services.deps.json
+C:\Users\Lenovo\Desktop\ASP.NET_Core\Services\LeadersCorner.Services\bin\Debug\netstandard2.1\LeadersCorner.Services.dll
+C:\Users\Lenovo\Desktop\ASP.NET_Core\Services\LeadersCorner.Services\bin\Debug\netstandard2.1\LeadersCorner.Services.pdb
+C:\Users\Lenovo\Desktop\ASP.NET_Core\Services\LeadersCorner.Services\obj\Debug\netstandard2.1\LeadersCorner.Services.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\ASP.NET_Core\Services\LeadersCorner.Services\obj\Debug\netstandard2.1\LeadersCorner.Services.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\ASP.NET_Core\Services\LeadersCorner.Services\obj\Debug\netstandard2.1\LeadersCorner.Services.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\ASP.NET_Core\Services\LeadersCorner.Services\obj\Debug\netstandard2.1\LeadersCorner.Services.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\ASP.NET_Core\Services\LeadersCorner.Services\obj\Debug\netstandard2.1\LeadersCorner.Services.dll
+C:\Users\Lenovo\Desktop\ASP.NET_Core\Services\LeadersCorner.Services\obj\Debug\netstandard2.1\LeadersCorner.Services.pdb
