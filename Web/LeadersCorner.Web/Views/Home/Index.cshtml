@@ -1,9 +1,17 @@
 ﻿@using LeadersCorner.Common
+@model LeadersCorner.Web.ViewModels.Home.IndexViewModel
 @{
     this.ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>Here you can find everything you want to know to be a good leader.</p>
+    <p> We have more than </p>
+    <ul class>
+        <li class="list-group">Articles: @Model.ArticlesCout</li>
+        <li class="list-group">Courses: @Model.CourseCount</li>
+    </ul>
+    <p> Thank you for choosing us! </p>
+
 </div>
