@@ -10,10 +10,12 @@
 
     public class Article : BaseDeletableModel<int>
     {
-        public Article()
+        public Article(int authorId, string title)
         {
             this.Comments = new HashSet<Comment>();
             this.CategoriesOfArticle = new HashSet<CategoryArticle>();
+            this.AuthorId = authorId;
+            this.Title = title;
         }
 
         [Required]
@@ -31,5 +33,6 @@
 
         [Required]
         public virtual ICollection<CategoryArticle> CategoriesOfArticle { get; set; }
+            = new List<CategoryArticle>();
     }
 }

@@ -1,0 +1,27 @@
+﻿@using LeadersCorner.Common
+@model LeadersCorner.Web.ViewModels.Article.CreateArticleFormModel
+@{
+    this.ViewData["Title"] = "Create an Article";
+}
+
+
+<div class="row">
+    <div class=" col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">Create an Article</h2>
+
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" placeholder="Title" />
+                <span asp-validation-for="Title" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArticleContent"></label>
+                <input asp-for="ArticleContent" class="form-control" placeholder="Post your article here" />
+                <span asp-validation-for="ArticleContent" class="small text-danger"></span>
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="Save" />
+        </form> 
+    </div>
+</div>

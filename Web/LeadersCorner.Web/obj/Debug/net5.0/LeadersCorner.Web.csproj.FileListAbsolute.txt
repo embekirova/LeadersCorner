@@ -932,3 +932,6 @@ C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Lea
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\ref\LeadersCorner.Web.dll
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\LeadersCorner.Web.pdb
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\LeadersCorner.Web.genruntimeconfig.cache
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Author\Become.cshtml.g.cs
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Article\Create.cshtml.g.cs
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Author\LoggedAuthor.cshtml.g.cs

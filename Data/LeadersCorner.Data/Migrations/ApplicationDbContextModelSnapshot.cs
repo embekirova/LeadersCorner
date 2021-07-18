@@ -193,7 +193,8 @@ namespace LeadersCorner.Data.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -209,6 +210,9 @@ namespace LeadersCorner.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Profession")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserID")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

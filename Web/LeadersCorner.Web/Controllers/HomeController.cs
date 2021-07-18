@@ -2,10 +2,14 @@
 {
     using System.Diagnostics;
     using System.Linq;
+
+    using LeadersCorner.Data;
     using LeadersCorner.Data.Common.Repositories;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Web.ViewModels;
+    using LeadersCorner.Web.ViewModels.Author;
     using LeadersCorner.Web.ViewModels.Home;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
@@ -27,7 +31,9 @@
             {
                 ArticlesCout = this.articleRespository.All().Count(),
                 CourseCount = this.courseRepository.All().Count(),
+                
             };
+            
 
             return this.View(viewModel);
         }
@@ -36,6 +42,8 @@
         {
             return this.View();
         }
+
+        [HttpPost]
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -9,5 +9,7 @@
         public int ArticlesCout { get; set; }
 
         public int CourseCount { get; set; }
+
+        
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeadersCorner.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210712154502_ArticlesRaletedTables")]
-    partial class ArticlesRaletedTables
+    [Migration("20210717150730_AuthorRelatedTables")]
+    partial class AuthorRelatedTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -195,7 +195,8 @@ namespace LeadersCorner.Data.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -211,6 +212,9 @@ namespace LeadersCorner.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Profession")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserID")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
