@@ -10,7 +10,7 @@
     <div class=" col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
         <h2 class="heading-margin text-center">Create an article</h2>
 
-        <form method="post">
+        <form method="post" class=" row" enctype="multipart/form-data">
             <div class="form-group">
                 <label asp-for="Title"></label>
                 <input asp-for="Title" class="form-control" placeholder="Title" />
@@ -28,8 +28,12 @@
                 </select>
                 <span asp-validation-for="CategoryId" class="small text-danger"></span>
             </div>
-            
 
+            <div class="form-group">
+                <label asp-for="Image"></label>
+                <input asp-for="Image" class="form-control" />
+                <span asp-validation-for="CategoryId" class="small text-danger"></span>
+            </div>
 
             <input class="btn btn-primary" type="submit" value="Save" />
         </form> 

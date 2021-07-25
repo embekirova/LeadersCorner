@@ -29,6 +29,6 @@
 
         public string AuthorId { get;}
 
-        
+        public IFormFile Image { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace LeadersCorner.Web.Controllers
 {
     using System.Diagnostics;
+    using System.IO;
     using System.Linq;
 
     using LeadersCorner.Data;
@@ -11,13 +12,14 @@
     using LeadersCorner.Web.ViewModels.Article;
     using LeadersCorner.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
 
     public class ArticleController : BaseController
     {
         private readonly LeadersCornerDbContext data;
-
+        
         public ArticleController(
             LeadersCornerDbContext data)
         => this.data = data;
@@ -44,7 +46,18 @@
                 return this.View();
             }
 
-           
+           if (!(article.Image.FileName.EndsWith(".png") & article.Image.FileName.EndsWith(".jpeg")))
+            {
+                this.ModelState.AddModelError("Image", "Invalid file type");
+            }
+
+            using (FileStream fs = new FileStream(
+                "C:/Users/Lenovo/Desktop/LeadersCorner/Web/LeadersCorner.Web/Files" + "/user.png", FileMode.Create))
+            {
+                article.Image.CopyTo(fs);
+            } ;
+            
+            
             var articleData = new Article(userId, article.Title)
             {
                 Title = article.Title,
