@@ -5,8 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/shards/css/shards-demo.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/shards/css/shards-demo.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/shards/css/shards-extras.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/shards/css/shards-extras.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/shards/css/shards.css" asp-append-version="true" />
+    <link rel=" shortcut icon" type="image/x-icon" href="~/icon.ico" />
 </head>
 <body>
     <header>
@@ -34,25 +40,32 @@
             </div>
         </nav>
     </header>
-    
+
     <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @this.RenderBody()
         </main>
     </div>
-    
+
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
-    <script src="~/js/site.min.js" asp-append-version="true"></script>
+    <script src="~/lib/shards/js/demo.js" asp-append-version="true"></script>
+    <script src="~/lib/shards/js/demo.min.js" asp-append-version="true"></script>
+    <script src="~/lib/shards/js/shards.js" asp-append-version="true"></script>
+    <script src="~/lib/shards/js/shards.min.js" asp-append-version="true"></script>
+
+
+    @*   <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+         <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
+         <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+         <script src="~/js/site.min.js" asp-append-version="true"></script>
+    *@
     @await this.RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
