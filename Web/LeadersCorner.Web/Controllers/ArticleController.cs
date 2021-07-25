@@ -44,7 +44,7 @@
                 return this.View();
             }
 
-            //int convertedUserId = int.Parse(userId);
+           
             var articleData = new Article(userId, article.Title)
             {
                 Title = article.Title,

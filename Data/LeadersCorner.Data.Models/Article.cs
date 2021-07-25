@@ -8,6 +8,7 @@
     using System.Text;
 
     using LeadersCorner.Data.Common.Models;
+    using Microsoft.AspNetCore.Http;
 
     public class Article : BaseDeletableModel<int>
     {
@@ -29,6 +30,8 @@
 
         [Required]
         public string ArticleContent { get; set; }
+
+       
 
         public virtual ICollection<Comment> Comments { get; set; }
 

@@ -5,34 +5,34 @@
  */
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600|Roboto+Mono");
 :root {
-  --blue: #007bff;
-  --indigo: #674eec;
-  --purple: #8445f7;
-  --pink: #ff4169;
-  --red: #c4183c;
-  --orange: #fb7906;
-  --yellow: #ffb400;
-  --green: #17c671;
-  --teal: #1adba2;
-  --cyan: #00b8d8;
-  --white: #fff;
-  --gray: #868e96;
-  --gray-dark: #343a40;
-  --primary: #007bff;
-  --secondary: #5A6169;
-  --success: #17c671;
-  --info: #00b8d8;
-  --warning: #ffb400;
-  --danger: #c4183c;
-  --light: #e9ecef;
-  --dark: #212529;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-family-monospace: "Roboto Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --blue: #007bff;
+    --indigo: #674eec;
+    --purple: #8445f7;
+    --pink: #ff4169;
+    --red: #c4183c;
+    --orange: #fb7906;
+    --yellow: #ffb400;
+    --green: #17c671;
+    --teal: #1adba2;
+    --cyan: #ffc8b8;
+    --white: #fff;
+    --gray: #868e96;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #5A6169;
+    --success: #17c671;
+    --info: #00b8d8;
+    --warning: #ffb400;
+    --danger: #c4183c;
+    --light: #e9ecef;
+    --dark: #212529;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-family-monospace: "Roboto Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @media (max-width: 575.98px) {
@@ -3440,13 +3440,13 @@ a.badge {
 }
 
 .alert-info {
-  color: #cef8ff;
-  background-color: #00b8d8;
+    color: #ffd9ab;
+    background-color: #00b8d8;
 }
 
-.alert-info .alert-link {
-  color: #cef8ff;
-}
+    .alert-info .alert-link {
+        color: #ffd9ab;
+    }
 
 .alert-warning {
   color: #fffcf5;
@@ -3605,21 +3605,21 @@ a.badge {
 
 a.list-group-item-primary,
 button.list-group-item-primary {
-  color: #004085;
+    color: #ffae77;
 }
 
-a.list-group-item-primary:hover, a.list-group-item-primary:focus,
-button.list-group-item-primary:hover,
-button.list-group-item-primary:focus {
-  color: #004085;
-  background-color: #9fcdff;
-}
+    a.list-group-item-primary:hover, a.list-group-item-primary:focus,
+    button.list-group-item-primary:hover,
+    button.list-group-item-primary:focus {
+        color: #ffae77;
+        background-color: #9fcdff;
+    }
 
-a.list-group-item-primary.active,
-button.list-group-item-primary.active {
-  background-color: #004085;
-  border-color: #004085;
-}
+    a.list-group-item-primary.active,
+    button.list-group-item-primary.active {
+        background-color: #ffae77;
+        border-color: #ffae77;
+    }
 
 .list-group-item-secondary {
   color: #2f3237;
@@ -3783,16 +3783,16 @@ button.list-group-item-dark.active {
 }
 
 .close {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #8c949d;
-  text-shadow: none;
-  transition: all 250ms cubic-bezier(0.27, 0.01, 0.38, 1.06);
+    font-size: 1rem;
+    font-weight: 500;
+    color: #8c949d;
+    text-shadow: none;
+    transition: all 250ms cubic-bezier(0.27, 0.01, 0.38, 1.06);
 }
 
-.close:hover, .close:focus {
-  color: #8c949d;
-}
+    .close:hover, .close:focus {
+        color: #fceade;
+    }
 
 .modal {
   z-index: 1050;

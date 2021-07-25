@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+    using Microsoft.AspNetCore.Http;
 
     using LeadersCorner.Data.Common;
     using LeadersCorner.Data.Models;
@@ -27,5 +28,7 @@
         public IEnumerable<Article> Categories { get; set; } = new List<Article>();
 
         public string AuthorId { get;}
+
+        
     }
 }

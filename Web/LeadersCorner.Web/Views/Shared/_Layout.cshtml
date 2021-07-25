@@ -5,12 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
-    
+
     <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/shards/css/shards-demo.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/shards/css/shards-demo.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/shards/css/shards-extras.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/shards/css/shards-extras.min.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/lib/shards/css/shards-demo.css" asp-append-version="true" />
+
+        <link rel="stylesheet" href="~/lib/shards/css/shards-demo.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/shards/css/shards-extras.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/shards/css/shards-extras.min.css" asp-append-version="true" />
+    *@
     <link rel="stylesheet" href="~/lib/shards/css/shards.css" asp-append-version="true" />
     <link rel=" shortcut icon" type="image/x-icon" href="~/icon.ico" />
 </head>
@@ -33,7 +35,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="Create">Create an article</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Privacy" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
                 </div>
