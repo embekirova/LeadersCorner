@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ejmKqbpMZQBi7xS1wUEkcVzg7o/aY/W6jEyi+4iTyVd5XQASz+M5jh7viA8PrTd3sWJljEFPL+2ecXKXoWMGNA==",
+  "dgSpecHash": "5CqKnGYKEYe2pUWN8o/nYtA8QUX7JJ3tL3rqTWRetRmS5s+jSqV4sseUjphQkMtkuR883buSPeuJonkyG+/uyg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Tests\\LeadersCorner.Web.Tests\\LeadersCorner.Web.Tests.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,8 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.7\\microsoft.aspnetcore.cryptography.keyderivation.5.0.7.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\5.0.7\\microsoft.aspnetcore.diagnostics.entityframeworkcore.5.0.7.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.7\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.7.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\5.0.7\\microsoft.aspnetcore.identity.ui.5.0.7.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\5.0.7\\microsoft.aspnetcore.mvc.razor.extensions.5.0.7.nupkg.sha512",

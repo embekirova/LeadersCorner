@@ -17,12 +17,12 @@
 
     public class AuthorController : BaseController
     {
-        private readonly ApplicationDbContext data;
+        private readonly LeadersCornerDbContext data;
 
        
 
         public AuthorController(
-            ApplicationDbContext data)
+            LeadersCornerDbContext data)
         => this.data = data;
 
         [Authorize]
@@ -56,9 +56,10 @@
 
             this.data.Authors.Add(authoraData);
             this.data.SaveChanges();
-           
+
             return View("LoggedAuthor");
         }
-        
+
+        public IActionResult All() => this.View();
     }
 }

@@ -354,3 +354,5 @@ C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Services.Data.Tests\ob
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Services.Data.Tests\obj\Debug\net5.0\ref\LeadersCorner.Services.Data.Tests.dll
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Services.Data.Tests\obj\Debug\net5.0\LeadersCorner.Services.Data.Tests.pdb
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Services.Data.Tests\obj\Debug\net5.0\LeadersCorner.Services.Data.Tests.genruntimeconfig.cache
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Services.Data.Tests\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Services.Data.Tests\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll

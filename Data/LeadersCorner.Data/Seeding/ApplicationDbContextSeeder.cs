@@ -9,7 +9,7 @@
 
     public class ApplicationDbContextSeeder : ISeeder
     {
-        public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
+        public async Task SeedAsync(LeadersCornerDbContext dbContext, IServiceProvider serviceProvider)
         {
             if (dbContext == null)
             {
@@ -35,6 +35,8 @@
                 await dbContext.SaveChangesAsync();
                 logger.LogInformation($"Seeder {seeder.GetType().Name} done.");
             }
+
+
         }
     }
 }

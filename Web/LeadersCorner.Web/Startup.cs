@@ -12,7 +12,6 @@
     using LeadersCorner.Services.Mapping;
     using LeadersCorner.Services.Messaging;
     using LeadersCorner.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -34,11 +33,11 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(
+            services.AddDbContext<LeadersCornerDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
-                .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddRoles<ApplicationRole>().AddEntityFrameworkStores<LeadersCornerDbContext>();
 
             services.Configure<CookiePolicyOptions>(
                 options =>
@@ -75,9 +74,10 @@
             // Seed data on application startup
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
-                var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<LeadersCornerDbContext>();
                 dbContext.Database.Migrate();
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+               
             }
 
             if (env.IsDevelopment())

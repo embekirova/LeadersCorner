@@ -16,10 +16,10 @@
 
     public class ArticleController : BaseController
     {
-        private readonly ApplicationDbContext data;
+        private readonly LeadersCornerDbContext data;
 
         public ArticleController(
-            ApplicationDbContext data)
+            LeadersCornerDbContext data)
         => this.data = data;
 
         [Authorize]
@@ -44,18 +44,18 @@
                 return this.View();
             }
 
-            int convertedUserId = int.Parse(userId);
-            var articleData = new Article(int.Parse(userId), article.Title)
+            //int convertedUserId = int.Parse(userId);
+            var articleData = new Article(userId, article.Title)
             {
                 Title = article.Title,
                 ArticleContent = article.ArticleContent,
-                CategoriesOfArticle = article.CategoriesOfArticle,
+                Categories = article.Categories,
             };
 
             this.data.Articles.Add(articleData);
             this.data.SaveChanges();
 
-            return this.Redirect("/");
+            return View("ArticleCreated");
         }
     }
 }

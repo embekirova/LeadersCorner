@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LeadersCorner.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(LeadersCornerDbContext))]
+    partial class LeadersCornerDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -150,8 +150,24 @@ namespace LeadersCorner.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("AuthorId")
+                    b.Property<int?>("ArticleId")
                         .HasColumnType("int");
+
+                    b.Property<string>("AuthorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("AuthorId1")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CategoryId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CategoryId1")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -171,7 +187,11 @@ namespace LeadersCorner.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId");
+                    b.HasIndex("ArticleId");
+
+                    b.HasIndex("AuthorId1");
+
+                    b.HasIndex("CategoryId1");
 
                     b.HasIndex("IsDeleted");
 
@@ -201,7 +221,8 @@ namespace LeadersCorner.Data.Migrations
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<bool>("ManagerOrLeaderPosition")
                         .HasColumnType("bit");
@@ -240,10 +261,6 @@ namespace LeadersCorner.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -500,11 +517,17 @@ namespace LeadersCorner.Data.Migrations
 
             modelBuilder.Entity("LeadersCorner.Data.Models.Article", b =>
                 {
+                    b.HasOne("LeadersCorner.Data.Models.Article", null)
+                        .WithMany("Categories")
+                        .HasForeignKey("ArticleId");
+
                     b.HasOne("LeadersCorner.Data.Models.Author", "Author")
                         .WithMany("Articles")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("AuthorId1");
+
+                    b.HasOne("LeadersCorner.Data.Models.Category", null)
+                        .WithMany("ArticlesInCategory")
+                        .HasForeignKey("CategoryId1");
 
                     b.Navigation("Author");
                 });
@@ -512,13 +535,13 @@ namespace LeadersCorner.Data.Migrations
             modelBuilder.Entity("LeadersCorner.Data.Models.CategoryArticle", b =>
                 {
                     b.HasOne("LeadersCorner.Data.Models.Article", "Article")
-                        .WithMany("CategoriesOfArticle")
+                        .WithMany()
                         .HasForeignKey("ArticleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("LeadersCorner.Data.Models.Category", "Category")
-                        .WithMany("ArticlesInCategory")
+                        .WithMany()
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -612,7 +635,7 @@ namespace LeadersCorner.Data.Migrations
 
             modelBuilder.Entity("LeadersCorner.Data.Models.Article", b =>
                 {
-                    b.Navigation("CategoriesOfArticle");
+                    b.Navigation("Categories");
 
                     b.Navigation("Comments");
                 });

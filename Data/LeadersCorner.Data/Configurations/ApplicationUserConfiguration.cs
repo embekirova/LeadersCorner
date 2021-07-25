@@ -8,6 +8,7 @@
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> appUser)
         {
+
             appUser
                 .HasMany(e => e.Claims)
                 .WithOne()
@@ -28,6 +29,12 @@
                 .HasForeignKey(e => e.UserId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
+            
+            
+        
+        
+        
         }
+
     }
 }

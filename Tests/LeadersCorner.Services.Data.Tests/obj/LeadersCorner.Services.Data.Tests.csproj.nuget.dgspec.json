@@ -593,6 +593,10 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "dependencies": {
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "StyleCop.Analyzers": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers",
               "suppressParent": "All",

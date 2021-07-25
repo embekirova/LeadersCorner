@@ -1,6 +1,7 @@
 ﻿namespace LeadersCorner.Web.ViewModels.Article
 {
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     using LeadersCorner.Data.Common;
@@ -15,9 +16,16 @@
 
         [Required]
         [MinLength(DataConstants.Article.ContentMinLength)]
+        [DisplayName("Artile")]
         public string ArticleContent { get; set; }
 
+
+        [DisplayName("Category")]
+        public string CategoryId { get; set; }
+        
         [Required]
-        public virtual ICollection<CategoryArticle> CategoriesOfArticle { get; set; }
+        public IEnumerable<Article> Categories { get; set; } = new List<Article>();
+
+        public string AuthorId { get;}
     }
 }

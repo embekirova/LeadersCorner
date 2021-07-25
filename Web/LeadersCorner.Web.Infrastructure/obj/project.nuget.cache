@@ -1,11 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "KNW7PXUk8cNqqhTsRyzOmHRh4n6kZP7tg82S/LkP4vCxxBtLZvoSzEuJdCdwiD74Fhc48xLsBkegrfuyN2ND+w==",
+  "dgSpecHash": "lD5B6vaxIiSYmJdX50887oX+q62EK5Q4rf8DNhUuBCEgLoXaW7390S8vbHv9jgEe4RQMzfIhdCt8mHKZ/u6ukg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Web\\LeadersCorner.Web.Infrastructure\\LeadersCorner.Web.Infrastructure.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
-    "C:\\Users\\Lenovo\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512"
+    "C:\\Users\\Lenovo\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

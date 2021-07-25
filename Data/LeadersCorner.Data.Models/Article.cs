@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.Text;
 
@@ -10,16 +11,16 @@
 
     public class Article : BaseDeletableModel<int>
     {
-        public Article(int authorId, string title)
+        public Article(string authorId, string title)
         {
             this.Comments = new HashSet<Comment>();
-            this.CategoriesOfArticle = new HashSet<CategoryArticle>();
+            
             this.AuthorId = authorId;
             this.Title = title;
         }
 
         [Required]
-        public int AuthorId { get; set; }
+        public string AuthorId { get; set; }
 
         public Author Author { get; set; }
 
@@ -32,7 +33,11 @@
         public virtual ICollection<Comment> Comments { get; set; }
 
         [Required]
-        public virtual ICollection<CategoryArticle> CategoriesOfArticle { get; set; }
-            = new List<CategoryArticle>();
+        public IEnumerable<Article> Categories { get; set; } = new List<Article>();
+
+        [DisplayName("Category")]
+        public string CategoryId { get; set; }
+        public string CategoryName { get; set; }
+
     }
 }

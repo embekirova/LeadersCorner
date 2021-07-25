@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LeadersCorner.Data.Migrations
 {
-    public partial class AuthorRelatedTables : Migration
+    public partial class LeaderRelatedTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,7 +61,7 @@ namespace LeadersCorner.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     Profession = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ManagerOrLeaderPosition = table.Column<bool>(type: "bit", nullable: false),
                     UserID = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -81,7 +81,6 @@ namespace LeadersCorner.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -217,31 +216,6 @@ namespace LeadersCorner.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Articles",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AuthorId = table.Column<int>(type: "int", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArticleContent = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Articles", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Articles_Authors_AuthorId",
-                        column: x => x.AuthorId,
-                        principalTable: "Authors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Courses",
                 columns: table => new
                 {
@@ -265,6 +239,48 @@ namespace LeadersCorner.Data.Migrations
                         name: "FK_Courses_Authors_AuthorId",
                         column: x => x.AuthorId,
                         principalTable: "Authors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Articles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AuthorId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AuthorId1 = table.Column<int>(type: "int", nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArticleContent = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CategoryId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ArticleId = table.Column<int>(type: "int", nullable: true),
+                    CategoryId1 = table.Column<int>(type: "int", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Articles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Articles_Articles_ArticleId",
+                        column: x => x.ArticleId,
+                        principalTable: "Articles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Articles_Authors_AuthorId1",
+                        column: x => x.AuthorId1,
+                        principalTable: "Authors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Articles_Categories_CategoryId1",
+                        column: x => x.CategoryId1,
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -321,9 +337,19 @@ namespace LeadersCorner.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Articles_AuthorId",
+                name: "IX_Articles_ArticleId",
                 table: "Articles",
-                column: "AuthorId");
+                column: "ArticleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Articles_AuthorId1",
+                table: "Articles",
+                column: "AuthorId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Articles_CategoryId1",
+                table: "Articles",
+                column: "CategoryId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_IsDeleted",
@@ -461,13 +487,13 @@ namespace LeadersCorner.Data.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Categories");
-
-            migrationBuilder.DropTable(
                 name: "Articles");
 
             migrationBuilder.DropTable(
                 name: "Authors");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
         }
     }
 }

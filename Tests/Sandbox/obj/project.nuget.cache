@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "E8pzx1N3RpbwL0YYw3zwB5sDgL++xLsGxxFSfFLMEA8zedRth0rmp/7VZn9rjNGj92VPGe38ScEquDkwhUb7Bw==",
+  "dgSpecHash": "cG01Ev5A8Y09gedBWOoEnBPSFf28PFqXc/WWOQkL3neFbD1X3IQ6UDhb+gUlX8IYF0GsYOJWymLNH+W20qAmBw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Tests\\Sandbox\\Sandbox.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,8 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\commandlineparser\\2.8.0\\commandlineparser.2.8.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.7\\microsoft.aspnetcore.cryptography.internal.5.0.7.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.7\\microsoft.aspnetcore.cryptography.keyderivation.5.0.7.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.7\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.7.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\5.0.7\\microsoft.aspnetcore.identity.ui.5.0.7.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -114,6 +116,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",

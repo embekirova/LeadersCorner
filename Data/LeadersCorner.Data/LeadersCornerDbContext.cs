@@ -9,17 +9,18 @@
     using LeadersCorner.Data.Common.Models;
     using LeadersCorner.Data.Models;
 
+    
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+    public class LeadersCornerDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         private static readonly MethodInfo SetIsDeletedQueryFilterMethod =
-            typeof(ApplicationDbContext).GetMethod(
+            typeof(LeadersCornerDbContext).GetMethod(
                 nameof(SetIsDeletedQueryFilter),
                 BindingFlags.NonPublic | BindingFlags.Static);
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public LeadersCornerDbContext(DbContextOptions<LeadersCornerDbContext> options)
             : base(options)
         {
         }
