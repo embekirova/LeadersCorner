@@ -937,3 +937,4 @@ C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Raz
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\bin\Debug\net5.0\System.IO.Pipelines.dll
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Article\All.cshtml.g.cs

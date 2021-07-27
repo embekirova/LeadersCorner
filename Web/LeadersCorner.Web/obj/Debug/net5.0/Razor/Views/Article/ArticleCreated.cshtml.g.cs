@@ -27,6 +27,20 @@ using LeadersCorner.Web.ViewModels;
 #line hidden
 #nullable disable
 #nullable restore
+#line 3 "C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\Views\_ViewImports.cshtml"
+using LeadersCorner.Web.ViewModels.Article;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\Views\_ViewImports.cshtml"
+using LeadersCorner.Data.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\Views\Article\ArticleCreated.cshtml"
 using LeadersCorner.Common;
 
@@ -34,7 +48,7 @@ using LeadersCorner.Common;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"22991baf62eca517bff03f57543b40d52313bb6f", @"/Views/Article/ArticleCreated.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"11d473bf4bad4e51c53ff90a281e96179b0e18bb", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0f5187377037dad09f259201810edb9a68ed6fe9", @"/Views/_ViewImports.cshtml")]
     public class Views_Article_ArticleCreated : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

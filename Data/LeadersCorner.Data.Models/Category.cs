@@ -32,6 +32,7 @@
             
         }
 
+        public string CategoryName { get; set;}
         public IEnumerable<Article> ArticlesInCategory { get; set; } = new List<Article>();
     }
 }

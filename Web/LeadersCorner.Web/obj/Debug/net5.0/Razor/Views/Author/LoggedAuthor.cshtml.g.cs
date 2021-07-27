@@ -26,8 +26,29 @@ using LeadersCorner.Web.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\Views\_ViewImports.cshtml"
+using LeadersCorner.Web.ViewModels.Article;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\Views\_ViewImports.cshtml"
+using LeadersCorner.Common;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\Views\_ViewImports.cshtml"
+using LeadersCorner.Data.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"338d71c4fa1a13f7a2cf16f80e935bcafff1d1c7", @"/Views/Author/LoggedAuthor.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"11d473bf4bad4e51c53ff90a281e96179b0e18bb", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0f5187377037dad09f259201810edb9a68ed6fe9", @"/Views/_ViewImports.cshtml")]
     public class Views_Author_LoggedAuthor : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

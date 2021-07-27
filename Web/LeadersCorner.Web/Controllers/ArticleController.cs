@@ -19,7 +19,7 @@
     public class ArticleController : BaseController
     {
         private readonly LeadersCornerDbContext data;
-        
+
         public ArticleController(
             LeadersCornerDbContext data)
         => this.data = data;
@@ -27,6 +27,36 @@
         [Authorize]
         public IActionResult Create() => this.View();
 
+        public IActionResult All(string category) 
+            {
+
+            var articleQuery = this.data.Articles.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(category))
+            {
+                articleQuery = articleQuery.Where(c => c.CategoryName == category);
+            }
+            
+            var articles = this.data
+                .Articles
+                .OrderByDescending(c=>c.Id)
+                .Select(c => new ArticlesViewModel
+                {
+                    Id = c.Id,
+                    Title = c.Title,
+                    ImageUrl = c.ImageUrl,
+                    AuthorId = c.AuthorId,
+
+                })
+                .ToList();
+
+            var categoryType = articleQuery.Select(c => c.CategoryName).Distinct().ToList();
+
+
+            return this.View(new AllArticleQueryModel
+            {
+             
+            Articles = articles, });
+            }
 
         [HttpPost]
         [Authorize]
@@ -46,22 +76,23 @@
                 return this.View();
             }
 
-           if (!(article.Image.FileName.EndsWith(".png") & article.Image.FileName.EndsWith(".jpeg")))
-            {
-                this.ModelState.AddModelError("Image", "Invalid file type");
-            }
+           //if (!(article.Image.FileName.EndsWith(".png") & article.Image.FileName.EndsWith(".jpeg")))
+           // {
+           //     this.ModelState.AddModelError("Image", "Invalid file type");
+           // }
 
-            using (FileStream fs = new FileStream(
-                "C:/Users/Lenovo/Desktop/LeadersCorner/Web/LeadersCorner.Web/Files" + "/user.png", FileMode.Create))
-            {
-                article.Image.CopyTo(fs);
-            } ;
+           // using (FileStream fs = new FileStream(
+           //     "C:/Users/Lenovo/Desktop/LeadersCorner/Web/LeadersCorner.Web/Files" + "/user.png", FileMode.Create))
+           // {
+           //     article.Image.CopyTo(fs);
+           // } ;
             
             
             var articleData = new Article(userId, article.Title)
             {
                 Title = article.Title,
                 ArticleContent = article.ArticleContent,
+                ImageUrl=article.ImageUrl,
                 Categories = article.Categories,
             };
 

@@ -31,8 +31,8 @@
         [Required]
         public string ArticleContent { get; set; }
 
-       
-
+        [DisplayName("Photo")]
+        public string ImageUrl { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
 
         [Required]
