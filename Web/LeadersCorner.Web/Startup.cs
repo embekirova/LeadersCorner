@@ -1,5 +1,7 @@
 ﻿namespace LeadersCorner.Web
 {
+    using System;
+    using System.Linq;
     using System.Reflection;
 
     using LeadersCorner.Data;
@@ -41,16 +43,16 @@
 
             services.Configure<CookiePolicyOptions>(
                 options =>
-                    {
-                        options.CheckConsentNeeded = context => true;
-                        options.MinimumSameSitePolicy = SameSiteMode.None;
-                    });
+                {
+                    options.CheckConsentNeeded = context => true;
+                    options.MinimumSameSitePolicy = SameSiteMode.None;
+                });
 
             services.AddControllersWithViews(
                 options =>
-                    {
-                        options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-                    }).AddRazorRuntimeCompilation();
+                {
+                    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                }).AddRazorRuntimeCompilation();
             services.AddRazorPages();
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -77,7 +79,7 @@
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<LeadersCornerDbContext>();
                 dbContext.Database.Migrate();
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
-               
+
             }
 
             if (env.IsDevelopment())
@@ -102,11 +104,11 @@
 
             app.UseEndpoints(
                 endpoints =>
-                    {
-                        endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                        endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-                        endpoints.MapRazorPages();
-                    });
+                {
+                    endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                    endpoints.MapRazorPages();
+                });
         }
     }
 }

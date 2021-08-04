@@ -541,7 +541,6 @@ C:\Users\Lenovo\Desktop\ASP.NET_Core\Tests\LeadersCorner.Web.Tests\bin\Debug\net
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\bundleconfig.json
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\libman.json
-C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\LeadersCorner.Web.StaticWebAssets.xml
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\testhost.exe
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\testhost.dll
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
@@ -1078,3 +1077,4 @@ C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\obj\Debug\ne
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\obj\Debug\net5.0\LeadersCorner.Web.Tests.genruntimeconfig.cache
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\LeadersCorner.Web.StaticWebAssets.xml

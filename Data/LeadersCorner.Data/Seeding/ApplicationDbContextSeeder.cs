@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,7 @@
                           {
                               new RolesSeeder(),
                               new SettingsSeeder(),
+                              new CategorySeeder(),
                           };
 
             foreach (var seeder in seeders)
@@ -36,7 +38,8 @@
                 logger.LogInformation($"Seeder {seeder.GetType().Name} done.");
             }
 
-
+            
         }
+       
     }
 }

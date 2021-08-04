@@ -1,5 +1,6 @@
 ﻿namespace LeadersCorner.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
@@ -33,7 +34,7 @@
             var articleQuery = this.data.Articles.AsQueryable();
             if (!string.IsNullOrWhiteSpace(category))
             {
-                articleQuery = articleQuery.Where(c => c.CategoryName == category);
+                articleQuery = articleQuery.Where(c => c.Name == category);
             }
             
             var articles = this.data
@@ -49,7 +50,7 @@
                 })
                 .ToList();
 
-            var categoryType = articleQuery.Select(c => c.CategoryName).Distinct().ToList();
+            var categoryType = articleQuery.Select(c => c.Name).Distinct().ToList();
 
 
             return this.View(new AllArticleQueryModel
@@ -70,30 +71,45 @@
             {
                 return this.BadRequest();
             }
+            
+            if (!this.data.Categories.Any(c => c.Id == c.Id))
+            {
+                this.ModelState.AddModelError(nameof(article.Id), "Category does not exist.");
+            }
+
+            //if (!ModelState.IsValid)
+            //{
+            //    article.Id = Id;
+
+            //    return View(article);
+            //}
 
             if (!this.ModelState.IsValid)
             {
-                return this.View();
+                return this.View(article);
             }
 
-           //if (!(article.Image.FileName.EndsWith(".png") & article.Image.FileName.EndsWith(".jpeg")))
-           // {
-           //     this.ModelState.AddModelError("Image", "Invalid file type");
-           // }
+            //if (!(article.Image.FileName.EndsWith(".png") & article.Image.FileName.EndsWith(".jpeg")))
+            // {
+            //     this.ModelState.AddModelError("Image", "Invalid file type");
+            // }
 
-           // using (FileStream fs = new FileStream(
-           //     "C:/Users/Lenovo/Desktop/LeadersCorner/Web/LeadersCorner.Web/Files" + "/user.png", FileMode.Create))
-           // {
-           //     article.Image.CopyTo(fs);
-           // } ;
-            
-            
+            // using (FileStream fs = new FileStream(
+            //     "C:/Users/Lenovo/Desktop/LeadersCorner/Web/LeadersCorner.Web/Files" + "/user.png", FileMode.Create))
+            // {
+            //     article.Image.CopyTo(fs);
+            // } ;
+
+
             var articleData = new Article(userId, article.Title)
             {
                 Title = article.Title,
                 ArticleContent = article.ArticleContent,
-                ImageUrl=article.ImageUrl,
-                Categories = article.Categories,
+                ImageUrl = article.ImageUrl,
+                CategoryId = article.CategoryId,
+                Name = article.CategoryName,
+               
+                AuthorId = userId,
             };
 
             this.data.Articles.Add(articleData);
@@ -101,5 +117,18 @@
 
             return View("ArticleCreated");
         }
+
+        private IEnumerable<Article> GetArticleCategories()
+        { return (IEnumerable<Article>)this.data
+                .Categories
+                .Select(c => new ArticleCategoryViewModel
+                {
+                    Id = c.Id,
+                    Name = c.CategoryName,
+                })
+                .ToList();
+
+        } 
+        
     }
 }

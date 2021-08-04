@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LeadersCorner.Data.Migrations
 {
-    public partial class LeaderRelatedTables : Migration
+    public partial class ArticleRelatedT : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -81,6 +81,7 @@ namespace LeadersCorner.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -253,10 +254,10 @@ namespace LeadersCorner.Data.Migrations
                     AuthorId1 = table.Column<int>(type: "int", nullable: true),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ArticleContent = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CategoryId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ArticleId = table.Column<int>(type: "int", nullable: true),
-                    CategoryId1 = table.Column<int>(type: "int", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -278,8 +279,8 @@ namespace LeadersCorner.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Articles_Categories_CategoryId1",
-                        column: x => x.CategoryId1,
+                        name: "FK_Articles_Categories_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -347,9 +348,9 @@ namespace LeadersCorner.Data.Migrations
                 column: "AuthorId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Articles_CategoryId1",
+                name: "IX_Articles_CategoryId",
                 table: "Articles",
-                column: "CategoryId1");
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_IsDeleted",

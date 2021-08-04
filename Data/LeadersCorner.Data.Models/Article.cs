@@ -20,6 +20,7 @@
             this.Title = title;
         }
 
+
         [Required]
         public string AuthorId { get; set; }
 
@@ -35,12 +36,22 @@
         public string ImageUrl { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
 
-        [Required]
+        
         public IEnumerable<Article> Categories { get; set; } = new List<Article>();
 
+        [Required]
         [DisplayName("Category")]
-        public string CategoryId { get; set; }
-        public string CategoryName { get; set; }
+        public int CategoryId { get; set; }
+       
+        public Category CategoryIdN { get; set; }
+        public string Name 
+        {
+            get
+            ;
+
+            set
+           ;
+        }
 
     }
 }

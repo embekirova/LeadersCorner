@@ -22,15 +22,19 @@
 
 
         [DisplayName("Category")]
-        public string CategoryId { get; set; }
-        
         [Required]
-        public IEnumerable<Article> Categories { get; set; } = new List<Article>();
+        public int CategoryId { get; set; }
+        
+        public string CategoryName { get; set; }
+
+        public IEnumerable<Category> Categories { get; set; }
+            = new List<Category>();
 
         public string AuthorId { get;}
 
         public string ImageUrl { get; set; }
+        public int Id { get; set; }
 
-       // public IFormFile Image { get; set; }
+        // public IFormFile Image { get; set; }
     }
 }

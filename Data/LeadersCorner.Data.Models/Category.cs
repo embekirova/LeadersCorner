@@ -15,7 +15,7 @@
        
         public enum CategoryType
         {
-            [Display(Name ="Self improvement")]
+            [Display(Name = "Self improvement")]
             SelfImproving = 0,
             [Display(Name = "Problem Solving")]
             ProblemSolving = 1,
@@ -29,10 +29,10 @@
             Recruiting = 4,
             [Display(Name = "Team motivation")]
             TeamMotivation = 5,
-            
-        }
 
-        public string CategoryName { get; set;}
+        }
+        public int Id { get; set;}
+     public string CategoryName { get; set;}
         public IEnumerable<Article> ArticlesInCategory { get; set; } = new List<Article>();
     }
 }
