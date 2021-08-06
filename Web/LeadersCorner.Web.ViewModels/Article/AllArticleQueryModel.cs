@@ -25,13 +25,14 @@
 
         public int TotalArticles { get; set; }
 
-        [DisplayName("Category")]
+        
         public string CategoryId { get; set; }
 
+        [DisplayName("Category")]
         public string CategoryName { get; set; }
 
         [Required]
-        public IEnumerable<Article> Categories { get; set; } = new List<Article>();
+        public List<Category> Categories { get; set; }
 
         public IEnumerable<ArticlesViewModel> Articles { get; set; }
        

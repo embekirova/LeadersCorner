@@ -42,6 +42,7 @@
         [Required]
         [DisplayName("Category")]
         public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
        
         public Category CategoryIdN { get; set; }
         public string Name 

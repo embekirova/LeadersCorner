@@ -32,7 +32,9 @@
 
         }
         public int Id { get; set;}
-     public string CategoryName { get; set;}
+        public string CategoryName { get; set;}
+
+        public string CategoryLabel { get; set; }
         public IEnumerable<Article> ArticlesInCategory { get; set; } = new List<Article>();
     }
 }

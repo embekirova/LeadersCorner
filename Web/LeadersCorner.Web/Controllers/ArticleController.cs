@@ -50,14 +50,22 @@
                 })
                 .ToList();
 
-            var categoryType = articleQuery.Select(c => c.Name).Distinct().ToList();
+
+            var categories = this.data
+                .Articles
+                .Select(c=> c.CategoryIdN)
+                .Distinct()
+                .OrderByDescending(c => c.CategoryName)
+                .ToList();
+            //var categoryType = articleQuery
 
 
             return this.View(new AllArticleQueryModel
             {
-             
-            Articles = articles, });
+               Categories = categories,
+                Articles = articles, }); 
             }
+
 
         [HttpPost]
         [Authorize]

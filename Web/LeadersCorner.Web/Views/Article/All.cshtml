@@ -7,20 +7,27 @@
         <div class="row">
             <div class="form-group col-md-4">
                 <div class="form-group">
-                    <label asp-for="CategoryName"></label>
-                    <select asp-for="CategoryName" class="form-control">
-                        <option value="">All</option>
+                    <div class="dropdown">
+                        <label asp-for="Category"></label>
+                        <select asp-for="Category" class="form-control">
 
-                        @foreach (var CategoryName in Model.Categories)
-                        {
-                            <option value="@CategoryName">@CategoryName</option>
-                        }
-                    </select>
+                            <option value="">All</option>
+                            @foreach (var category in Model.Categories)
+                            {
+                        
+                                <option value="@category.CategoryName">@category.CategoryLabel</option>
+                                <button onclick="@category.CategoryName" class="dropbtn">@category.CategoryLabel</button>
+                            }
+                            <asp:DropDownList ID="DropDownList1" autopostback="true" runat="server">            </asp:DropDownList>
+                        </select>
+
+                    </div>
+                    
                 </div>
             </div>
-
-</form>
+    </form>
 </div>
+
 
 
 
