@@ -12,7 +12,11 @@
 
     public class Article : BaseDeletableModel<int>
     {
-        public Article(string authorId, string title)
+        public Article()
+        {
+
+        }
+        public Article(int authorId, string title)
         {
             this.Comments = new HashSet<Comment>();
             
@@ -22,7 +26,7 @@
 
 
         [Required]
-        public string AuthorId { get; set; }
+        public int AuthorId { get; set; }
 
         public Author Author { get; set; }
 
@@ -45,14 +49,14 @@
         public string CategoryName { get; set; }
        
         public Category CategoryIdN { get; set; }
-        public string Name 
-        {
-            get
-            ;
+        //public string Name 
+        //{
+        //    get
+        //    ;
 
-            set
-           ;
-        }
+        //    set
+        //   ;
+        //}
 
     }
 }

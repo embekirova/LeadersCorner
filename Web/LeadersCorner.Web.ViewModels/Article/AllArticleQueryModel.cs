@@ -3,16 +3,17 @@
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+    
 
     using LeadersCorner.Data.Common;
     using LeadersCorner.Data.Models;
-
+    using LeadersCorner.Services.Mapping;
     public class AllArticleQueryModel
     {
-        
         public const int ArticlesPerPage = 2;
         private int currentPage;
         private const int currentPageByDefault = 1;
+
         public string Category { get; set; }
 
         [Display(Name = "Search by text")]
@@ -20,34 +21,33 @@
 
         public ArticleSorting Sorting { get; set; }
 
-        public int CurrentPage { 
+        public int CurrentPage
+        {
         get
             {
-                if (currentPage < 1)
+                if (this.currentPage < 1)
                 {
                     return currentPageByDefault;
                 }
                 else
-                { 
-                return currentPage;
+                {
+                return this.currentPage;
                 }
-                    
             }
 
-            set
+        set
             {
                 if (value < 1)
                 {
                     this.currentPage = 1;
                 }
 
-                    this.currentPage = value;
-                
+                this.currentPage = value;
             }
         }
 
         public int TotalArticles { get; set; }
-        
+
         public int CategoryId { get; set; }
 
         [DisplayName("Category")]
@@ -57,6 +57,9 @@
         public List<Category> Categories { get; set; }
 
         public List<Article> Articles { get; set; }
-       
+
+        public string Title { get; set; }
+
+        
     }
 }

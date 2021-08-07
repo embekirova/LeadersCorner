@@ -1,0 +1,17 @@
+﻿@using LeadersCorner.Common
+@using LeadersCorner.Data.Models
+@model LeadersCorner.Web.ViewModels.Article.CurrentArticleViewModel
+
+@{
+    this.ViewData["Title"] = "@Model.Title";
+}
+
+
+
+
+<article>
+    <p class="h1" text-align: center>@Model.Title</p>
+    <img src="@Model.ImageUrl" class="img-fluid">
+    @*   <h6> @Model.Author.FirstName"+ " " + @Model.Author.FirstName</h6>*@
+    <p>@Model.ArticleContent</p>
+</article>

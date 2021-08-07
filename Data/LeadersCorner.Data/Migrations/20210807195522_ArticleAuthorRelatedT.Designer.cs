@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeadersCorner.Data.Migrations
 {
     [DbContext(typeof(LeadersCornerDbContext))]
-    [Migration("20210806181524_CategoryRelatedT")]
-    partial class CategoryRelatedT
+    [Migration("20210807195522_ArticleAuthorRelatedT")]
+    partial class ArticleAuthorRelatedT
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -155,11 +155,7 @@ namespace LeadersCorner.Data.Migrations
                     b.Property<int?>("ArticleId")
                         .HasColumnType("int");
 
-                    b.Property<string>("AuthorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("AuthorId1")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<int>("CategoryId")
@@ -183,9 +179,6 @@ namespace LeadersCorner.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -194,7 +187,7 @@ namespace LeadersCorner.Data.Migrations
 
                     b.HasIndex("ArticleId");
 
-                    b.HasIndex("AuthorId1");
+                    b.HasIndex("AuthorId");
 
                     b.HasIndex("CategoryId");
 
@@ -534,7 +527,9 @@ namespace LeadersCorner.Data.Migrations
 
                     b.HasOne("LeadersCorner.Data.Models.Author", "Author")
                         .WithMany("Articles")
-                        .HasForeignKey("AuthorId1");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("LeadersCorner.Data.Models.Category", "CategoryIdN")
                         .WithMany("ArticlesInCategory")
