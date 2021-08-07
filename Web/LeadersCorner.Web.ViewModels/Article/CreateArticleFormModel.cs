@@ -19,22 +19,17 @@
         [MinLength(DataConstants.Article.ContentMinLength)]
         [DisplayName("Artile")]
         public string ArticleContent { get; set; }
-
-
-        [DisplayName("Category")]
-        [Required]
-        public int CategoryId { get; set; }
         
-        public string CategoryName { get; set; }
+        [Required]
+        [DisplayName("Category")]
+        public int CategoryId { get; set; }
 
-        public IEnumerable<Category> Categories { get; set; }
-            = new List<Category>();
+        public List<Category> Categories { get; set; }
 
         public string AuthorId { get;}
 
         public string ImageUrl { get; set; }
         public int Id { get; set; }
 
-        // public IFormFile Image { get; set; }
     }
 }

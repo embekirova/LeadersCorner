@@ -1,5 +1,6 @@
 ﻿namespace LeadersCorner.Web.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
@@ -20,52 +21,23 @@
     public class ArticleController : BaseController
     {
         private readonly LeadersCornerDbContext data;
+        private readonly ArticleSorting sorting;
 
         public ArticleController(
             LeadersCornerDbContext data)
         => this.data = data;
 
         [Authorize]
-        public IActionResult Create() => this.View();
-
-        public IActionResult All(string category) 
-            {
-
-            var articleQuery = this.data.Articles.AsQueryable();
-            if (!string.IsNullOrWhiteSpace(category))
-            {
-                articleQuery = articleQuery.Where(c => c.Name == category);
-            }
-            
-            var articles = this.data
-                .Articles
-                .OrderByDescending(c=>c.Id)
-                .Select(c => new ArticlesViewModel
-                {
-                    Id = c.Id,
-                    Title = c.Title,
-                    ImageUrl = c.ImageUrl,
-                    AuthorId = c.AuthorId,
-
-                })
-                .ToList();
-
-
+        public IActionResult Create()
+        {
             var categories = this.data
-                .Articles
-                .Select(c=> c.CategoryIdN)
-                .Distinct()
-                .OrderByDescending(c => c.CategoryName)
-                .ToList();
-            //var categoryType = articleQuery
+                .Categories.ToList();
 
-
-            return this.View(new AllArticleQueryModel
+            return this.View(new CreateArticleFormModel
             {
-               Categories = categories,
-                Articles = articles, }); 
-            }
-
+                Categories = categories,
+            });
+        }
 
         [HttpPost]
         [Authorize]
@@ -79,35 +51,17 @@
             {
                 return this.BadRequest();
             }
-            
+
+
             if (!this.data.Categories.Any(c => c.Id == c.Id))
             {
                 this.ModelState.AddModelError(nameof(article.Id), "Category does not exist.");
             }
 
-            //if (!ModelState.IsValid)
-            //{
-            //    article.Id = Id;
-
-            //    return View(article);
-            //}
-
             if (!this.ModelState.IsValid)
             {
                 return this.View(article);
             }
-
-            //if (!(article.Image.FileName.EndsWith(".png") & article.Image.FileName.EndsWith(".jpeg")))
-            // {
-            //     this.ModelState.AddModelError("Image", "Invalid file type");
-            // }
-
-            // using (FileStream fs = new FileStream(
-            //     "C:/Users/Lenovo/Desktop/LeadersCorner/Web/LeadersCorner.Web/Files" + "/user.png", FileMode.Create))
-            // {
-            //     article.Image.CopyTo(fs);
-            // } ;
-
 
             var articleData = new Article(userId, article.Title)
             {
@@ -115,28 +69,110 @@
                 ArticleContent = article.ArticleContent,
                 ImageUrl = article.ImageUrl,
                 CategoryId = article.CategoryId,
-                Name = article.CategoryName,
-               
+                Id = article.Id,
                 AuthorId = userId,
             };
 
             this.data.Articles.Add(articleData);
             this.data.SaveChanges();
 
-            return View("ArticleCreated");
+            return this.View("ArticleCreated");
         }
 
-        private IEnumerable<Article> GetArticleCategories()
-        { return (IEnumerable<Article>)this.data
+        public IActionResult All(AllArticleQueryModel articlModel)
+        {
+            var categories = this.data
                 .Categories
-                .Select(c => new ArticleCategoryViewModel
-                {
-                    Id = c.Id,
-                    Name = c.CategoryName,
-                })
                 .ToList();
 
-        } 
-        
+            var articleQuery = this.data.Articles.AsQueryable();
+            
+            var articles = new List<Article>();
+
+            if (articlModel.CategoryId == 0)
+            {
+                articles = this.data
+               .Articles
+               .Skip((articlModel.CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
+               .Take(AllArticleQueryModel.ArticlesPerPage)
+               .OrderByDescending(article => article.Id)
+               .ToList();
+            }
+            else
+            {
+                articles = this.data
+                    .Articles
+                    .Where(c => c.CategoryId == articlModel.CategoryId)
+                    .Skip((articlModel.CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
+                    .Take(AllArticleQueryModel.ArticlesPerPage)
+                    .OrderByDescending(article => article.Id)
+                    .ToList();
+            }
+
+            articles = sorting switch
+            {
+                ArticleSorting.DateCreated => articles.OrderByDescending(article => article.Id).ToList(),
+                ArticleSorting.ReverseDateCreated => articles.OrderBy(c => c.Id).ToList(),
+                ArticleSorting.NullValue => articles.OrderBy(c => Guid.NewGuid()).ToList(),
+                _ => articles.OrderByDescending(article => article.Id).ToList(),
+            };
+            return this.View(new AllArticleQueryModel
+
+            {
+                CategoryId = articlModel.CategoryId,
+                Categories = categories,
+                Articles = articles,
+                Sorting = sorting,
+                CurrentPage = articlModel.CurrentPage,
+            });
+        }
+
+        //[HttpPost]
+        //[Authorize]
+        //public IActionResult All(AllArticleQueryModel articlModel)
+        //{
+
+        //var categories = this.data
+        //        .Categories.ToList();
+
+        //    List<Article> articles = new List<Article>();
+
+        //    if (articlModel.CategoryId == 0)
+        //    {
+        //        articles = this.data
+        //       .Articles
+        //       .Skip((articlModel.CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
+        //       .Take(AllArticleQueryModel.ArticlesPerPage)
+        //       .OrderByDescending(article => article.Id)
+        //       .ToList();
+        //    }
+        //    else
+        //    {
+        //        articles = this.data
+        //            .Articles
+        //            .Where(c => c.CategoryId == articlModel.CategoryId)
+        //            .Skip((articlModel.CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
+        //            .Take(AllArticleQueryModel.ArticlesPerPage)
+        //            .OrderByDescending(article => article.Id)
+        //            .ToList();
+        //    }
+
+        //articles = sorting switch
+        //    {
+        //        ArticleSorting.DateCreated => articles.OrderByDescending(article=>article.Id).ToList(),
+        //        ArticleSorting.ReverseDateCreated => articles.OrderBy(c => c.Id).ToList(),
+        //        ArticleSorting.NullValue => articles.OrderBy(c => Guid.NewGuid()).ToList(),
+        //        _=> articles.OrderByDescending(article => article.Id).ToList(),
+        //    };
+        //return this.View(new AllArticleQueryModel
+
+        //    {
+        //        CategoryId = articlModel.CategoryId,
+        //        Categories = categories,
+        //        Articles = articles,
+        //        Sorting = sorting,
+        //    });
+        //}
+
     }
 }

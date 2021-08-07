@@ -1,6 +1,7 @@
 ﻿@using LeadersCorner.Common
 @using LeadersCorner.Data.Models
 @model LeadersCorner.Web.ViewModels.Article.CreateArticleFormModel
+
 @{
     this.ViewData["Title"] = "Create an article";
 }
@@ -21,12 +22,29 @@
                 <textarea rows="7" asp-for="ArticleContent" class="form-control" placeholder="Post your article here"></textarea>
                 <span asp-validation-for="ArticleContent" class="small text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CategoryId"></label>
-                <select asp-for="CategoryId" class="form-control"
-                        asp-items="@Html.GetEnumSelectList<Category.CategoryType>()">
-                </select>
-                <span asp-validation-for="CategoryId" class="small text-danger"></span>
+            <div class="row">
+                <form method="get">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <label asp-for="CategoryId"></label>
+                                    <select asp-for="CategoryId" class="form-control">
+
+                                        @foreach (var category in Model.Categories)
+                                        {
+
+                                            <option value="@category.Id">@category.CategoryLabel</option>
+                                            <button onclick="@category.Id" class="dropbtn">@category.CategoryLabel</button>
+                                        }
+                                                   
+                                    </select>
+
+                                </div>
+
+                            </div>
+                        </div>
+                </form>
             </div>
             <div class="form-group">
                 <label asp-for="ImageUrl"></label>

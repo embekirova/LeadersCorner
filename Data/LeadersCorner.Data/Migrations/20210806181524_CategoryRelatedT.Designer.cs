@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeadersCorner.Data.Migrations
 {
     [DbContext(typeof(LeadersCornerDbContext))]
-    [Migration("20210805183109_CategoryRelatedT")]
+    [Migration("20210806181524_CategoryRelatedT")]
     partial class CategoryRelatedT
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
