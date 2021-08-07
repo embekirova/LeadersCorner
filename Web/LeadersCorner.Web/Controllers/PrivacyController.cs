@@ -20,8 +20,8 @@
         public IActionResult Privacy ()
         {
             string filepath = "Files";
-            byte[] pdfByte = System.IO.File.ReadAllBytes(filepath);
-            return File(pdfByte, "application/pdf", "Privacy.pdf");
+            byte[] pdfByte = System.IO.File.ReadAllBytes(filepath + "/Privacy.pdf");
+            return File(pdfByte, "Files/pdf", "Privacy.pdf");
         }
      
     }
