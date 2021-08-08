@@ -17,7 +17,8 @@
 
         public int AuthorId { get; set; }
 
-        public Author Author { get; set; }
         public string ArticleContent { get; set; }
+
+        public virtual ICollection<Comment>? Comments { get; set; }
     }
 }

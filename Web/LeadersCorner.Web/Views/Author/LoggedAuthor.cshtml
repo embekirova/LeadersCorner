@@ -1,17 +1,17 @@
 ﻿
 @{
-    this.ViewData["Title"] = "Wellcome to the board";
+    this.ViewData["Title"] = "Wellcome to the team";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Wellcome to the board!</h1>
-    <p>You can share your knoledge and best practices how to be a good leader.</p>
-
    
-    <a href= '@Url.Action("Create", "Article" )'>
-        
-        <button>Create you first Article!</button>
+    <img src="~/Gif/wellcome to the board.gif" alt="gif image" />
+    <h3 class="margin-top-alotofspace custom-padding custom-text-color">You can share your knowledge and best practices in order to be a good leader.</h3>
+
+
+    <a href='@Url.Action("Create", "Article" )'>
+        <button class="btn btn-primary margin-top-alotofspace">Create you first Article!</button>
     </a>
-    <p> Thank you for joining us! </p>
+    <h5 class="underline--left margin-top-alotofspace custom-padding"><i> Thank you for joining us! </i></h5>
 
 </div>

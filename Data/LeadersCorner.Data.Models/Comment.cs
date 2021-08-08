@@ -9,8 +9,12 @@
 
     public class Comment : BaseDeletableModel<int>
     {
+       
+        public string UserName { get; set; }
+ 
+        
         [Required]
-        public string UseName { get; set; }
+        public int UserId { get; set; }
 
         [Required]
         public string CommentContent { get; set; }

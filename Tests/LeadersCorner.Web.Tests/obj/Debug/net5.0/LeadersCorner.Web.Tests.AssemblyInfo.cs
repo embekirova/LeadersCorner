@@ -13,6 +13,11 @@ using System.Reflection;
 
 [assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap4")]
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("LeadersCorner.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Data\\LeadersCorner.Data", "LeadersCorner.Data.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("LeadersCorner.Services.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=nul" +
+    "l", "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Services\\LeadersCorner.Services.Data", "LeadersCorner.Services.Data.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("LeadersCorner.Services.Data.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyTok" +
+    "en=null", "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Tests\\LeadersCorner.Services.Data.Tests", "LeadersCorner.Services.Data.Tests.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("LeadersCorner.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Services\\LeadersCorner.Services", "LeadersCorner.Services.csproj", "0")]
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("LeadersCorner.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Web\\LeadersCorner.Web", "LeadersCorner.Web.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("LeadersCorner.Web.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]

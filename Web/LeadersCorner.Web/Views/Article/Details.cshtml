@@ -1,17 +1,64 @@
 ﻿@using LeadersCorner.Common
 @using LeadersCorner.Data.Models
 @model LeadersCorner.Web.ViewModels.Article.CurrentArticleViewModel
-
 @{
     this.ViewData["Title"] = "@Model.Title";
 }
 
-
-
-
 <article>
     <p class="h1" text-align: center>@Model.Title</p>
     <img src="@Model.ImageUrl" class="img-fluid">
-    @*   <h6> @Model.Author.FirstName"+ " " + @Model.Author.FirstName</h6>*@
     <p>@Model.ArticleContent</p>
+
+    @*
+
+        @foreach (var comment in Model.Comments)
+        {
+            <div class="container-fluid mt-100">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <div class=" card-header">
+                                <div class="media flex-wrap w-100 align-items-lg-center">
+                                    <div class="media-body ml-3">
+                                        @comment.UserName
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" card-body">
+                                @Html.Raw(comment .SanitazedContent)
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    }
+    }
+    else
+    {
+    <div class="row">
+        <h6 class="heading-margin text-center">Be the first to comment</h6>
+    </div>
+    }*@
 </article>
+
+
+    <div id="CreateCommentFormModel">
+        <form asp-controller="Comment" asp-action="CreateComment" method="post">
+            <input type="hidden" name="ArticleId" value="@Model.Id" />
+            <input type="hidden" name="UserId" value="@Model.AuthorId" />
+            
+            <div>
+                <label for="CommentContent"></label>
+                <textarea name="CommentContent" id="CommentContent" class="form-control"></textarea>
+
+            </div>
+            <div>
+                <input type="submit" value="Add comment" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+
+

@@ -4,4 +4,28 @@
 }
 .btn-disabledbuttonbyme {
     background-color: #ffe5cf;
+   
+}
+.btn-logOut {
+    line-height: 1.9;
+}
+.margin-top-alotofspace {
+    margin-top: 2rem;
+}
+.custom-padding {
+    padding-top: 10px;
+}
+.custom-colorcomination {
+    color: #F39B58;
+    background-color:#F2D0AD;
+}
+.custom-text-color {
+    color: #F39B58;
+}
+.custom-backgroun-little-color {
+    background-color: #F2D0AD;
+}
+.margin-bottom-alotofspace {
+    margin-bottom: 2rem;
+    
 }

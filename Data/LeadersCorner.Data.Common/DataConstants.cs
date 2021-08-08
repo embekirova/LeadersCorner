@@ -18,5 +18,9 @@ namespace LeadersCorner.Data.Common
             public const int TitleMaxLength = 50;
             public const int ContentMinLength = 100;
         }
+        public class Comment
+        {
+            public const int ContentMinLength = 3;
+        }
     }
 }

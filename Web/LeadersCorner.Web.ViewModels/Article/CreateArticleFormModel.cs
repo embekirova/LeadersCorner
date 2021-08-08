@@ -8,8 +8,14 @@
     using LeadersCorner.Data.Common;
     using LeadersCorner.Data.Models;
 
-    public class CreateArticleFormModel
+    public class CreateCommentFormModel
     {
+
+        public CreateCommentFormModel()
+        {
+
+        }
+        
         [Required]
         [MinLength(DataConstants.Article.TitleMinLength)]
         [MaxLength(DataConstants.Article.TitleMaxLength)]
@@ -24,9 +30,9 @@
         [DisplayName("Category")]
         public int CategoryId { get; set; }
 
-        public List<Category> Categories { get; set; }
+        public List<Category> Categories = new List<Category>(); 
 
-        public string AuthorId { get;}
+        public int AuthorId { get;}
 
         public string ImageUrl { get; set; }
         public int Id { get; set; }

@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
@@ -16,6 +16,18 @@
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.312" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\LeadersCorner.Data.Common\LeadersCorner.Data.Common.csproj" />
+   
+    <ProjectReference Include="..\..\Data\LeadersCorner.Data.Models\LeadersCorner.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\LeadersCorner.Data\LeadersCorner.Data.csproj" />
+    <ProjectReference Include="..\..\LeadersCorner.Common\LeadersCorner.Common.csproj" />
+    <ProjectReference Include="..\..\Tests\LeadersCorner.Services.Data.Tests\LeadersCorner.Services.Data.Tests.csproj" />
+    <ProjectReference Include="..\LeadersCorner.Services.Data\LeadersCorner.Services.Data.csproj" />
+    <ProjectReference Include="..\LeadersCorner.Services.Mapping\LeadersCorner.Services.Mapping.csproj" />
+    <ProjectReference Include="..\LeadersCorner.Services.Messaging\LeadersCorner.Services.Messaging.csproj" />
   </ItemGroup>
 
 </Project>

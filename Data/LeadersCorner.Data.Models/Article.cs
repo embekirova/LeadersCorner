@@ -19,11 +19,11 @@
         public Article(int authorId, string title)
         {
             this.Comments = new HashSet<Comment>();
-            
             this.AuthorId = authorId;
             this.Title = title;
         }
 
+        public int Id { get; set; }
 
         [Required]
         public int AuthorId { get; set; }
@@ -40,23 +40,10 @@
         public string ImageUrl { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
 
-        
-        public IEnumerable<Article> Categories { get; set; } = new List<Article>();
-
         [Required]
         [DisplayName("Category")]
         public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
-       
-        public Category CategoryIdN { get; set; }
-        //public string Name 
-        //{
-        //    get
-        //    ;
-
-        //    set
-        //   ;
-        //}
+        
 
     }
 }

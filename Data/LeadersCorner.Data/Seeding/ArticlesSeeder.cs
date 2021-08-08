@@ -28,7 +28,6 @@
                 "influence or guide other individuals, teams, or entire organizations.",
                 ImageUrl = "https://images.unsplash.com/photo-1541844053589-346841d0b34c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGVhZGVyc2hpcHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
                 AuthorId = 1,
-                CategoryName = "WorkAthmosphere",
                 CategoryId = dbContext.Categories
                 .Where(c => c.CategoryName == "WorkAthmosphere")
                 .Select(c => c.Id)

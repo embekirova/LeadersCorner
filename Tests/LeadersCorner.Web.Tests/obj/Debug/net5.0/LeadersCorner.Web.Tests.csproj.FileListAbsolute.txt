@@ -1077,4 +1077,15 @@ C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\obj\Debug\ne
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\obj\Debug\net5.0\LeadersCorner.Web.Tests.genruntimeconfig.cache
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\LeadersCorner.Services.Data.Tests.deps.json
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\LeadersCorner.Services.Data.Tests.runtimeconfig.json
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\LeadersCorner.Services.Data.Tests.runtimeconfig.dev.json
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\Moq.dll
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\LeadersCorner.Services.Data.Tests.dll
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\LeadersCorner.Services.Data.Tests.pdb
 C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\LeadersCorner.Web.StaticWebAssets.xml
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\AngleSharp.dll
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\AngleSharp.Css.dll
+C:\Users\Lenovo\Desktop\LeadersCorner\Tests\LeadersCorner.Web.Tests\bin\Debug\net5.0\HtmlSanitizer.dll

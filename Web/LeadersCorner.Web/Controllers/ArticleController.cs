@@ -34,7 +34,7 @@
             var categories = this.data
                 .Categories.ToList();
 
-            return this.View(new CreateArticleFormModel
+            return this.View(new CreateCommentFormModel
             {
                 Categories = categories,
             });
@@ -42,12 +42,19 @@
 
         [HttpPost]
         [Authorize]
-        public IActionResult Create(CreateArticleFormModel article)
+        public IActionResult Create(CreateCommentFormModel article)
         {
             var userId = this.User.GetId();
             var userIsAnAuthor = this.data
                 .Authors
                 .Any(a => a.UserID == userId);
+
+            var userIdentity = this.data
+                .Authors
+                .Where(c => c.UserID == userId)
+                .FirstOrDefault();
+                
+
             if (!userIsAnAuthor)
             {
                 return this.BadRequest();
@@ -62,15 +69,15 @@
             {
                 return this.View(article);
             }
-            
-            var articleData = new Article(int.Parse(userId), article.Title)
+
+            var articleData = new Article(userIdentity.Id, article.Title)
             {
                 Title = article.Title,
                 ArticleContent = article.ArticleContent,
                 ImageUrl = article.ImageUrl,
                 CategoryId = article.CategoryId,
                 Id = article.Id,
-                AuthorId = int.Parse(userId),
+                AuthorId = userIdentity.Id,
             };
 
             this.data.Articles.Add(articleData);
@@ -87,6 +94,7 @@
 
             var articleQuery = this.data.Articles.AsQueryable();
             var articles = new List<Article>();
+
 
             if (articlModel.CategoryId == 0)
             {
@@ -132,7 +140,7 @@
         {
             var UrlType = Request.Path.Value;
             var lastindex = UrlType.LastIndexOf("/");
-            int number = int.Parse(UrlType.Substring(lastindex+1));
+            int number = int.Parse(UrlType.Substring(lastindex + 1));
 
             var current =
                  this.data
@@ -147,7 +155,7 @@
                 ImageUrl = current.ImageUrl,
                 Id = current.Id,
                 AuthorId = current.AuthorId,
-                Author = current.Author,
+
             };
 
             return this.View(currentArticle);
@@ -155,4 +163,3 @@
         }
     }
 }
-
