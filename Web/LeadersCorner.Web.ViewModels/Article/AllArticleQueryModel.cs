@@ -34,14 +34,12 @@
                 return this.currentPage;
                 }
             }
-
         set
             {
                 if (value < 1)
                 {
                     this.currentPage = 1;
                 }
-
                 this.currentPage = value;
             }
         }
@@ -59,7 +57,5 @@
         public List<Article> Articles { get; set; }
 
         public string Title { get; set; }
-
-        
     }
 }

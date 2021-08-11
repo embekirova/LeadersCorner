@@ -4,22 +4,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
+    <title>@this.ViewData["Title"] @GlobalConstants.SystemName</title>
 
-    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
-    @* <link rel="stylesheet" href="~/lib/shards/css/shards-demo.css" asp-append-version="true" />
-
-        <link rel="stylesheet" href="~/lib/shards/css/shards-demo.min.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/lib/shards/css/shards-extras.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/lib/shards/css/shards-extras.min.css" asp-append-version="true" />
-    *@
-    <link rel="stylesheet" href="~/lib/shards/css/shards.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
     <link rel=" shortcut icon" type="image/x-icon" href="~/icon.ico" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+            <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -27,30 +21,39 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
+                    <form class="d-flex">
+                        <input class="form-control me-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                    <span class="me-auto">
+                        @RenderSection("Message", required: false)
+                    </span>
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        @if ( this.User.Identity.IsAuthenticated)
-                         {
-                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="Create">Create an article</a>
-                         </li>
+                        @if (this.User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Article" asp-action="Create">Create an article</a>
+                            </li>
 
-                         }
-                        
+                        }
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="All">All articles</a>
+                            <a class="nav-link" asp-area="" asp-controller="Article" asp-action="All">All articles</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Privacy" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Privacy" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+                </div>
+                <div>
                 </div>
             </div>
         </nav>
     </header>
-
+   
     <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
@@ -63,19 +66,5 @@
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-
-    <script src="~/lib/shards/js/demo.js" asp-append-version="true"></script>
-    <script src="~/lib/shards/js/demo.min.js" asp-append-version="true"></script>
-    <script src="~/lib/shards/js/shards.js" asp-append-version="true"></script>
-    <script src="~/lib/shards/js/shards.min.js" asp-append-version="true"></script>
-
-
-    @*   <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
-         <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
-         <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
-         <script src="~/js/site.min.js" asp-append-version="true"></script>
-    *@
-    @await this.RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

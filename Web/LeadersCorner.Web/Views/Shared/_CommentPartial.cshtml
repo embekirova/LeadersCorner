@@ -1,0 +1,19 @@
+﻿@using LeadersCorner.Common
+@using LeadersCorner.Data.Models
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@model LeadersCorner.Web.ViewModels.Article.CurrentArticleViewModel
+
+@if (Model.Comments.Any())
+{
+    @foreach (var comment in Model.Comments)
+    {
+        <dd> @Html.DisplayFor(x => comment)</dd>
+    }
+}
+else
+{
+    <div class="row">
+        <h6 class="heading-margin text-center">Be the first to comment this article!</h6>
+    </div>
+}

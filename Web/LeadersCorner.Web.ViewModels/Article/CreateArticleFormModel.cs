@@ -8,10 +8,10 @@
     using LeadersCorner.Data.Common;
     using LeadersCorner.Data.Models;
 
-    public class CreateCommentFormModel
+    public class CreateArticleFormModel
     {
 
-        public CreateCommentFormModel()
+        public CreateArticleFormModel()
         {
 
         }
@@ -32,7 +32,7 @@
 
         public List<Category> Categories = new List<Category>(); 
 
-        public int AuthorId { get;}
+        public int AuthorId { get; set; }
 
         public string ImageUrl { get; set; }
         public int Id { get; set; }

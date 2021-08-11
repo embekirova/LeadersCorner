@@ -12,6 +12,5 @@ namespace LeadersCorner.Web.ViewModels.Article
         ReverseDateCreated = 1,
         DateCreated = 2,
         AuthorName = 3,
-        
     }
 }

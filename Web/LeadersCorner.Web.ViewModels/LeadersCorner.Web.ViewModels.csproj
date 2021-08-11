@@ -24,4 +24,8 @@
     <ProjectReference Include="..\..\Services\LeadersCorner.Services.Mapping\LeadersCorner.Services.Mapping.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Courses\" />
+  </ItemGroup>
+
 </Project>

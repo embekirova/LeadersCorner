@@ -22,7 +22,7 @@
     public class ArticleController : BaseController
     {
         private readonly LeadersCornerDbContext data;
-        private readonly ArticleSorting sorting;
+        private readonly ArticleSorting sortingType;
 
         public ArticleController(
             LeadersCornerDbContext data)
@@ -34,7 +34,7 @@
             var categories = this.data
                 .Categories.ToList();
 
-            return this.View(new CreateCommentFormModel
+            return this.View(new CreateArticleFormModel
             {
                 Categories = categories,
             });
@@ -42,7 +42,7 @@
 
         [HttpPost]
         [Authorize]
-        public IActionResult Create(CreateCommentFormModel article)
+        public IActionResult Create(CreateArticleFormModel article)
         {
             var userId = this.User.GetId();
             var userIsAnAuthor = this.data
@@ -53,7 +53,7 @@
                 .Authors
                 .Where(c => c.UserID == userId)
                 .FirstOrDefault();
-                
+
 
             if (!userIsAnAuthor)
             {
@@ -67,7 +67,19 @@
 
             if (!this.ModelState.IsValid)
             {
-                return this.View(article);
+                var categories = this.data
+                .Categories.ToList();
+
+                return this.View(new CreateArticleFormModel
+                {
+                    Categories = categories,
+                    Title = article.Title,
+                    ArticleContent = article.ArticleContent,
+                    ImageUrl = article.ImageUrl,
+                    CategoryId = article.CategoryId,
+                    Id = article.Id,
+                    AuthorId = userIdentity.Id,
+                });
             }
 
             var articleData = new Article(userIdentity.Id, article.Title)
@@ -86,8 +98,12 @@
             return this.View("ArticleCreated");
         }
 
-        public IActionResult All(AllArticleQueryModel articlModel)
+        public IActionResult All(int CurrentPage, int CategoryId, int Sorting)
         {
+            if (CurrentPage == 0)
+            {
+                CurrentPage = 1;
+            }
             var categories = this.data
                 .Categories
                 .ToList();
@@ -95,12 +111,25 @@
             var articleQuery = this.data.Articles.AsQueryable();
             var articles = new List<Article>();
 
+            if (Sorting != 0 && Sorting != 1 && Sorting == 2)
+            {
+                Sorting = 0;
+            }
 
-            if (articlModel.CategoryId == 0)
+            var sortingType = (ArticleSorting)Sorting;
+            articles = sortingType switch
+            {
+                ArticleSorting.DateCreated => articles.OrderByDescending(c => c.Id).ToList(),
+                ArticleSorting.ReverseDateCreated => articles.OrderBy(c => c.Id).ToList(),
+                ArticleSorting.NullValue => articles.OrderByDescending(c => c.Id).ToList(),
+                _ => articles.OrderByDescending(article => article.Id).ToList(),
+            };
+
+            if (CategoryId == 0)
             {
                 articles = this.data
                .Articles
-               .Skip((articlModel.CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
+               .Skip((CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
                .Take(AllArticleQueryModel.ArticlesPerPage)
                .OrderByDescending(article => article.Id)
                .ToList();
@@ -109,8 +138,8 @@
             {
                 articles = this.data
                     .Articles
-                    .Where(c => c.CategoryId == articlModel.CategoryId)
-                    .Skip((articlModel.CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
+                    .Where(c => c.CategoryId == CategoryId)
+                    .Skip((CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
                     .Take(AllArticleQueryModel.ArticlesPerPage)
                     .OrderByDescending(article => article.Id)
                     .ToList();
@@ -118,34 +147,28 @@
 
             var totalArticles = articleQuery.Count();
 
-            articles = this.sorting switch
-            {
-                ArticleSorting.DateCreated => articles.OrderByDescending(article => article.Id).ToList(),
-                ArticleSorting.ReverseDateCreated => articles.OrderBy(c => c.Id).ToList(),
-                ArticleSorting.NullValue => articles.OrderBy(c => Guid.NewGuid()).ToList(),
-                _ => articles.OrderByDescending(article => article.Id).ToList(),
-            };
             return this.View(new AllArticleQueryModel
             {
-                CategoryId = articlModel.CategoryId,
+                CategoryId = CategoryId,
                 Categories = categories,
                 Articles = articles,
-                Sorting = articlModel.Sorting,
-                CurrentPage = articlModel.CurrentPage,
+                Sorting = sortingType,
+                CurrentPage = CurrentPage,
                 TotalArticles = totalArticles,
             });
         }
 
-        public IActionResult Details()
+        public IActionResult Details(string id)
         {
-            var UrlType = Request.Path.Value;
-            var lastindex = UrlType.LastIndexOf("/");
-            int number = int.Parse(UrlType.Substring(lastindex + 1));
+            var comments = this.data
+                .Comments
+                .Where(c => c.ArticleID == int.Parse(id))
+                .ToList();
 
             var current =
                  this.data
                  .Articles
-                 .Where(c => c.Id == number)
+                 .Where(c => c.Id == int.Parse(id))
                  .FirstOrDefault();
 
             var currentArticle = new CurrentArticleViewModel()
@@ -155,11 +178,10 @@
                 ImageUrl = current.ImageUrl,
                 Id = current.Id,
                 AuthorId = current.AuthorId,
-
+                Comments = comments,
             };
 
             return this.View(currentArticle);
-
         }
     }
 }
