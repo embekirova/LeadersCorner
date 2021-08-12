@@ -9,7 +9,7 @@
 
 <div class="row">
     <div class=" col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-        <h2 class="heading-margin text-center">Create an article</h2>
+        <h2 class="heading-margin text-center">Create a course</h2>
         <script src="/lib/tinymce/tinymce.min.js" type="text/javascript"></script>
         <script type="text/javascript">
             tinymce.init({
@@ -39,6 +39,7 @@
                 <textarea rows="12" asp-for="CourseContent" class="form-control" placeholder="Here you can add some description of the course"></textarea>
                 <span asp-validation-for="CourseContent" class="small text-danger"></span>
             </div>
+              
             <div class="row">
                 <form method="get">
                     <div class="row">
@@ -50,7 +51,6 @@
 
                                         @foreach (var category in Model.Categories)
                                         {
-
                                             <option value="@category.Id">@category.CategoryLabel</option>
                                             <button onclick="@category.Id" class="dropbtn">@category.CategoryLabel</button>
                                         }

@@ -1,21 +1,24 @@
-﻿namespace LeadersCorner.Web.ViewModels.Article
+﻿namespace LeadersCorner.Web.ViewModels.Course
 {
+    using System;
     using System.Collections.Generic;
+    using System.Text;
 
     using LeadersCorner.Data.Models;
-    using LeadersCorner.Services.Mapping;
 
-    public class CurrentArticleViewModel : IMapFrom<Article>
-    { 
+    public class CurrentCourseViewModel
+    {
         public int Id { get; set; }
 
         public string Title { get; set; }
 
         public string ImageUrl { get; set; }
 
+        public int DurationInWeeks { get; set; }
+
         public int AuthorId { get; set; }
 
-        public string ArticleContent { get; set; }
+        public string CourseContent { get; set; }
 
         public ICollection<Comment>? Comments { get; set; }
 

@@ -11,27 +11,39 @@
     public class CommentService : ICommentService
     {
         private readonly LeadersCornerDbContext data;
-       
+
         public CommentService(LeadersCornerDbContext data)
         {
             this.data = data;
-            
+
         }
 
 
-        public async Task Create(string commentcontent, int articleId, int userId)
+        public async Task Create(string commentcontent, int articleId, int courseId, int userId)
         {
-            var comment = new Comment
+            var comment = new Comment();
+
+
+            if (articleId == 0)
             {
-                CommentContent = commentcontent,
-                ArticleID = articleId,
-                UserId = userId,
-                
+                comment = new Comment
+                {
+                    CommentContent = commentcontent,
+                    CourseId = courseId,
+                    UserId = userId,
                 };
-
-
-           await this.data.Comments.AddAsync(comment);
-           await this.data.SaveChangesAsync();
+            }
+            else
+            {
+                comment = new Comment
+                {
+                    CommentContent = commentcontent,
+                    ArticleID = articleId,
+                    UserId = userId,
+                };
+            }
+            await this.data.Comments.AddAsync(comment);
+            await this.data.SaveChangesAsync();
         }
     }
 }

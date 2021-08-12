@@ -19,8 +19,12 @@
         [Required]
         public string CommentContent { get; set; }
 
-        public int ArticleID { get; set; }
+        public int? ArticleID { get; set; }
 
         public virtual Article Article { get; set; }
+       
+        public int? CourseId { get; set; }
+
+        public virtual Course Course { get; set; }
     }
 }

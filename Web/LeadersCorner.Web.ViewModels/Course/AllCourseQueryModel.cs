@@ -59,6 +59,6 @@ namespace LeadersCorner.Web.ViewModels.Course
 
         public string Title { get; set; }
 
-        public string DurationInWeeks { get; set; }
+        public int DurationInWeeks { get; set; }
     }
 }

@@ -19,5 +19,6 @@
         public string CommentContent { get; set; }
 
         public int ArticleID { get; set; }
+        public int CourseID { get; set; }
     }
 }

@@ -292,7 +292,7 @@ namespace LeadersCorner.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ArticleID")
+                    b.Property<int?>("ArticleID")
                         .HasColumnType("int");
 
                     b.Property<string>("CommentContent")
@@ -555,15 +555,15 @@ namespace LeadersCorner.Data.Migrations
                 {
                     b.HasOne("LeadersCorner.Data.Models.Article", "Article")
                         .WithMany("Comments")
-                        .HasForeignKey("ArticleID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("ArticleID");
 
-                    b.HasOne("LeadersCorner.Data.Models.Course", null)
+                    b.HasOne("LeadersCorner.Data.Models.Course", "Course")
                         .WithMany("Comments")
                         .HasForeignKey("CourseId");
 
                     b.Navigation("Article");
+
+                    b.Navigation("Course");
                 });
 
             modelBuilder.Entity("LeadersCorner.Data.Models.Course", b =>

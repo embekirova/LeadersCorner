@@ -1,23 +1,14 @@
 namespace LeadersCorner.Web.Controllers
 {
-    using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.IO;
     using System.Linq;
 
     using LeadersCorner.Data;
-    using LeadersCorner.Data.Common.Repositories;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Web.Infrastructure;
-    using LeadersCorner.Web.ViewModels;
     using LeadersCorner.Web.ViewModels.Course;
-    using LeadersCorner.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Http.Extensions;
 
     public class CourseController : BaseController
     {
@@ -160,30 +151,31 @@ namespace LeadersCorner.Web.Controllers
             });
         }
 
-        //public IActionResult Details(string id)
-        //{
-        //    var comments = this.data
-        //        .Comments
-        //        .Where(c => c.ArticleID == int.Parse(id))
-        //        .ToList();
+        public IActionResult Details(string id)
+        {
+            var comments = this.data
+                .Comments
+                .Where(c => c.CourseId == int.Parse(id))
+                .ToList();
 
-        //    var current =
-        //         this.data
-        //         .Articles
-        //         .Where(c => c.Id == int.Parse(id))
-        //         .FirstOrDefault();
+            var current =
+                     this.data
+                     .Courses
+                     .Where(c => c.Id == int.Parse(id))
+                     .FirstOrDefault();
 
-        //    var currentArticle = new CurrentArticleViewModel()
-        //    {
-        //        Title = current.Title,
-        //        ArticleContent = current.ArticleContent,
-        //        ImageUrl = current.ImageUrl,
-        //        Id = current.Id,
-        //        AuthorId = current.AuthorId,
-        //        Comments = comments,
-        //    };
+            var currentCourse = new CurrentCourseViewModel()
+                {
+                    Title = current.Title,
+                    CourseContent = current.CourseContent,
+                    ImageUrl = current.ImageUrl,
+                    Id = current.Id,
+                    AuthorId = current.AuthorId,
+                    Comments = comments,
+                    DurationInWeeks = current.DurationInWeeks,
+            };
 
-        //    return this.View(currentArticle);
-        //}
+            return this.View(currentCourse);
+        }
     }
 }

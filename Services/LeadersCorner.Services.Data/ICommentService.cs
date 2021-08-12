@@ -7,6 +7,6 @@ namespace LeadersCorner.Services.Data
 {
     public interface ICommentService
     {
-        Task Create(string commentcontent, int articleId, int userId );
+        Task Create(string commentcontent, int articleId, int courseId, int userId );
     }
 }

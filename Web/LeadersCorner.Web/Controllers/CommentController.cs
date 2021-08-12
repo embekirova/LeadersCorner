@@ -33,9 +33,16 @@
             //    .Authors
             //    .Any(a => a.UserID == userId);
             //var authorId = int.Parse(userId);
-
-            await this.commentService.Create(comment.CommentContent, comment.ArticleID, comment.UserId);
+            await this.commentService.Create(comment.CommentContent, comment.ArticleID, comment.CourseID, comment.UserId);
+            if (comment.ArticleID != 0)
+            {
             return this.RedirectToAction("Details", "Article", new { id = comment.ArticleID });
+            }
+            else
+            {
+                return this.RedirectToAction("Details", "Course", new { id = comment.CourseID });
+            }
+            
         }
 
     }

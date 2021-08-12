@@ -1039,3 +1039,5 @@ C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Lea
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Course\CourseCreated.cshtml.g.cs
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Course\Create.cshtml.g.cs
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Course\All.cshtml.g.cs
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Course\Details.cshtml.g.cs
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Course\CommentPartialCourse.cshtml.g.cs
