@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeadersCorner.Data.Migrations
 {
     [DbContext(typeof(LeadersCornerDbContext))]
-    [Migration("20210812171235_CourseRelateT")]
+    [Migration("20210812190338_CourseRelateT")]
     partial class CourseRelateT
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -345,9 +345,6 @@ namespace LeadersCorner.Data.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
-
-                    b.Property<bool>("Certified")
-                        .HasColumnType("bit");
 
                     b.Property<string>("CourseContent")
                         .IsRequired()

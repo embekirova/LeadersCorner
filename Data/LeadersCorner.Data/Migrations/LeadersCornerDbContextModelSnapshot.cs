@@ -344,9 +344,6 @@ namespace LeadersCorner.Data.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Certified")
-                        .HasColumnType("bit");
-
                     b.Property<string>("CourseContent")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

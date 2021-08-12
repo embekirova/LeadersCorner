@@ -225,7 +225,6 @@ namespace LeadersCorner.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DurationInWeeks = table.Column<int>(type: "int", nullable: false),
-                    Certified = table.Column<bool>(type: "bit", nullable: false),
                     CourseContent = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AuthorId = table.Column<int>(type: "int", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),

@@ -100,65 +100,65 @@ namespace LeadersCorner.Web.Controllers
             return this.View("CourseCreated");
         }
 
-        //public IActionResult All(int CurrentPage, int CategoryId, int Sorting)
-        //{
-        //    if (CurrentPage == 0)
-        //    {
-        //        CurrentPage = 1;
-        //    }
-        //    var categories = this.data
-        //        .Categories
-        //        .ToList();
+        public IActionResult All(int CurrentPage, int CategoryId, int Sorting)
+        {
+            if (CurrentPage == 0)
+            {
+                CurrentPage = 1;
+            }
+            var categories = this.data
+                .Categories
+                .ToList();
 
-        //    var articleQuery = this.data.Articles.AsQueryable();
-        //    var articles = new List<Article>();
+            var courseQuery = this.data.Courses.AsQueryable();
+            var courses = new List<Course>();
 
-        //    if (Sorting != 0 && Sorting != 1 && Sorting == 2)
-        //    {
-        //        Sorting = 0;
-        //    }
+            if (Sorting != 0 && Sorting != 1 && Sorting == 2)
+            {
+                Sorting = 0;
+            }
 
-        //    var sortingType = (ArticleSorting)Sorting;
-        //    articles = sortingType switch
-        //    {
-        //        ArticleSorting.DateCreated => articles.OrderByDescending(c => c.Id).ToList(),
-        //        ArticleSorting.ReverseDateCreated => articles.OrderBy(c => c.Id).ToList(),
-        //        ArticleSorting.NullValue => articles.OrderByDescending(c => c.Id).ToList(),
-        //        _ => articles.OrderByDescending(article => article.Id).ToList(),
-        //    };
+            var sortingType = (CourseSorting)Sorting;
+            courses = sortingType switch
+            {
+                CourseSorting.DateCreated => courses.OrderByDescending(c => c.Id).ToList(),
+                CourseSorting.ReverseDateCreated => courses.OrderBy(c => c.Id).ToList(),
+                CourseSorting.NullValue => courses.OrderByDescending(c => c.Id).ToList(),
+                _ => courses.OrderByDescending(article => article.Id).ToList(),
+            };
 
-        //    if (CategoryId == 0)
-        //    {
-        //        articles = this.data
-        //       .Articles
-        //       .Skip((CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
-        //       .Take(AllArticleQueryModel.ArticlesPerPage)
-        //       .OrderByDescending(article => article.Id)
-        //       .ToList();
-        //    }
-        //    else
-        //    {
-        //        articles = this.data
-        //            .Articles
-        //            .Where(c => c.CategoryId == CategoryId)
-        //            .Skip((CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
-        //            .Take(AllArticleQueryModel.ArticlesPerPage)
-        //            .OrderByDescending(article => article.Id)
-        //            .ToList();
-        //    }
+            if (CategoryId == 0)
+            {
+                courses = this.data
+               .Courses
+               .Skip((CurrentPage - 1) * AllCourseQueryModel.CoursesPerPage)
+               .Take(AllCourseQueryModel.CoursesPerPage)
+               .OrderByDescending(article => article.Id)
+               .ToList();
+            }
+            else
+            {
+                courses = this.data
+                    .Courses
+                    .Where(c => c.CategoryId == CategoryId)
+                    .Skip((CurrentPage - 1) * AllCourseQueryModel.CoursesPerPage)
+                    .Take(AllCourseQueryModel.CoursesPerPage)
+                    .OrderByDescending(article => article.Id)
+                    .ToList();
+            }
 
-        //    var totalArticles = articleQuery.Count();
+            var totalcourses = courseQuery.Count();
 
-        //    return this.View(new AllArticleQueryModel
-        //    {
-        //        CategoryId = CategoryId,
-        //        Categories = categories,
-        //        Articles = articles,
-        //        Sorting = sortingType,
-        //        CurrentPage = CurrentPage,
-        //        TotalArticles = totalArticles,
-        //    });
-        //}
+            return this.View(new AllCourseQueryModel
+            {
+                CategoryId = CategoryId,
+                Categories = categories,
+                Courses = courses,
+                Sorting = sortingType,
+                CurrentPage = CurrentPage,
+                TotalCourses = totalcourses,
+            });
+        }
 
         //public IActionResult Details(string id)
         //{
