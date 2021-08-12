@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.Text;
 
@@ -9,16 +10,19 @@
 
     public class Course : BaseDeletableModel<int>
     {
-        [Required]
-        public string Name { get; set; }
+        public Course()
+        {
+        }
+
+        public Course(int authorId, string title)
+        {
+        }
 
         [Required]
-        public string DurationInMonths { get; set; }
+        public string Title { get; set; }
 
         [Required]
-        public bool Certified { get; set; }
-
-        public int Price { get; set; }
+        public int DurationInWeeks { get; set; }
 
         [Required]
         public string CourseContent { get; set; }
@@ -27,5 +31,14 @@
         public int AuthorId { get; set; }
 
         public virtual Author Author { get; set; }
+
+        [DisplayName("Photo")]
+        public string ImageUrl { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
+
+        [Required]
+        [DisplayName("Category")]
+        public int CategoryId { get; set; }
     }
 }

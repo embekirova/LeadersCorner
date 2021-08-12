@@ -25,9 +25,12 @@
                         <input class="form-control me-sm-2" type="text" placeholder="Search">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                     </form>
-                    <span class="me-auto">
-                        @RenderSection("Message", required: false)
-                    </span>
+                    <div>
+                        <span class="me-auto">
+                            @RenderSection("message", required: false)
+                        </span>
+                    </div>
+
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -36,6 +39,9 @@
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Article" asp-action="Create">Create an article</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Course" asp-action="Create">Create a course</a>
                             </li>
 
                         }
@@ -53,7 +59,7 @@
             </div>
         </nav>
     </header>
-   
+
     <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
@@ -66,5 +72,12 @@
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    <script src="~/lib/shards/js/demo.js" asp-append-version="true"></script>
+    <script src="~/lib/shards/js/demo.min.js" asp-append-version="true"></script>
+    <script src="~/lib/shards/js/shards.js" asp-append-version="true"></script>
+    <script src="~/lib/shards/js/shards.min.js" asp-append-version="true"></script>
+    @await this.RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>
+

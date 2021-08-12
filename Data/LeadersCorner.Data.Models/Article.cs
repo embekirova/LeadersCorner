@@ -14,8 +14,8 @@
     {
         public Article()
         {
-
         }
+
         public Article(int authorId, string title)
         {
             this.Comments = new HashSet<Comment>();
@@ -38,12 +38,11 @@
 
         [DisplayName("Photo")]
         public string ImageUrl { get; set; }
+
         public virtual ICollection<Comment> Comments { get; set; }
 
         [Required]
         [DisplayName("Category")]
         public int CategoryId { get; set; }
-        
-
     }
 }

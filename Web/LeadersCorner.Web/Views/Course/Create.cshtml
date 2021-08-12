@@ -1,0 +1,75 @@
+﻿@using LeadersCorner.Common
+@using LeadersCorner.Data.Models
+@model LeadersCorner.Web.ViewModels.Course.CreateCourseFormModel
+
+@{
+    this.ViewData["Title"] = "Create a course";
+}
+
+
+<div class="row">
+    <div class=" col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">Create an article</h2>
+        <script src="/lib/tinymce/tinymce.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            tinymce.init({
+                selector: "textarea",
+                relative_urls: false,
+                remove_script_host: false,
+                convert_urls: true,
+                plugins: [
+                    "image paste table link code media fullscreen wordcount searchreplace lists"
+                ]
+            });
+        </script>
+
+        <form method="post" class=" row" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" placeholder="Title" />
+                <span asp-validation-for="Title" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DurationInWeeks"></label>
+                <input asp-for="DurationInWeeks" class="form-control" />
+                <span asp-validation-for="DurationInWeeks" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseContent"></label>
+                <textarea rows="12" asp-for="CourseContent" class="form-control" placeholder="Here you can add some description of the course"></textarea>
+                <span asp-validation-for="CourseContent" class="small text-danger"></span>
+            </div>
+            <div class="row">
+                <form method="get">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <div class="form-group">
+                                <div class="dropdown">
+                                    <label asp-for="CategoryId"></label>
+                                    <select asp-for="CategoryId" class="form-control">
+
+                                        @foreach (var category in Model.Categories)
+                                        {
+
+                                            <option value="@category.Id">@category.CategoryLabel</option>
+                                            <button onclick="@category.Id" class="dropbtn">@category.CategoryLabel</button>
+                                        }
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+                        </div>
+                </form>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control" placeholder="Please insert an URL here...">
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+            </div>
+            <input type="hidden" name="UserId" value="@Model.AuthorId" />
+            <input class="btn btn-primary" type="submit" value="Save" />
+        </form>
+    </div>
+</div>

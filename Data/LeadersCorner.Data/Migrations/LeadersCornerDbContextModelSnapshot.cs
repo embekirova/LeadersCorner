@@ -299,6 +299,9 @@ namespace LeadersCorner.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("CourseId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -321,6 +324,8 @@ namespace LeadersCorner.Data.Migrations
 
                     b.HasIndex("ArticleID");
 
+                    b.HasIndex("CourseId");
+
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Comments");
@@ -336,6 +341,9 @@ namespace LeadersCorner.Data.Migrations
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Certified")
                         .HasColumnType("bit");
 
@@ -349,8 +357,10 @@ namespace LeadersCorner.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("DurationInMonths")
-                        .IsRequired()
+                    b.Property<int>("DurationInWeeks")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -359,12 +369,9 @@ namespace LeadersCorner.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -555,6 +562,10 @@ namespace LeadersCorner.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("LeadersCorner.Data.Models.Course", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("CourseId");
+
                     b.Navigation("Article");
                 });
 
@@ -644,6 +655,11 @@ namespace LeadersCorner.Data.Migrations
             modelBuilder.Entity("LeadersCorner.Data.Models.Category", b =>
                 {
                     b.Navigation("ArticlesInCategory");
+                });
+
+            modelBuilder.Entity("LeadersCorner.Data.Models.Course", b =>
+                {
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

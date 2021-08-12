@@ -41,12 +41,12 @@
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
                 .AddRoles<ApplicationRole>().AddEntityFrameworkStores<LeadersCornerDbContext>();
 
-            services.Configure<CookiePolicyOptions>(
-                options =>
-                {
-                    options.CheckConsentNeeded = context => true;
-                    options.MinimumSameSitePolicy = SameSiteMode.None;
-                });
+            //services.Configure<CookiePolicyOptions>(
+            //    options =>
+            //    {
+            //        options.CheckConsentNeeded = context => true;
+            //        options.MinimumSameSitePolicy = SameSiteMode.None;
+            //    });
 
             services.AddControllersWithViews(
                 options =>

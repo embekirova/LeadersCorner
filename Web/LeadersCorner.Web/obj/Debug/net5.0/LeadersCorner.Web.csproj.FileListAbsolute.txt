@@ -1019,6 +1019,8 @@ C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Raz
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Settings\Index.cshtml.g.cs
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Shared\DisplayTemplates\Comment.cshtml.g.cs
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Shared\EditorTemplates\Comment.cshtml.g.cs
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Shared\_CommentPartial.cshtml.g.cs
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
@@ -1034,5 +1036,5 @@ C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Lea
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\ref\LeadersCorner.Web.dll
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\LeadersCorner.Web.pdb
 C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\LeadersCorner.Web.genruntimeconfig.cache
-C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Shared\EditorTemplates\Comment.cshtml.g.cs
-C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Shared\DisplayTemplates\Comment.cshtml.g.cs
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Course\CourseCreated.cshtml.g.cs
+C:\Users\Lenovo\Desktop\LeadersCorner\Web\LeadersCorner.Web\obj\Debug\net5.0\Razor\Views\Course\Create.cshtml.g.cs
