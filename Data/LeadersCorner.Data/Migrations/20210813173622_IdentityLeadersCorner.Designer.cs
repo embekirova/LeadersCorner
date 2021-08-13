@@ -10,15 +10,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeadersCorner.Data.Migrations
 {
     [DbContext(typeof(LeadersCornerDbContext))]
-    [Migration("20210812201820_CourseRelateT")]
-    partial class CourseRelateT
+    [Migration("20210813173622_IdentityLeadersCorner")]
+    partial class IdentityLeadersCorner
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.7")
+                .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("LeadersCorner.Data.Models.ApplicationRole", b =>

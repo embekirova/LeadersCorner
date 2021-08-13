@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LeadersCorner.Data.Migrations
 {
-    public partial class CourseRelateT : Migration
+    public partial class IdentityLeadersCorner : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
