@@ -30,6 +30,10 @@ namespace LeadersCorner.Data.Models
 
         public string UserFirstName { get; set; }
 
+        public string UserLastName { get; set; }
+
+        public string Profession { get; set; }
+
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }

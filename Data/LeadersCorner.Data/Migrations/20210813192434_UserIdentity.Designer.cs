@@ -4,14 +4,16 @@ using LeadersCorner.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LeadersCorner.Data.Migrations
 {
     [DbContext(typeof(LeadersCornerDbContext))]
-    partial class LeadersCornerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210813192434_UserIdentity")]
+    partial class UserIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,6 +88,9 @@ namespace LeadersCorner.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsManagerOrLeader")
                         .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
