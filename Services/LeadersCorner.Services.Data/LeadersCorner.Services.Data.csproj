@@ -22,8 +22,8 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\Data\LeadersCorner.Data.Common\LeadersCorner.Data.Common.csproj" />
 		<ProjectReference Include="..\..\Data\LeadersCorner.Data.Models\LeadersCorner.Data.Models.csproj" />
+		<ProjectReference Include="..\..\Data\LeadersCorner.Data\LeadersCorner.Data.csproj" />
 		<ProjectReference Include="..\LeadersCorner.Services.Mapping\LeadersCorner.Services.Mapping.csproj" />
-		<ProjectReference Include="C:\Users\Lenovo\Desktop\LeadersCorner\Data\LeadersCorner.Data\LeadersCorner.Data.csproj"/>
 
 	</ItemGroup>
 
