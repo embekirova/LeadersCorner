@@ -1111,7 +1111,8 @@
       "LeadersCorner.Data.Common >= 1.0.0",
       "Microsoft.AspNetCore.Http.Features >= 5.0.8",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.7",
-      "StyleCop.Analyzers >= 1.2.0-beta.312"
+      "StyleCop.Analyzers >= 1.2.0-beta.312",
+      "System.ComponentModel.Annotations >= 5.0.0"
     ]
   },
   "packageFolders": {
@@ -1174,6 +1175,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[1.2.0-beta.312, )"
+          },
+          "System.ComponentModel.Annotations": {
+            "target": "Package",
+            "version": "[5.0.0, )"
           }
         },
         "imports": [

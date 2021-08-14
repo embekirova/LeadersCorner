@@ -457,7 +457,8 @@
         "dependencies": {
           "LeadersCorner.Data.Common": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.8",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.7"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.7",
+          "System.ComponentModel.Annotations": "5.0.0"
         },
         "compile": {
           "bin/placeholder/LeadersCorner.Data.Models.dll": {}

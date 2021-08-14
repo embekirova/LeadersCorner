@@ -2,43 +2,43 @@
 @using LeadersCorner.Data.Models
 @using Microsoft.AspNetCore.Identity
 @using System.Security.Claims
+@using LeadersCorner.Web.Infrastructure
+
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@inject LeadersCorner.Services.Data.IAuthorService Authors;
 
 
 <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
 <ul class="navbar-nav">
-    @if (this.SignInManager.IsSignedIn(this.User))
+    @if (this.SignInManager.IsSignedIn(User))
     {
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Account</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" asp-area="" asp-controller="Author" asp-action="Become">Become an Author</a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Account</a>
-        </li>
+ 
+    if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                {
+<li class="nav-item">
+    <a class="nav-link" asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">Admin</a>
+</li> }
+<li class="nav-item">
+    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
+        <button type="submit" class="nav-link btn btn-link btn-logOut">Logout</button>
+    </form>
+</li> }
 
-        if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
-        {
-            <li class="nav-item">
-                <a class="nav-link" asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">Admin</a>
-            </li>
-        }
-        <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
-                <button type="submit" class="nav-link btn btn-link btn-logOut">Logout</button>
-            </form>
-        </li>
-    }
-    else
-    {
-        <li class="nav-item">
-            <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
-        </li>
-
-    }
+            else
+            {
+<li class="nav-item">
+    <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
+</li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                </li>}
 </ul>

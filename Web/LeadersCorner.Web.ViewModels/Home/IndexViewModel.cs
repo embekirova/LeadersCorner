@@ -1,15 +1,15 @@
-﻿namespace LeadersCorner.Web.ViewModels.Home
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+﻿using System.Collections.Generic;
+using LeadersCorner.Data.Models;
 
-   public class IndexViewModel
+namespace LeadersCorner.Web.ViewModels.Home
+{
+    public class IndexViewModel
     {
         public int ArticlesCout { get; set; }
 
         public int CourseCount { get; set; }
 
-        
+        public List<Data.Models.Article> Articles { get; set; } = new List<Data.Models.Article>();
+        public List<Data.Models.Course> Courses { get; set; } = new List<Data.Models.Course>();
     }
 }

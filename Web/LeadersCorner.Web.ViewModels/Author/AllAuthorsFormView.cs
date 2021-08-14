@@ -1,8 +1,7 @@
 ﻿namespace LeadersCorner.Web.ViewModels.Author
 {
-    using System.ComponentModel.DataAnnotations;
-
     using LeadersCorner.Data.Common;
+    using System.ComponentModel.DataAnnotations;
 
     public class AllAuthorsFormView
     {

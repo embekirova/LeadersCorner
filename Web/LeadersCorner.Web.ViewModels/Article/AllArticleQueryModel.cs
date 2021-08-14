@@ -1,13 +1,9 @@
 ﻿namespace LeadersCorner.Web.ViewModels.Article
 {
+    using LeadersCorner.Data.Models;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    
-
-    using LeadersCorner.Data.Common;
-    using LeadersCorner.Data.Models;
-    using LeadersCorner.Services.Mapping;
     public class AllArticleQueryModel
     {
         public const int ArticlesPerPage = 2;
@@ -23,7 +19,7 @@
 
         public int CurrentPage
         {
-        get
+            get
             {
                 if (this.currentPage < 1)
                 {
@@ -31,10 +27,10 @@
                 }
                 else
                 {
-                return this.currentPage;
+                    return this.currentPage;
                 }
             }
-        set
+            set
             {
                 if (value < 1)
                 {

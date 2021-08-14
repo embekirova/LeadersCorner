@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Text;
-
-namespace LeadersCorner.Web.Infrastructure
+﻿namespace LeadersCorner.Web.Infrastructure
 {
     public static class InformationDetails
     {

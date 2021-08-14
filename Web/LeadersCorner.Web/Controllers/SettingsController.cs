@@ -1,14 +1,12 @@
 ﻿namespace LeadersCorner.Web.Controllers
 {
-    using System;
-    using System.Threading.Tasks;
-
     using LeadersCorner.Data.Common.Repositories;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Services.Data;
     using LeadersCorner.Web.ViewModels.Settings;
-
     using Microsoft.AspNetCore.Mvc;
+    using System;
+    using System.Threading.Tasks;
 
     public class SettingsController : BaseController
     {

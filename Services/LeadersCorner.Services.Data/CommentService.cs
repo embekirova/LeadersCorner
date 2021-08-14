@@ -1,12 +1,8 @@
 ﻿namespace LeadersCorner.Services.Data
 {
     using LeadersCorner.Data;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
     using LeadersCorner.Data.Models;
-    using Microsoft.AspNetCore.Identity;
+    using System.Threading.Tasks;
 
     public class CommentService : ICommentService
     {

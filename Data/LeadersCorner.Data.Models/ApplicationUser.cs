@@ -1,12 +1,10 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
 namespace LeadersCorner.Data.Models
 {
+    using LeadersCorner.Data.Common.Models;
+    using Microsoft.AspNetCore.Identity;
     using System;
     using System.Collections.Generic;
-
-    using LeadersCorner.Data.Common.Models;
-
-    using Microsoft.AspNetCore.Identity;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {

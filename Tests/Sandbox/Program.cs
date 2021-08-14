@@ -1,10 +1,6 @@
 ﻿namespace Sandbox
 {
-    using System;
-    using System.Diagnostics;
-    using System.IO;
-    using System.Threading.Tasks;
-
+    using CommandLine;
     using LeadersCorner.Data;
     using LeadersCorner.Data.Common;
     using LeadersCorner.Data.Common.Repositories;
@@ -13,13 +9,14 @@
     using LeadersCorner.Data.Seeding;
     using LeadersCorner.Services.Data;
     using LeadersCorner.Services.Messaging;
-
-    using CommandLine;
-
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
+    using System;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Threading.Tasks;
 
     public static class Program
     {
@@ -47,8 +44,8 @@
                     _ => 255);
             }
         }
-        
-        
+
+
         private static async Task<int> SandboxCode(SandboxOptions options, IServiceProvider serviceProvider)
         {
             var sw = Stopwatch.StartNew();

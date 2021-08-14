@@ -1,10 +1,7 @@
 ﻿namespace LeadersCorner.Web.ViewModels.Course
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     using LeadersCorner.Data.Models;
+    using System.Collections.Generic;
 
     public class CurrentCourseViewModel
     {

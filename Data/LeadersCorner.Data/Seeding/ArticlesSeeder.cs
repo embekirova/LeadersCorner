@@ -1,11 +1,9 @@
 ﻿namespace LeadersCorner.Data.Seeding
 {
+    using LeadersCorner.Data.Models;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using System.ComponentModel.DataAnnotations;
-
-    using LeadersCorner.Data.Models;
 
     internal class ArticlesSeeder : ISeeder
     {
@@ -178,7 +176,7 @@
                 .Where(c => c.CategoryName == "SelfImproving")
                 .Select(c => c.Id)
                 .FirstOrDefault(),
-            }); 
+            });
             await dbContext.AddAsync(new Article
             {
                 Title = "Time efficiency",
@@ -201,7 +199,7 @@
                 .Where(c => c.CategoryName == "TimeManagement")
                 .Select(c => c.Id)
                 .FirstOrDefault(),
-            }); 
+            });
             await dbContext.AddAsync(new Article
             {
                 Title = "Occupational stress",
@@ -213,7 +211,7 @@
                 .Where(c => c.CategoryName == "WorkAthmosphere")
                 .Select(c => c.Id)
                 .FirstOrDefault(),
-            }); 
+            });
             await dbContext.AddAsync(new Article
             {
                 Title = "Long hours of wokring is the most common reason for burnout",
@@ -224,7 +222,7 @@
                 .Where(c => c.CategoryName == "TimeManagement")
                 .Select(c => c.Id)
                 .FirstOrDefault()
-            }); 
+            });
             await dbContext.AddAsync(new Article
             {
                 Title = "Work–life balance",
@@ -236,7 +234,7 @@
                 .Where(c => c.CategoryName == "SelfImproving")
                 .Select(c => c.Id)
                 .FirstOrDefault(),
-            }); 
+            });
             await dbContext.AddAsync(new Article
             {
                 Title = "Job satisfaction",
@@ -251,15 +249,5 @@
             await dbContext.SaveChangesAsync();
         }
 
-        private void GetcategoryId(LeadersCornerDbContext dbContext,string categoryName)
-        {
-
-            var currentCategory = dbContext.Categories
-                .Where(c => c.CategoryName == "categoryName")
-                .Select(c => c.Id)
-                .FirstOrDefault();
-
-            //var getId = type.Id;
-        }
     }
 }

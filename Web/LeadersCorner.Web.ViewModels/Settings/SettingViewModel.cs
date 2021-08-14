@@ -1,9 +1,8 @@
 ﻿namespace LeadersCorner.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

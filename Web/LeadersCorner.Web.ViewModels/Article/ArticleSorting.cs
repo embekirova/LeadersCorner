@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using LeadersCorner.Data;
-using LeadersCorner.Data.Models;
-
-namespace LeadersCorner.Web.ViewModels.Article
+﻿namespace LeadersCorner.Web.ViewModels.Article
 {
-        public enum ArticleSorting
+    public enum ArticleSorting
     {
         NullValue = 0,
         ReverseDateCreated = 1,

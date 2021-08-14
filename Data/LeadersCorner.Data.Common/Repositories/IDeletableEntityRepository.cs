@@ -1,8 +1,7 @@
 ﻿namespace LeadersCorner.Data.Common.Repositories
 {
-    using System.Linq;
-
     using LeadersCorner.Data.Common.Models;
+    using System.Linq;
 
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>
         where TEntity : class, IDeletableEntity

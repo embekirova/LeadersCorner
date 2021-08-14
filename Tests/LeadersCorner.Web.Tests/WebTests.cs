@@ -1,10 +1,8 @@
 ﻿namespace LeadersCorner.Web.Tests
 {
+    using Microsoft.AspNetCore.Mvc.Testing;
     using System.Net;
     using System.Threading.Tasks;
-
-    using Microsoft.AspNetCore.Mvc.Testing;
-
     using Xunit;
 
     public class WebTests : IClassFixture<WebApplicationFactory<Startup>>
@@ -16,7 +14,7 @@
             this.server = server;
         }
 
-        [Fact(Skip = "Example test. Disabled for CI.")]
+        [Fact]
         public async Task IndexPageShouldReturnStatusCode200WithTitle()
         {
             var client = this.server.CreateClient();
@@ -26,12 +24,20 @@
             Assert.Contains("<title>", responseContent);
         }
 
-        [Fact(Skip = "Example test. Disabled for CI.")]
+        [Fact]
         public async Task AccountManagePageRequiresAuthorization()
         {
             var client = this.server.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
             var response = await client.GetAsync("Identity/Account/Manage");
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
+        }
+       
+        [Fact]
+        public async Task CreateCourseRequiresAuthorization()
+        {
+            var client = this.server.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
+            var response = await client.GetAsync("Course/Create");
+            Assert.Equal(System.Net.HttpStatusCode.Redirect, response.StatusCode);
         }
     }
 }

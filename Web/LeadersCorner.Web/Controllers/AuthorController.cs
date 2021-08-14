@@ -1,45 +1,49 @@
 ﻿namespace LeadersCorner.Web.Controllers
 {
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
-
     using LeadersCorner.Data;
-    using LeadersCorner.Data.Common.Repositories;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Web.Infrastructure;
-    using LeadersCorner.Web.ViewModels;
     using LeadersCorner.Web.ViewModels.Author;
-    using LeadersCorner.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using System.Linq;
 
     public class AuthorController : BaseController
     {
         private readonly LeadersCornerDbContext data;
-
-       
-
         public AuthorController(
             LeadersCornerDbContext data)
         => this.data = data;
 
         [Authorize]
-        public IActionResult Become() => this.View();
-
-
-        [HttpPost]
-        [Authorize]
-        public IActionResult Become(CreateArticleFormModel author)
+        public IActionResult Become()
         {
             var userId = this.User.GetId();
             var userIsAnAuthor = this.data
                 .Authors
                 .Any(a => a.UserID == userId);
+
             if (userIsAnAuthor)
             {
-                return this.BadRequest();
+                return this.View("AlreadyAnAuthor");
+            }
+
+            return this.View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Become(BecomeAuthorFormModel author)
+        {
+            var userId = this.User.GetId();
+            var userIsAnAuthor = this.data
+                .Authors
+                .Any(a => a.UserID == userId);
+
+            if (userIsAnAuthor)
+            {
+                return this.View("AlreadyAnAuthor");
             }
 
             if (!this.ModelState.IsValid)

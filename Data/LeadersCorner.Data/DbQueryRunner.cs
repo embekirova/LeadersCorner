@@ -1,11 +1,9 @@
 ﻿namespace LeadersCorner.Data
 {
+    using LeadersCorner.Data.Common;
+    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Threading.Tasks;
-
-    using LeadersCorner.Data.Common;
-
-    using Microsoft.EntityFrameworkCore;
 
     public class DbQueryRunner : IDbQueryRunner
     {

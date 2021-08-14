@@ -1,11 +1,9 @@
 ﻿namespace LeadersCorner.Data.Seeding
 {
+    using LeadersCorner.Data.Models;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using System.ComponentModel.DataAnnotations;
-
-    using LeadersCorner.Data.Models;
 
     internal class CategorySeeder : ISeeder
     {
@@ -18,7 +16,7 @@
                 return;
             }
 
-            
+
             await dbContext.AddAsync(new Category { CategoryName = "SelfImproving", CategoryLabel = "Self Improving" });
             await dbContext.AddAsync(new Category { CategoryName = "ProblemSolving", CategoryLabel = "Problem Solving" });
             await dbContext.AddAsync(new Category { CategoryName = "WorkAthmosphere", CategoryLabel = "Work Athmosphere" });

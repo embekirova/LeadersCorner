@@ -1,19 +1,18 @@
 namespace LeadersCorner.Web.Controllers
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Web.Infrastructure;
     using LeadersCorner.Web.ViewModels.Course;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class CourseController : BaseController
     {
         private readonly LeadersCornerDbContext data;
-       // private readonly ArticleSorting sortingType;
+        private readonly CourseSorting sortingType;
 
         public CourseController(
             LeadersCornerDbContext data)
@@ -33,6 +32,7 @@ namespace LeadersCorner.Web.Controllers
 
         [HttpPost]
         [Authorize]
+        [AutoValidateAntiforgeryToken]
         public IActionResult Create(CreateCourseFormModel course)
         {
             var userId = this.User.GetId();
@@ -165,14 +165,14 @@ namespace LeadersCorner.Web.Controllers
                      .FirstOrDefault();
 
             var currentCourse = new CurrentCourseViewModel()
-                {
-                    Title = current.Title,
-                    CourseContent = current.CourseContent,
-                    ImageUrl = current.ImageUrl,
-                    Id = current.Id,
-                    AuthorId = current.AuthorId,
-                    Comments = comments,
-                    DurationInWeeks = current.DurationInWeeks,
+            {
+                Title = current.Title,
+                CourseContent = current.CourseContent,
+                ImageUrl = current.ImageUrl,
+                Id = current.Id,
+                AuthorId = current.AuthorId,
+                Comments = comments,
+                DurationInWeeks = current.DurationInWeeks,
             };
 
             return this.View(currentCourse);

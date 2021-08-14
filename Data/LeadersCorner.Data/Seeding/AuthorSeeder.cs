@@ -1,11 +1,9 @@
 ﻿namespace LeadersCorner.Data.Seeding
 {
+    using LeadersCorner.Data.Models;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using System.ComponentModel.DataAnnotations;
-
-    using LeadersCorner.Data.Models;
 
     internal class AuthorSeeder : ISeeder
     {
@@ -17,7 +15,7 @@
             {
                 return;
             }
-            
+
             await dbContext.AddAsync(new Author
             {
                 FirstName = "Petya",

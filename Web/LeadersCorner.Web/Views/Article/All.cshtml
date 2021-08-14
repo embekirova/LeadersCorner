@@ -4,71 +4,61 @@
 
 @model AllArticleQueryModel
 
-<div class="row">
-    <form method="get" class=" row" enctype="multipart/form-data">
-        <div class="row">
-            <div class="form-group col-md-4">
-                <div class="form-group">
-                    <div class="dropdown">
-                        <label>Filter by category</label>
-                        <select asp-for="CategoryId" class="form-control">
-                            <option value="">All</option>
-                            @foreach (var category in Model.Categories)
-                            {
-                                <option value="@category.Id">@category.CategoryLabel</option>
-                            }
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group col-md-4">
-                    <div class="form-group">
-                        <div class="dropdown">
-                            <label asp-for="Sorting">Sort by</label>
-                            <select asp-for="Sorting" class="form-control">
-                                <option value="0">Random</option>
-                                <option value="2">Newest first</option>
-                                <option value="1">Oldest first</option>
-                                @* <option value="3">Author</option>*@
-                            </select>
-                            <button class="btn btn-primary btn-filter" type="submit">Filter</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+<div class="container-fluit">
+    <form method="get" class="form-inline" enctype="multipart/form-data">
+        <div class="dropdown">
+            <label for="categoryId">Filter by category</label>
+            <select asp-for="CategoryId" class="form-control mb-2 mr-sm-2">
+                <option value="">All</option>
+                @foreach (var category in Model.Categories)
+                {
+    <option value="@category.Id">@category.CategoryLabel</option>}
+            </select>
         </div>
+
+        <div class="dropdown">
+            <label asp-for="Sorting">Sort by</label>
+            <select asp-for="Sorting" class="form-control mb-2 mr-sm-2">
+                <option value="0">Random</option>
+                <option value="2">Newest first</option>
+                <option value="1">Oldest first</option>
+            </select>
+            <button class="btn btn-primary btn-filter" type="submit">Filter</button>
+        </div>
+
     </form>
 </div>
 
 
+<form method="get">
+    <div class="row">
+        <div class="form-group col-md-4">
+            <div class="form-group">
+                @foreach (var article in Model.Articles)
+                {
+            <h5 class="card-title text-center">
+                <b>@article.Title</b>
+            </h5>
+                 <img class="card-img-top" src="@article.ImageUrl" alt="@article.Title">
+                 <div class="card-body text-center">
 
-@foreach (var article in Model.Articles)
-{
-    <div class="col-md-5">
-        <div class="card mb-6">
-            <h5 class="card-title text-center"><b>@article.Title</b></h5>
-            <img class="card-img-top" src="@article.ImageUrl" alt="@article.Title">
-            <div class="card-body text-center">
-
-                <a asp-controller="Article"
-                   asp-action="Details"
-                   asp-route-id="@article.Id"
-                   class="btn btn-primary">View More</a>
+                  <a asp-controller="Article"
+                  asp-action="Details"
+                  asp-route-id="@article.Id"
+                  class="btn btn-primary">View More</a>
+                 </div>}
             </div>
         </div>
     </div>
+</form>
 
-
-}
-@{
-    var previousPage = Model.CurrentPage - 1;
+@{ var previousPage = Model.CurrentPage - 1;
     if (previousPage < 1)
     {
         previousPage = 1;
     }
 
-    var maxPage = Math.Ceiling((double)Model.TotalArticles / AllArticleQueryModel.ArticlesPerPage);
-}
+    var maxPage = Math.Ceiling((double)Model.TotalArticles / AllArticleQueryModel.ArticlesPerPage); }
 
 <div class="row mb=5">
     <div class="col-md-6">
@@ -87,10 +77,8 @@
 <div class="form-group">
     <label asp-for="CurrentPage" class="form-control">@Model.CurrentPage</label>
 </div>
-@{
-    var shouldButtonBeDisabled = Model.CurrentPage == maxPage ||
-                                 !Model.Articles.Any();
-}
+@{ var shouldButtonBeDisabled = Model.CurrentPage == maxPage ||
+                                                  !Model.Articles.Any(); }
 <div class="row">
     <div class="col-md-6">
         <a class="btn btn-primary float-right @(shouldButtonBeDisabled? "disabled" : string.Empty)" style="margin-top: 10px"
@@ -104,9 +92,8 @@
 
 @if (!Model.Articles.Any())
 {
-    <h2 class="text-center">No articles found by the given criteria!</h2>
-}
+<h2 class="text-center">No articles found by the given criteria!</h2>}
 
 @section message {
-        We have more than @(Model.TotalArticles-1) articles!
+    We have more than @(Model.TotalArticles-1) articles!
 }

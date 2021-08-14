@@ -1,12 +1,10 @@
 ﻿namespace LeadersCorner.Data.Seeding
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public class ApplicationDbContextSeeder : ISeeder
     {
@@ -31,6 +29,7 @@
                               new AuthorSeeder(),
                               new CategorySeeder(),
                               new ArticlesSeeder(),
+                              new CoursesSeeder(),
                           };
 
             foreach (var seeder in seeders)
@@ -40,8 +39,8 @@
                 logger.LogInformation($"Seeder {seeder.GetType().Name} done.");
             }
 
-            
+
         }
-       
+
     }
 }

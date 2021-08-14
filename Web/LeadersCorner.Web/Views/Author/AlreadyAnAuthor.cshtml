@@ -1,0 +1,16 @@
+
+@{ this.ViewData["Title"] = "You are already an author"; }
+
+<div class="text-center">
+
+
+    <h3 class="margin-top-alotofspace custom-padding custom-text-color">You are already an author.</h3>
+
+
+    <a href='@Url.Action("Create", "Article" )'>
+        <button class="btn btn-primary margin-top-alotofspace">Create an Article!</button>
+    </a>
+    <a href='@Url.Action("Create", "Course" )'>
+        <button class="btn btn-primary margin-top-alotofspace">Create a Course!</button>
+    </a>
+</div>

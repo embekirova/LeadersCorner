@@ -1,17 +1,14 @@
 ﻿namespace LeadersCorner.Data
 {
+    using LeadersCorner.Data.Common.Models;
+    using LeadersCorner.Data.Models;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Linq;
     using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
-
-    using LeadersCorner.Data.Common.Models;
-    using LeadersCorner.Data.Models;
-
-    
-    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore;
 
     public class LeadersCornerDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {

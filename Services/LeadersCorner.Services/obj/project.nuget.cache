@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Y9ix+IsbT6gcybevnpXOW0Ua/r1LVhwTd0umnezHpkHuLJ8CM7OurezOxi1ETFda25YqGg5H92TtwZ8h6hMJ4w==",
+  "dgSpecHash": "/JKDGGq89G65W5eLTsVIbx2ebQ5LgvwlVB+WtnsW9qBVuSbtXs/KBuMu05ReW5aIqYQFiU9VK1oPKj7pZ1BSXA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\Services\\LeadersCorner.Services\\LeadersCorner.Services.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,10 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\anglesharp.css\\0.16.0\\anglesharp.css.0.16.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\entityframework\\6.1.0\\entityframework.6.1.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\htmlsanitizer\\6.0.437\\htmlsanitizer.6.0.437.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.3\\microsoft.aspnet.identity.core.2.2.3.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnet.identity.entityframework\\2.2.3\\microsoft.aspnet.identity.entityframework.2.2.3.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.9\\microsoft.aspnetcore.cryptography.internal.5.0.9.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.9\\microsoft.aspnetcore.cryptography.keyderivation.5.0.9.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
@@ -182,5 +185,36 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\xunit.extensibility.core\\2.4.1\\xunit.extensibility.core.2.4.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\xunit.extensibility.execution\\2.4.1\\xunit.extensibility.execution.2.4.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'EntityFramework 6.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "EntityFramework",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Identity.Core 2.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Identity.Core",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Identity.EntityFramework 2.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Identity.EntityFramework",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

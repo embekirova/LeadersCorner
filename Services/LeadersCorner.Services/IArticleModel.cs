@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LeadersCorner.Services
+﻿namespace LeadersCorner.Services
 {
-  public  interface IArticleModel
+    public interface IArticleModel
     {
 
         string Title { get; }

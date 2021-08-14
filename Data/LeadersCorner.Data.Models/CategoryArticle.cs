@@ -1,12 +1,7 @@
 ﻿namespace LeadersCorner.Data.Models
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    using System.Text;
-
-    using LeadersCorner.Data.Common.Models;
 
     public class CategoryArticle
     {
@@ -18,7 +13,7 @@
         [DisplayName("Category")]
         public int CategoryID { get; set; }
 
-        
+
         [DisplayName("Category")]
         public virtual Category Category { get; set; }
 

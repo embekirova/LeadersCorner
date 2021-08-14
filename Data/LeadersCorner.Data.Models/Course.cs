@@ -1,12 +1,9 @@
 ﻿namespace LeadersCorner.Data.Models
 {
-    using System;
+    using LeadersCorner.Data.Common.Models;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    using System.Text;
-
-    using LeadersCorner.Data.Common.Models;
 
     public class Course : BaseDeletableModel<int>
     {

@@ -1,10 +1,9 @@
 ﻿namespace LeadersCorner.Data.Seeding
 {
+    using LeadersCorner.Data.Models;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-
-    using LeadersCorner.Data.Models;
 
     internal class SettingsSeeder : ISeeder
     {

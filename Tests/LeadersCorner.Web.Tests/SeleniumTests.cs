@@ -1,11 +1,9 @@
 ﻿namespace LeadersCorner.Web.Tests
 {
-    using System;
-    using System.Linq;
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Chrome;
-
+    using System;
+    using System.Linq;
     using Xunit;
 
     public class SeleniumTests : IClassFixture<SeleniumServerFactory<Startup>>, IDisposable
@@ -23,7 +21,7 @@
             this.browser = new ChromeDriver(opts);
         }
 
-        [Fact(Skip = "Example test. Disabled for CI.")]
+        [Fact]
         public void FooterOfThePageContainsPrivacyLink()
         {
             this.browser.Navigate().GoToUrl(this.server.RootUri);

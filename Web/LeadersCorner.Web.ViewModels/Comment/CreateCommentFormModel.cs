@@ -1,9 +1,8 @@
 ﻿namespace LeadersCorner.Web.ViewModels.Comment
 {
+    using LeadersCorner.Data.Common;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-
-    using LeadersCorner.Data.Common;
 
     public class CreateCommentFormModel
     {

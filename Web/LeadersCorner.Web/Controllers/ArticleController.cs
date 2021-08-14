@@ -1,23 +1,13 @@
 ﻿namespace LeadersCorner.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.IO;
-    using System.Linq;
-
     using LeadersCorner.Data;
-    using LeadersCorner.Data.Common.Repositories;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Web.Infrastructure;
-    using LeadersCorner.Web.ViewModels;
     using LeadersCorner.Web.ViewModels.Article;
-    using LeadersCorner.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Http.Extensions;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ArticleController : BaseController
     {
@@ -42,6 +32,7 @@
 
         [HttpPost]
         [Authorize]
+        [AutoValidateAntiforgeryToken]
         public IActionResult Create(CreateArticleFormModel article)
         {
             var userId = this.User.GetId();
@@ -110,6 +101,7 @@
 
             var articleQuery = this.data.Articles.AsQueryable();
             var articles = new List<Article>();
+            articles = this.data.Articles.ToList();
 
             if (Sorting != 0 && Sorting != 1 && Sorting == 2)
             {
@@ -121,14 +113,12 @@
             {
                 ArticleSorting.DateCreated => articles.OrderByDescending(c => c.Id).ToList(),
                 ArticleSorting.ReverseDateCreated => articles.OrderBy(c => c.Id).ToList(),
-                ArticleSorting.NullValue => articles.OrderByDescending(c => c.Id).ToList(),
-                _ => articles.OrderByDescending(article => article.Id).ToList(),
+                ArticleSorting.NullValue or _ => articles.OrderByDescending(c => c.Id).ToList(),
             };
 
             if (CategoryId == 0)
             {
-                articles = this.data
-               .Articles
+                articles = articles
                .Skip((CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
                .Take(AllArticleQueryModel.ArticlesPerPage)
                .OrderByDescending(article => article.Id)
@@ -136,8 +126,7 @@
             }
             else
             {
-                articles = this.data
-                    .Articles
+                articles = articles
                     .Where(c => c.CategoryId == CategoryId)
                     .Skip((CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
                     .Take(AllArticleQueryModel.ArticlesPerPage)
@@ -160,9 +149,15 @@
 
         public IActionResult Details(string id)
         {
+            var idNumber = int.Parse(id);
+            if (!data.Articles.Any(c => c.Id == idNumber))
+            {
+                return this.View("_NotFound");
+            }
+
             var comments = this.data
                 .Comments
-                .Where(c => c.ArticleID == int.Parse(id))
+                .Where(c => c.ArticleID == idNumber)
                 .ToList();
 
             var current =
@@ -183,5 +178,6 @@
 
             return this.View(currentArticle);
         }
+
     }
 }

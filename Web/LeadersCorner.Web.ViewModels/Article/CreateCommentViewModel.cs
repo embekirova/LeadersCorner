@@ -7,7 +7,7 @@
     {
         public int Id { get; set; }
 
-        public string CommnentContent { get;set;}
+        public string CommnentContent { get; set; }
 
         public string UserUserName { get; set; }
 

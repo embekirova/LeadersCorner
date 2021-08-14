@@ -1,10 +1,9 @@
 ﻿namespace LeadersCorner.Web.ViewModels.Author
 {
+    using LeadersCorner.Data.Common;
     using System.ComponentModel.DataAnnotations;
 
-    using LeadersCorner.Data.Common;
-
-    public class CreateArticleFormModel
+    public class BecomeAuthorFormModel
     {
 
         [Required]
