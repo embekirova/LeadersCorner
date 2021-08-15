@@ -11,9 +11,7 @@
         public CommentService(LeadersCornerDbContext data)
         {
             this.data = data;
-
         }
-
 
         public async Task Create(string commentcontent, int articleId, int courseId, int userId)
         {
@@ -39,6 +37,17 @@
                 };
             }
             await this.data.Comments.AddAsync(comment);
+            await this.data.SaveChangesAsync();
+        }
+        public async Task DeleteCommentAsync(int commentId)
+        {
+            var comment = this.data
+                .Comments
+                .Find(commentId);
+
+            this.data
+                .Comments
+                .Remove(comment);
             await this.data.SaveChangesAsync();
         }
     }

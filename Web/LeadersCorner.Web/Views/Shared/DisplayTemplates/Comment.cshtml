@@ -17,6 +17,27 @@
                 <div class=" card-body">
                     @Model.CommentContent
                 </div>
+                @if (User.IsInRole("Administrator"))
+                {
+            <div>
+                @if (@Model.ArticleID != 0)
+                {
+                    <a
+                        asp-route-articleId="@Model.ArticleID"
+                        asp-route-id="@Model.Id"
+                        id="@Model.Id" asp-action="DeleteComment" asp-controller="Article" class="btn btn-secondary">Delete comment</a>
+                     }
+                else
+                {
+                    <p>
+                        asp-route-courseId="@Model.CourseId"
+                        asp-route-id="@Model.Id"
+                        <a id="@Model.Id" asp-action="DeleteComment" asp-controller="Course" class="btn btn-secondary">Delete comment</a>
+                    </p>
+                }
+
+            </div>
+        }
             </div>
         </div>
     </div>

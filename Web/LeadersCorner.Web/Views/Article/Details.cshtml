@@ -10,10 +10,7 @@
     <img src="@Model.ImageUrl" class="img-fluid">
     <p>@Model.ArticleContent</p>
     <partial name="_CommentPartial" />
-        <a asp-controller="Article"
-           asp-action="Edit"
-           asp-route-id="@Model.Id"
-           class="btn btn-primary">Edit</a>
+        
 </article>
 
 
@@ -28,6 +25,8 @@
         <div>
             <input type="submit" value="Add comment" class="btn btn-primary" />
         </div>
+       
+        
     </form>
 </div>
 

@@ -2,6 +2,6 @@
 {
     public interface IAuthorService
     {
-        public bool IsAuthor(string userId);
+        public abstract bool IsAuthor(string userId);
     }
 }

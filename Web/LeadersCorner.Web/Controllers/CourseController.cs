@@ -2,22 +2,28 @@ namespace LeadersCorner.Web.Controllers
 {
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
+    using LeadersCorner.Services.Data;
     using LeadersCorner.Web.Infrastructure;
     using LeadersCorner.Web.ViewModels.Course;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     public class CourseController : BaseController
     {
         private readonly LeadersCornerDbContext data;
         private readonly CourseSorting sortingType;
+        private readonly ICommentService commentService;
 
         public CourseController(
-            LeadersCornerDbContext data)
-        => this.data = data;
-
+            LeadersCornerDbContext data,
+            ICommentService commentService)
+        {
+            this.data = data;
+            this.commentService = commentService;
+        }
         [Authorize]
         public IActionResult Create()
         {
@@ -176,6 +182,27 @@ namespace LeadersCorner.Web.Controllers
             };
 
             return this.View(currentCourse);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> DeleteCommentAsync(int id)
+        {
+
+            var commentArticle = this.data.Comments.Find(id).ArticleID;
+            var commentCours = this.data.Comments.Find(id).CourseId;
+
+            await this.commentService.DeleteCommentAsync(id);
+
+            if (commentArticle != null)
+            {
+                return this.RedirectToAction("Details", "Article", new { id = commentArticle });
+            }
+            else
+            {
+                return this.RedirectToAction("Details", "Course", new { id = commentCours });
+            }
         }
     }
 }

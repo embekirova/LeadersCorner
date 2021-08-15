@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-
+    using System.Threading.Tasks;
     using AutoMapper;
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
@@ -17,11 +17,16 @@
         private readonly LeadersCornerDbContext data;
         private readonly ArticleSorting sortingType;
         private readonly IAuthorService authorsService;
+        private readonly ICommentService commentService;
         private readonly IMapper mapper;
 
         public ArticleController(
-            LeadersCornerDbContext data)
-        => this.data = data;
+            LeadersCornerDbContext data,
+            ICommentService commentService)
+        {
+            this.data = data;
+            this.commentService = commentService;
+        }
 
         [Authorize]
         public IActionResult Create()
@@ -183,69 +188,22 @@
             return this.View(currentArticle);
         }
 
-        [Authorize]
-        public IActionResult Edit(int id)
-        {
-            var userId = this.User.GetId();
-
-            if (!this.authorsService.IsAuthor(userId) && !User.IsAdmin())
-            {
-                return RedirectToAction(nameof(AuthorController.Become), "Authors");
-            }
-
-            var article = this.data
-                .Articles
-                .Where(c => c.Id == id)
-                .FirstOrDefault();
-
-            if (article.Author.UserID != userId && !User.IsAdmin())
-            {
-                return Unauthorized();
-            }
-
-            var articleFormmModel = this.mapper.Map<CreateArticleFormModel>(article);
-
-            articleFormmModel.Categories = this.data.Categories.ToList();
-
-            return View(articleFormmModel);
-        }
-
-        [HttpPost]
-        [Authorize]
-        public IActionResult Edit(int id, CreateArticleFormModel articleInput)
+        public async Task<IActionResult> DeleteCommentAsync(int id)
         {
 
-            var authorId = this.data
-                   .Authors
-                   .FirstOrDefault(a => a.UserID == this.User.GetId())
-                   .Id;
+            var commentArticle = this.data.Comments.Find(id).ArticleID;
+            var commentCours = this.data.Comments.Find(id).CourseId;
 
-            if (authorId == 0 && !this.User.IsAdmin())
+            await this.commentService.DeleteCommentAsync(id);
+
+            if (commentArticle != null)
             {
-                return this.RedirectToAction(nameof(AuthorController.Become), "Author");
+                return this.RedirectToAction("Details", "Article", new { id = commentArticle });
             }
-
-
-            if (!this.ModelState.IsValid)
+            else
             {
-                articleInput.Categories = this.data.Categories.ToList();
-
-                return this.View(articleInput);
+                return this.RedirectToAction("Details", "Course", new { id = commentCours });
             }
-
-            var editedArticleData = new Article(authorId, articleInput.Title)
-            {
-                Title = articleInput.Title,
-                ArticleContent = articleInput.ArticleContent,
-                ImageUrl = articleInput.ImageUrl,
-                CategoryId = articleInput.CategoryId,
-                Id = articleInput.Id,
-                AuthorId = authorId,
-            };
-
-            this.data.SaveChanges();
-
-            return this.RedirectToAction(actionName: "Details", controllerName: "Article",  articleInput.Id);
         }
     }
 }
