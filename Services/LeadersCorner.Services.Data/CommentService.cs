@@ -2,6 +2,8 @@
 {
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
+    using System.Data.Entity;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class CommentService : ICommentService
@@ -50,5 +52,6 @@
                 .Remove(comment);
             await this.data.SaveChangesAsync();
         }
+
     }
 }

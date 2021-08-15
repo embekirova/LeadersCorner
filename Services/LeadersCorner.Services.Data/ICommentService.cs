@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace LeadersCorner.Services.Data
 {
@@ -6,5 +7,6 @@ namespace LeadersCorner.Services.Data
     {
         Task Create(string commentcontent, int articleId, int courseId, int userId);
         Task DeleteCommentAsync(int commentId);
+
     }
 }

@@ -26,6 +26,12 @@
                    .ShouldReturn()
                    .View();
         }
+        [Fact]
+        public void HomeControllerShouldHaveNoAttributes()
+    => MyController<HomeController>
+        .Instance()
+        .ShouldHave()
+        .NoAttributes();
 
         [Fact]
         public void ErrorShouldReurnView()

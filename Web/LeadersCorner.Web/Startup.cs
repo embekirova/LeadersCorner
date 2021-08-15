@@ -65,6 +65,7 @@
             services.AddTransient<IDetailsService, DetailsService>();
             services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<IAuthorService, AuthorService>();
+            services.AddTransient<IArticleService, ArticleService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

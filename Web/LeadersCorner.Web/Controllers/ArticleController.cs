@@ -18,14 +18,20 @@
         private readonly ArticleSorting sortingType;
         private readonly IAuthorService authorsService;
         private readonly ICommentService commentService;
+        private readonly IDetailsService detailsService;
+        private readonly IArticleService articleService;
         private readonly IMapper mapper;
 
         public ArticleController(
             LeadersCornerDbContext data,
-            ICommentService commentService)
+            ICommentService commentService,
+            IDetailsService detailsService,
+            IArticleService articleService)
         {
             this.data = data;
             this.commentService = commentService;
+            this.detailsService = detailsService;
+            this.articleService = articleService;
         }
 
         [Authorize]
@@ -100,94 +106,26 @@
 
         public IActionResult All(int CurrentPage, int CategoryId, int Sorting)
         {
-            if (CurrentPage == 0)
-            {
-                CurrentPage = 1;
-            }
-            var categories = this.data
-                .Categories
-                .ToList();
+            var view = this.articleService.AllArticles(CurrentPage, CategoryId, Sorting);
 
-            var articleQuery = this.data.Articles.AsQueryable();
-            var articles = new List<Article>();
-            articles = this.data.Articles.ToList();
-
-            if (Sorting != 0 && Sorting != 1 && Sorting == 2)
-            {
-                Sorting = 0;
-            }
-
-            var sortingType = (ArticleSorting)Sorting;
-            articles = sortingType switch
-            {
-                ArticleSorting.DateCreated => articles.OrderByDescending(c => c.Id).ToList(),
-                ArticleSorting.ReverseDateCreated => articles.OrderBy(c => c.Id).ToList(),
-                ArticleSorting.NullValue or _ => articles.OrderByDescending(c => c.Id).ToList(),
-            };
-
-            if (CategoryId == 0)
-            {
-                articles = articles
-               .Skip((CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
-               .Take(AllArticleQueryModel.ArticlesPerPage)
-               .OrderByDescending(article => article.Id)
-               .ToList();
-            }
-            else
-            {
-                articles = articles
-                    .Where(c => c.CategoryId == CategoryId)
-                    .Skip((CurrentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
-                    .Take(AllArticleQueryModel.ArticlesPerPage)
-                    .OrderByDescending(article => article.Id)
-                    .ToList();
-            }
-
-            var totalArticles = articleQuery.Count();
-
-            return this.View(new AllArticleQueryModel
-            {
-                CategoryId = CategoryId,
-                Categories = categories,
-                Articles = articles,
-                Sorting = sortingType,
-                CurrentPage = CurrentPage,
-                TotalArticles = totalArticles,
-            });
+            return this.View(view);
         }
 
-        public IActionResult Details(string id)
+        public async Task <IActionResult> Details(string id)
         {
             var idNumber = int.Parse(id);
-            if (!data.Articles.Any(c => c.Id == idNumber))
+            if (!this.data.Articles.Any(c => c.Id == idNumber))
             {
                 return this.View("_NotFound");
             }
 
-            var comments = this.data
-                .Comments
-                .Where(c => c.ArticleID == idNumber)
-                .ToList();
-
-            var current =
-                 this.data
-                 .Articles
-                 .Where(c => c.Id == int.Parse(id))
-                 .FirstOrDefault();
-
-            var currentArticle = new CurrentArticleViewModel()
-            {
-                Title = current.Title,
-                ArticleContent = current.ArticleContent,
-                ImageUrl = current.ImageUrl,
-                Id = current.Id,
-                AuthorId = current.AuthorId,
-                Comments = comments,
-            };
-
-            return this.View(currentArticle);
+            var viewNodel = this.detailsService.Details(idNumber);
+            return this.View(viewNodel);
         }
 
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> DeleteCommentAsync(int id)
         {
 

@@ -41,9 +41,6 @@
         [HttpPost]
         public async Task<IActionResult> Delete(int commentId, int articleId, int courseId)
         {
-            //var commentArticle = data.Comments.Find(commentId).ArticleID;
-            //var commentCourse = data.Comments.Find(commentId).CourseId;
-
             await this.commentService.DeleteCommentAsync(commentId);
             if (articleId != 0)
             {

@@ -7,14 +7,18 @@ namespace LeadersCorner.Web.Tests
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using MyTested.AspNetCore.Mvc;
+    using System;
+    using System.Threading.Tasks;
     using Xunit;
 
     public class CourseControllerTest
     {
+        private LeadersCornerDbContext data;
+
+
         [Fact]
         public void CourseCreateValidReturn()
         {
-
             var model = new Course
             {
                 Id = 564,
@@ -34,7 +38,7 @@ namespace LeadersCorner.Web.Tests
             dbContext.Courses.Add(model);
             dbContext.SaveChanges();
 
-            var controller = new CourseController(dbContext);
+           // var controller = new CourseController(dbContext);
 
             Course result = dbContext.Courses.Find(564);
 
@@ -43,31 +47,14 @@ namespace LeadersCorner.Web.Tests
         }
 
         [Fact]
-        public void CreateShouldHaveRestrictionsForAuthorizedUsers()
-            => MyController<CourseController>
-                .Calling(c => c.Details(1.ToString()))
-                .ShouldHave()
-                .ActionAttributes(attr => attr
-                    .RestrictingForAuthorizedRequests());
-         
-        [Fact]
-
-        public void DetailsCourseShouldReturnView()
-            => MyController<CourseController>
-                .Calling(c => c.Details(1.ToString()))
-                .ShouldReturn()
-                .View(v => v
-               .WithModelOfType<CurrentCourseViewModel>());
-
-
-        [Fact]
-        public void DetailsShouldReturnNotFoundWhenArticleIdIsInvalid()
-        => MyController<CourseController>
-            .Instance()
-            .WithUser()
-            .Calling(c => c.Details(9.ToString()))
-            .ShouldReturn()
-            .View("_NotFound");
+        public void CreateCourseShouldReturnView()
+        {
+            MyController<CourseController>
+               .Calling(c => c.Create())
+               .ShouldReturn()
+               .View(v => v
+              .WithModelOfType<CreateCourseFormModel>());
+        }
 
         [Fact]
         public void AllShouldReturnCorrectViewModel()
@@ -107,5 +94,26 @@ namespace LeadersCorner.Web.Tests
            .ShouldReturn()
            .View(v => v
                .WithModelOfType<AllCourseQueryModel>());
+
+        public void ModelCouldnotBeNullOrEmpty()
+        {
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                Course course = new Course();
+                data.Courses.Add(course);
+                data.SaveChanges();
+            });
+        }
+
+        [Fact]
+        public void DetailsProperly()
+            => MyController<CourseController>
+                .Instance(instance => instance
+                    .WithData(TestData.GetCourse(1)))
+                .Calling(c => c.Details("1"))
+                .ShouldReturn()
+                .View(view => view
+                    .WithModelOfType<CurrentCourseViewModel>()
+                    .Passing(article => article.Id == 1));
     }
 }

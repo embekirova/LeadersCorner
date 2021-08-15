@@ -1,15 +1,31 @@
 namespace LeadersCorner.Web.Tests
 {
+    using AutoMapper;
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
+    using LeadersCorner.Services.Data;
     using LeadersCorner.Web.Controllers;
     using LeadersCorner.Web.ViewModels.Article;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using MyTested.AspNetCore.Mvc;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Xunit;
 
     public class ArticleControllerTest
     {
+        private readonly LeadersCornerDbContext data;
+        private readonly ArticleSorting sortingType;
+        private readonly IAuthorService authorsService;
+        private readonly ICommentService commentService;
+        private readonly IDetailsService detailsService;
+        private readonly IArticleService articleService;
+        private readonly IMapper mapper;
+
+
+
         [Fact]
         public void ArticleCreateValidReturn()
         {
@@ -32,7 +48,7 @@ namespace LeadersCorner.Web.Tests
             dbContext.Articles.Add(model);
             dbContext.SaveChanges();
 
-            var controller = new CourseController(dbContext);
+            var controller = new ArticleController(dbContext, this.commentService, this.detailsService, this.articleService);
 
             Article result = dbContext.Articles.Find(564);
 
@@ -64,7 +80,7 @@ namespace LeadersCorner.Web.Tests
        => MyController<ArticleController>
            .Instance()
            .WithUser()
-           .Calling(c => c.All(0, 0,2))
+           .Calling(c => c.All(0, 0, 2))
            .ShouldReturn()
            .View(v => v
                .WithModelOfType<AllArticleQueryModel>());
@@ -87,5 +103,97 @@ namespace LeadersCorner.Web.Tests
            .ShouldReturn()
            .View(v => v
                .WithModelOfType<AllArticleQueryModel>());
-    }
-}
+
+        [Fact]
+        public void CreateArticleShouldReturnView()
+        {
+            MyController<ArticleController>
+               .Calling(c => c.Create())
+               .ShouldReturn()
+               .View(v => v
+              .WithModelOfType<CreateArticleFormModel>());
+        }
+        [Fact]
+        
+        public void ArticleCouldnotBeNullOrEmpty()
+        {
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                Article article = new Article();
+                data.Articles.Add(article);
+                data.SaveChanges();
+            });
+        }
+        [Fact]
+
+        public void ModelCouldnotBeNullOrEmpty()
+        {
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                Article article = new Article();
+                data.Articles.Add(article);
+                data.SaveChanges();
+            });
+        }
+
+
+        [Fact]
+        public void DetailsShouldReturnNotFoundWhenInvalidArticleId()
+          => MyController<ArticleController>
+              .Calling(c => c.Details("5666666"))
+              .ShouldReturn()
+              .View("_NotFound");
+
+        [Fact]
+        public void DetailsShouldReturnViewWithCorrectModelWhen()
+            => MyController<ArticleController>
+                .Instance(instance => instance
+                    .WithUser("NonAuthor")
+            .WithData(TestData.GetArticles(1)))
+                .Calling(c => c.Details("1"))
+                .ShouldReturn()
+                .View(view => view
+                    .WithModelOfType<CurrentArticleViewModel>()
+                    .Passing(article => article.Id == 1));
+        [Fact]
+        public void CreateGetShouldHaveRestrictionsForHttpGetOnlyAndAuthorizedUsersAndShouldReturnView()
+           => MyController<ArticleController>
+               .Calling(c => c.Create())
+               .ShouldHave()
+               .ActionAttributes(attrs => attrs
+                   .RestrictingForHttpMethod(HttpMethod.Post)
+                   .RestrictingForAuthorizedRequests())
+               .AndAlso()
+               .ShouldReturn()
+               .View();
+
+        [Fact]
+        public void DetailsProperly()
+            => MyController<ArticleController>
+                .Instance(instance => instance
+                    .WithData(TestData.GetArticles(1)))
+                .Calling(c => c.Details("1"))
+                .ShouldReturn()
+                .View(view => view
+                    .WithModelOfType<CurrentArticleViewModel>()
+                    .Passing(article => article.Id == 1));
+
+        [Fact]
+        public void CreatePostShouldHaveRestrictionsForHttpPostOnlyAndAuthorizedUsers()
+           => MyController<ArticleController>
+               .Calling(c => c.Create(With.Default<CreateArticleFormModel>()))
+               .ShouldHave()
+               .ActionAttributes(attrs => attrs
+                   .RestrictingForHttpMethod(HttpMethod.Post)
+                   .RestrictingForAuthorizedRequests());
+
+        [Fact]
+        public void CreatePostShouldReturnViewWithSameModelWhenInvalidModelState()
+          => MyController<ArticleController>
+              .Calling(c => c.Create(With.Default<CreateArticleFormModel>()))
+              .ShouldHave()
+              .InvalidModelState()
+              .AndAlso()
+              .ShouldReturn()
+              .View(With.Default<CreateArticleFormModel>());
+    } }
