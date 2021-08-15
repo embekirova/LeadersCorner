@@ -98,6 +98,16 @@
         "runtime": {
           "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
         }
+      },
+      "LeadersCorner.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/LeadersCorner.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LeadersCorner.Common.dll": {}
+        }
       }
     }
   },
@@ -316,10 +326,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "LeadersCorner.Common/1.0.0": {
+      "type": "project",
+      "path": "../../LeadersCorner.Common/LeadersCorner.Common.csproj",
+      "msbuildProject": "../../LeadersCorner.Common/LeadersCorner.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
+      "LeadersCorner.Common >= 1.0.0",
       "Microsoft.AspNetCore.Http.Abstractions >= 2.2.0",
       "StyleCop.Analyzers >= 1.2.0-beta.312"
     ]
@@ -354,7 +370,11 @@
       "frameworks": {
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\LeadersCorner.Common\\LeadersCorner.Common.csproj": {
+              "projectPath": "C:\\Users\\Lenovo\\Desktop\\LeadersCorner\\LeadersCorner.Common\\LeadersCorner.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -393,7 +413,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

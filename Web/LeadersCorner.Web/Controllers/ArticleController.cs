@@ -1,18 +1,23 @@
 ﻿namespace LeadersCorner.Web.Controllers
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using AutoMapper;
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
+    using LeadersCorner.Services.Data;
     using LeadersCorner.Web.Infrastructure;
     using LeadersCorner.Web.ViewModels.Article;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public class ArticleController : BaseController
     {
         private readonly LeadersCornerDbContext data;
         private readonly ArticleSorting sortingType;
+        private readonly IAuthorService authorsService;
+        private readonly IMapper mapper;
 
         public ArticleController(
             LeadersCornerDbContext data)
@@ -44,7 +49,6 @@
                 .Authors
                 .Where(c => c.UserID == userId)
                 .FirstOrDefault();
-
 
             if (!userIsAnAuthor)
             {
@@ -179,5 +183,69 @@
             return this.View(currentArticle);
         }
 
+        [Authorize]
+        public IActionResult Edit(int id)
+        {
+            var userId = this.User.GetId();
+
+            if (!this.authorsService.IsAuthor(userId) && !User.IsAdmin())
+            {
+                return RedirectToAction(nameof(AuthorController.Become), "Authors");
+            }
+
+            var article = this.data
+                .Articles
+                .Where(c => c.Id == id)
+                .FirstOrDefault();
+
+            if (article.Author.UserID != userId && !User.IsAdmin())
+            {
+                return Unauthorized();
+            }
+
+            var articleFormmModel = this.mapper.Map<CreateArticleFormModel>(article);
+
+            articleFormmModel.Categories = this.data.Categories.ToList();
+
+            return View(articleFormmModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Edit(int id, CreateArticleFormModel articleInput)
+        {
+
+            var authorId = this.data
+                   .Authors
+                   .FirstOrDefault(a => a.UserID == this.User.GetId())
+                   .Id;
+
+            if (authorId == 0 && !this.User.IsAdmin())
+            {
+                return this.RedirectToAction(nameof(AuthorController.Become), "Author");
+            }
+
+
+            if (!this.ModelState.IsValid)
+            {
+                articleInput.Categories = this.data.Categories.ToList();
+
+                return this.View(articleInput);
+            }
+
+            var editedArticleData = new Article(authorId, articleInput.Title)
+            {
+                Title = articleInput.Title,
+                ArticleContent = articleInput.ArticleContent,
+                ImageUrl = articleInput.ImageUrl,
+                CategoryId = articleInput.CategoryId,
+                Id = articleInput.Id,
+                AuthorId = authorId,
+            };
+
+            this.data.SaveChanges();
+
+            return this.RedirectToAction(actionName: "Details", controllerName: "Article",  articleInput.Id);
+        }
     }
 }
