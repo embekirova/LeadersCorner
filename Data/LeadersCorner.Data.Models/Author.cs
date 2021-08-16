@@ -1,9 +1,10 @@
 ﻿namespace LeadersCorner.Data.Models
 {
-    using LeadersCorner.Data.Common;
-    using LeadersCorner.Data.Common.Models;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
+    using LeadersCorner.Data.Common;
+    using LeadersCorner.Data.Common.Models;
 
     public class Author : BaseDeletableModel<int>
     {

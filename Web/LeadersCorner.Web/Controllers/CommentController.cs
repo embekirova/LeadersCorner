@@ -1,5 +1,7 @@
 ﻿namespace LeadersCorner.Web.Controllers
 {
+    using System.Threading.Tasks;
+
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Services.Data;
@@ -7,13 +9,13 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     public class CommentController : BaseController
     {
         private readonly LeadersCornerDbContext data;
         private readonly ICommentService commentService;
         private readonly UserManager<ApplicationUser> userManager;
+
         public CommentController(
             ICommentService commentService,
             UserManager<ApplicationUser> userManager)
@@ -36,7 +38,7 @@
                 return this.RedirectToAction("Details", "Course", new { id = comment.CourseID });
             }
         }
-        
+
         [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> Delete(int commentId, int articleId, int courseId)
@@ -51,6 +53,5 @@
                 return this.RedirectToAction("Details", "Course", new { id = courseId });
             }
         }
-
     }
 }

@@ -1,8 +1,9 @@
 ﻿namespace LeadersCorner.Web.ViewModels.Article
 {
+    using System.Collections.Generic;
+
     using LeadersCorner.Data.Models;
     using LeadersCorner.Services.Mapping;
-    using System.Collections.Generic;
 
     public class CurrentArticleViewModel : IMapFrom<Article>
     {

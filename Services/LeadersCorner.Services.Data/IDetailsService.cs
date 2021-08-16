@@ -1,11 +1,9 @@
-﻿using LeadersCorner.Web.ViewModels.Article;
-using System.Threading.Tasks;
-
-namespace LeadersCorner.Services.Data
+﻿namespace LeadersCorner.Services.Data
 {
+    using LeadersCorner.Web.ViewModels.Article;
+
     public interface IDetailsService
     {
         CurrentArticleViewModel Details(int id);
-
     }
 }

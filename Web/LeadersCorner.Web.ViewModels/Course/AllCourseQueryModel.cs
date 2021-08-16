@@ -1,10 +1,12 @@
 ﻿
 namespace LeadersCorner.Web.ViewModels.Course
 {
-    using LeadersCorner.Data.Models;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+
+    using LeadersCorner.Data.Models;
+
     public class AllCourseQueryModel
     {
         public const int CoursesPerPage = 2;
@@ -31,12 +33,14 @@ namespace LeadersCorner.Web.ViewModels.Course
                     return this.currentPage;
                 }
             }
+
             set
             {
                 if (value < 1)
                 {
                     this.currentPage = 1;
                 }
+
                 this.currentPage = value;
             }
         }

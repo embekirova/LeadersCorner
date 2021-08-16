@@ -1,18 +1,16 @@
 namespace LeadersCorner.Web.Tests
 {
+    using System;
+
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
-    using LeadersCorner.Web.Controllers;
-    using LeadersCorner.Web.ViewModels.Author;
     using Microsoft.EntityFrameworkCore;
-    using MyTested.AspNetCore.Mvc;
-    using System;
-    using System.Threading.Tasks;
     using Xunit;
 
     public class AuthorControllerTest
     {
         private readonly LeadersCornerDbContext data;
+
         [Fact]
         public void TestAddingAuthor()
         {
@@ -46,11 +44,9 @@ namespace LeadersCorner.Web.Tests
             Assert.Throws<NullReferenceException>(() =>
             {
                 Author author = new Author();
-                data.Authors.Add(author);
-                data.SaveChanges();
+                this.data.Authors.Add(author);
+                this.data.SaveChanges();
             });
         }
-
-        
     }
 }

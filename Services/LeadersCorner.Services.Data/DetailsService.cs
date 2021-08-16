@@ -1,10 +1,9 @@
 ﻿namespace LeadersCorner.Services.Data
 {
+    using System.Linq;
+
     using LeadersCorner.Data;
     using LeadersCorner.Web.ViewModels.Article;
-    using System.Linq;
-    using System.Threading.Tasks;
-
 
     public class DetailsService : IDetailsService
     {
@@ -31,7 +30,6 @@
                 })
                 .FirstOrDefault();
             return viewModel;
-
         }
     }
 }

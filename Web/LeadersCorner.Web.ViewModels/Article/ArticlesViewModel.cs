@@ -9,6 +9,5 @@
         public string ImageUrl { get; set; }
 
         public string AuthorId { get; set; }
-
     }
 }

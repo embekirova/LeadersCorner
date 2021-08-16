@@ -8,8 +8,7 @@
         {
             string filepath = "Files";
             byte[] pdfByte = System.IO.File.ReadAllBytes(filepath + "/Privacy.pdf");
-            return File(pdfByte, "Files/pdf", "Privacy.pdf");
+            return this.File(pdfByte, "Files/pdf", "Privacy.pdf");
         }
-
     }
 }

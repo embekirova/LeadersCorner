@@ -5,8 +5,9 @@
 
     using Ganss.XSS;
     using LeadersCorner.Data.Common;
+    using LeadersCorner.Services.Mapping;
 
-    public class CreateCommentFormModel
+    public class CreateCommentFormModel : IMapFrom<LeadersCorner.Data.Models.Comment>
     {
         public int Id { get; set; }
 
@@ -14,15 +15,13 @@
 
         public string UseName { get; set; }
 
-        [Required]
-        [MinLength(DataConstants.Article.ContentMinLength)]
+        [Required(ErrorMessage = "The field is required")]
+        [MinLength(DataConstants.Article.ContentMinLength, ErrorMessage = "Comment must have at least 2 symbols")]
         [DisplayName("Comment")]
         public string CommentContent { get; set; }
 
         public int ArticleID { get; set; }
 
         public int CourseID { get; set; }
-
-        public string SanitazedContent => new HtmlSanitizer().Sanitize(this.CommentContent);
     }
 }

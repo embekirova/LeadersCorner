@@ -1,8 +1,8 @@
 ﻿namespace LeadersCorner.Web.Controllers
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using AutoMapper;
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
@@ -15,12 +15,9 @@
     public class ArticleController : BaseController
     {
         private readonly LeadersCornerDbContext data;
-        private readonly ArticleSorting sortingType;
-        private readonly IAuthorService authorsService;
         private readonly ICommentService commentService;
         private readonly IDetailsService detailsService;
         private readonly IArticleService articleService;
-        private readonly IMapper mapper;
 
         public ArticleController(
             LeadersCornerDbContext data,
@@ -104,9 +101,9 @@
             return this.View("ArticleCreated");
         }
 
-        public IActionResult All(int CurrentPage, int CategoryId, int Sorting)
+        public IActionResult All(int currentPage, int categoryId, int sorting)
         {
-            var view = this.articleService.AllArticles(CurrentPage, CategoryId, Sorting);
+            var view = this.articleService.AllArticles(currentPage, categoryId, sorting);
 
             return this.View(view);
         }
@@ -128,7 +125,6 @@
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> DeleteCommentAsync(int id)
         {
-
             var commentArticle = this.data.Comments.Find(id).ArticleID;
             var commentCours = this.data.Comments.Find(id).CourseId;
 

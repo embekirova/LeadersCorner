@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeadersCorner.Data.Migrations
 {
     [DbContext(typeof(LeadersCornerDbContext))]
-    [Migration("20210813192434_UserIdentity")]
-    partial class UserIdentity
+    [Migration("20210816181354_ArticleT")]
+    partial class ArticleT
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,9 +88,6 @@ namespace LeadersCorner.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsManagerOrLeader")
                         .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
@@ -187,7 +184,8 @@ namespace LeadersCorner.Data.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -322,6 +320,9 @@ namespace LeadersCorner.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -382,7 +383,8 @@ namespace LeadersCorner.Data.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.HasKey("Id");
 

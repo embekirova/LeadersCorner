@@ -1,12 +1,12 @@
 ﻿namespace LeadersCorner.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     using LeadersCorner.Data.Common;
     using LeadersCorner.Data.Common.Models;
-    using System.ComponentModel.DataAnnotations;
 
     public class Comment : BaseDeletableModel<int>
     {
-
         public string UserName { get; set; }
 
         public string FirstName { get; set; }

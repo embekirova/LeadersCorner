@@ -1,20 +1,19 @@
-﻿using LeadersCorner.Data.Models;
-using MyTested.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace LeadersCorner.Web.Tests
+﻿namespace LeadersCorner.Web.Tests
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using LeadersCorner.Data.Models;
+    using MyTested.AspNetCore.Mvc;
+
     public class TestData
     {
         public static List<Article> GetArticles(int count)
         {
-            var user = new 
+            var user = new
             {
                 Id = TestUser.Identifier,
-                UserName = TestUser.Username
+                UserName = TestUser.Username,
             };
 
             var comments = Enumerable
@@ -23,9 +22,8 @@ namespace LeadersCorner.Web.Tests
                 {
                     Id = i,
                     CommentContent = $"Comments Content is too large {i}",
-                    }
-                ).ToList();
-
+                })
+                .ToList();
 
             var articles = Enumerable
                 .Range(1, count)
@@ -38,7 +36,7 @@ namespace LeadersCorner.Web.Tests
                     Author = new Author
                     {
                         Id = i,
-                        FirstName = $"Author {i}"
+                        FirstName = $"Author {i}",
                     },
                     Comments = comments,
                 })
@@ -46,12 +44,13 @@ namespace LeadersCorner.Web.Tests
 
             return articles;
         }
+
         public static List<Course> GetCourse(int count)
         {
             var user = new
             {
                 Id = TestUser.Identifier,
-                UserName = TestUser.Username
+                UserName = TestUser.Username,
             };
 
             var comments = Enumerable
@@ -60,9 +59,8 @@ namespace LeadersCorner.Web.Tests
                 {
                     Id = i,
                     CommentContent = $"Comments Content is too large {i}",
-                }
-                ).ToList();
-
+                })
+                .ToList();
 
             var courses = Enumerable
                 .Range(1, count)
@@ -76,7 +74,7 @@ namespace LeadersCorner.Web.Tests
                     Author = new Author
                     {
                         Id = i,
-                        FirstName = $"Author {i}"
+                        FirstName = $"Author {i}",
                     },
                     Comments = comments,
                 })

@@ -1,10 +1,11 @@
 ﻿namespace LeadersCorner.Web.Controllers
 {
+    using System.Linq;
+
     using LeadersCorner.Data.Common.Repositories;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
 
     public class HomeController : BaseController
     {
@@ -18,7 +19,6 @@
             this.articleRespository = articleRespository;
             this.courseRepository = courseRepository;
         }
-
 
         public IActionResult Index()
         {
@@ -39,10 +39,6 @@
         [HttpPost]
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error() => View();
-
-
-       
-
+        public IActionResult Error() => this.View();
     }
 }

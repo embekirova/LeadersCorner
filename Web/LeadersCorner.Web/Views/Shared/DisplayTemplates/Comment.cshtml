@@ -23,8 +23,9 @@
                 @if (@Model.ArticleID != 0)
                 {
                     <a
-                        asp-route-articleId="@Model.ArticleID"
                         asp-route-id="@Model.Id"
+                        asp-route-articleId="@Model.ArticleID"
+                        
                         id="@Model.Id" asp-action="DeleteComment" asp-controller="Article" class="btn btn-secondary">Delete comment</a>
                      }
                 else

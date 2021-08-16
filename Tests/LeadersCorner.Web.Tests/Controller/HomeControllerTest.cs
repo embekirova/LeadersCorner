@@ -13,7 +13,6 @@
         private readonly IDeletableEntityRepository<Article> articlesRepos;
         private readonly IDeletableEntityRepository<Course> coursesRepos;
 
-
         [Fact]
         public void StandartHomePageView()
         {
@@ -26,6 +25,7 @@
                    .ShouldReturn()
                    .View();
         }
+
         [Fact]
         public void HomeControllerShouldHaveNoAttributes()
     => MyController<HomeController>
@@ -40,8 +40,6 @@
             var result = homeController.Error();
 
             Assert.NotNull(result);
-
         }
-
     }
 }

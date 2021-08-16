@@ -1,10 +1,11 @@
 ﻿namespace LeadersCorner.Services.Data
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     using LeadersCorner.Data.Common.Repositories;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Services.Mapping;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public class SettingsService : ISettingsService
     {

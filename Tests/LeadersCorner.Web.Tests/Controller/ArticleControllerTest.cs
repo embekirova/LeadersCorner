@@ -1,42 +1,33 @@
 namespace LeadersCorner.Web.Tests
 {
-    using AutoMapper;
+    using System;
+
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Services.Data;
     using LeadersCorner.Web.Controllers;
     using LeadersCorner.Web.ViewModels.Article;
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using MyTested.AspNetCore.Mvc;
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Xunit;
 
     public class ArticleControllerTest
     {
         private readonly LeadersCornerDbContext data;
-        private readonly ArticleSorting sortingType;
-        private readonly IAuthorService authorsService;
         private readonly ICommentService commentService;
         private readonly IDetailsService detailsService;
         private readonly IArticleService articleService;
-        private readonly IMapper mapper;
-
-
 
         [Fact]
         public void ArticleCreateValidReturn()
         {
-
             var model = new Article
             {
                 Id = 564,
                 Title = "New article for time saving",
                 CategoryId = 2,
                 AuthorId = 2,
-                ArticleContent = "The following artice is based on long researches..."
+                ArticleContent = "The following artice is based on long researches...",
             };
 
             var optionBuilder = new DbContextOptionsBuilder<LeadersCornerDbContext>()
@@ -94,6 +85,7 @@ namespace LeadersCorner.Web.Tests
            .ShouldReturn()
            .View(v => v
                .WithModelOfType<AllArticleQueryModel>());
+
         [Fact]
         public void AllCategoryAndSortingTypeShouldReturnCorrectViewModel()
        => MyController<ArticleController>
@@ -113,17 +105,18 @@ namespace LeadersCorner.Web.Tests
                .View(v => v
               .WithModelOfType<CreateArticleFormModel>());
         }
+
         [Fact]
-        
         public void ArticleCouldnotBeNullOrEmpty()
         {
             Assert.Throws<NullReferenceException>(() =>
             {
                 Article article = new Article();
-                data.Articles.Add(article);
-                data.SaveChanges();
+                this.data.Articles.Add(article);
+                this.data.SaveChanges();
             });
         }
+
         [Fact]
 
         public void ModelCouldnotBeNullOrEmpty()
@@ -131,11 +124,10 @@ namespace LeadersCorner.Web.Tests
             Assert.Throws<NullReferenceException>(() =>
             {
                 Article article = new Article();
-                data.Articles.Add(article);
-                data.SaveChanges();
+                this.data.Articles.Add(article);
+                this.data.SaveChanges();
             });
         }
-
 
         [Fact]
         public void DetailsShouldReturnNotFoundWhenInvalidArticleId()
@@ -155,6 +147,7 @@ namespace LeadersCorner.Web.Tests
                 .View(view => view
                     .WithModelOfType<CurrentArticleViewModel>()
                     .Passing(article => article.Id == 1));
+
         [Fact]
         public void CreateGetShouldHaveRestrictionsForHttpGetOnlyAndAuthorizedUsersAndShouldReturnView()
            => MyController<ArticleController>
@@ -196,4 +189,5 @@ namespace LeadersCorner.Web.Tests
               .AndAlso()
               .ShouldReturn()
               .View(With.Default<CreateArticleFormModel>());
-    } }
+    }
+}

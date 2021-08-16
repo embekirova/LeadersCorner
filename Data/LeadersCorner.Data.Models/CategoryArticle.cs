@@ -13,7 +13,6 @@
         [DisplayName("Category")]
         public int CategoryID { get; set; }
 
-
         [DisplayName("Category")]
         public virtual Category Category { get; set; }
 

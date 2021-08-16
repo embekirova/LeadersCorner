@@ -1,12 +1,11 @@
-﻿using System.Data.Entity;
-using System.Threading.Tasks;
-
-namespace LeadersCorner.Services.Data
+﻿namespace LeadersCorner.Services.Data
 {
+    using System.Threading.Tasks;
+
     public interface ICommentService
     {
         Task Create(string commentcontent, int articleId, int courseId, int userId);
-        Task DeleteCommentAsync(int commentId);
 
+        Task DeleteCommentAsync(int commentId);
     }
 }

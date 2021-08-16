@@ -1,20 +1,18 @@
 namespace LeadersCorner.Web.Tests
 {
+    using System;
+
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Web.Controllers;
     using LeadersCorner.Web.ViewModels.Course;
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using MyTested.AspNetCore.Mvc;
-    using System;
-    using System.Threading.Tasks;
     using Xunit;
 
     public class CourseControllerTest
     {
         private LeadersCornerDbContext data;
-
 
         [Fact]
         public void CourseCreateValidReturn()
@@ -26,7 +24,7 @@ namespace LeadersCorner.Web.Tests
                 DurationInWeeks = 3,
                 CategoryId = 2,
                 AuthorId = 2,
-                CourseContent = "The course will be set at every Monday at 6.00 p.m. for the next 3 week..."
+                CourseContent = "The course will be set at every Monday at 6.00 p.m. for the next 3 week...",
             };
 
             var optionBuilder = new DbContextOptionsBuilder<LeadersCornerDbContext>()
@@ -37,8 +35,6 @@ namespace LeadersCorner.Web.Tests
 
             dbContext.Courses.Add(model);
             dbContext.SaveChanges();
-
-           // var controller = new CourseController(dbContext);
 
             Course result = dbContext.Courses.Find(564);
 
@@ -85,6 +81,7 @@ namespace LeadersCorner.Web.Tests
            .ShouldReturn()
            .View(v => v
                .WithModelOfType<AllCourseQueryModel>());
+
         [Fact]
         public void AllCategoryAndSortingTypeShouldReturnCorrectViewModel()
        => MyController<CourseController>
@@ -95,13 +92,14 @@ namespace LeadersCorner.Web.Tests
            .View(v => v
                .WithModelOfType<AllCourseQueryModel>());
 
+        [Fact]
         public void ModelCouldnotBeNullOrEmpty()
         {
             Assert.Throws<NullReferenceException>(() =>
             {
                 Course course = new Course();
-                data.Courses.Add(course);
-                data.SaveChanges();
+                this.data.Courses.Add(course);
+                this.data.SaveChanges();
             });
         }
 

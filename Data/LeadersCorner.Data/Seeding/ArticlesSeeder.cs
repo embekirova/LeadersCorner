@@ -33,7 +33,7 @@
             });
             await dbContext.AddAsync(new Article
             {
-                Title = "What are the most important part of Time Management",
+                Title = "The most important part of Time Management",
                 ArticleContent = "Time management is the process of planning and exercising " +
                 "conscious control of time spent on specific activities, especially to increase " +
                 "effectiveness, efficiency, and productivity. It involves a juggling act of " +
@@ -214,7 +214,7 @@
             });
             await dbContext.AddAsync(new Article
             {
-                Title = "Long hours of wokring is the most common reason for burnout",
+                Title = "Long hours - the reason for burnout",
                 ArticleContent = "Although the importance of individual differences cannot be ignored, scientific evidence suggests that certain working conditions are stressful to most people. ",
                 ImageUrl = "https://images.unsplash.com/photo-1508962914676-134849a727f0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91cnN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
                 AuthorId = 2,

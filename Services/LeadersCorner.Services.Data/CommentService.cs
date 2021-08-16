@@ -1,10 +1,9 @@
 ﻿namespace LeadersCorner.Services.Data
 {
+    using System.Threading.Tasks;
+
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
-    using System.Data.Entity;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     public class CommentService : ICommentService
     {
@@ -18,7 +17,6 @@
         public async Task Create(string commentcontent, int articleId, int courseId, int userId)
         {
             var comment = new Comment();
-
 
             if (articleId == 0)
             {
@@ -38,9 +36,11 @@
                     UserId = userId,
                 };
             }
+
             await this.data.Comments.AddAsync(comment);
             await this.data.SaveChangesAsync();
         }
+
         public async Task DeleteCommentAsync(int commentId)
         {
             var comment = this.data
@@ -52,6 +52,5 @@
                 .Remove(comment);
             await this.data.SaveChangesAsync();
         }
-
     }
 }

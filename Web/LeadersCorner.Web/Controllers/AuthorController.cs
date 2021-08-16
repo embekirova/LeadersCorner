@@ -1,16 +1,18 @@
 ﻿namespace LeadersCorner.Web.Controllers
 {
+    using System.Linq;
+
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Web.Infrastructure;
     using LeadersCorner.Web.ViewModels.Author;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
 
     public class AuthorController : BaseController
     {
         private readonly LeadersCornerDbContext data;
+
         public AuthorController(
             LeadersCornerDbContext data)
         => this.data = data;
@@ -61,7 +63,7 @@
             this.data.Authors.Add(authoraData);
             this.data.SaveChanges();
 
-            return View("LoggedAuthor");
+            return this.View("LoggedAuthor");
         }
 
         public IActionResult All() => this.View();

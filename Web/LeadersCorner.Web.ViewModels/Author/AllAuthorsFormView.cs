@@ -1,11 +1,11 @@
 ﻿namespace LeadersCorner.Web.ViewModels.Author
 {
-    using LeadersCorner.Data.Common;
     using System.ComponentModel.DataAnnotations;
+
+    using LeadersCorner.Data.Common;
 
     public class AllAuthorsFormView
     {
-
         [Required]
         [MinLength(DataConstants.Author.NameMin)]
         [MaxLength(DataConstants.Author.NameMax)]
@@ -15,6 +15,5 @@
         [MinLength(DataConstants.Author.NameMin)]
         [MaxLength(DataConstants.Author.NameMax)]
         public string LastName { get; set; }
-
     }
 }

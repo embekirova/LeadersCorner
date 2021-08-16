@@ -19,7 +19,7 @@
         {
             public const int ContentMinLength = 2;
         }
-      
+
         public class Course
         {
             public const int TitleMinLength = 7;
