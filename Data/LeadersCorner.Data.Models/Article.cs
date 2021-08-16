@@ -1,5 +1,6 @@
 ﻿namespace LeadersCorner.Data.Models
 {
+    using LeadersCorner.Data.Common;
     using LeadersCorner.Data.Common.Models;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -26,9 +27,12 @@
         public Author Author { get; set; }
 
         [Required]
+        [MinLength(DataConstants.Article.TitleMinLength)]
+        [MaxLength(DataConstants.Article.TitleMaxLength)]
         public string Title { get; set; }
 
         [Required]
+        [MinLength(DataConstants.Article.TitleMinLength)]
         public string ArticleContent { get; set; }
 
         [DisplayName("Photo")]

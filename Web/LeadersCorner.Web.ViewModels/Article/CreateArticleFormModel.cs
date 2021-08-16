@@ -17,15 +17,18 @@
         [Required]
         [MinLength(DataConstants.Article.TitleMinLength)]
         [MaxLength(DataConstants.Article.TitleMaxLength)]
+        [Compare("Title", ErrorMessage = "Title of the article should be between 10 and 50 symbols")]
         public string Title { get; set; }
 
         [Required]
         [MinLength(DataConstants.Article.ContentMinLength)]
         [DisplayName("Artile")]
+        [Compare("Artile", ErrorMessage = "Artile length should be more than 10")]
         public string ArticleContent { get; set; }
 
         [Required]
         [DisplayName("Category")]
+        [Compare("CategoryId", ErrorMessage = "Please select category from the list")]
         public int CategoryId { get; set; }
 
         public List<Category> Categories = new List<Category>();

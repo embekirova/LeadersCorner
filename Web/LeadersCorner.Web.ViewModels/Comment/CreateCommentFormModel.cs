@@ -1,8 +1,10 @@
 ﻿namespace LeadersCorner.Web.ViewModels.Comment
 {
-    using LeadersCorner.Data.Common;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+
+    using Ganss.XSS;
+    using LeadersCorner.Data.Common;
 
     public class CreateCommentFormModel
     {
@@ -18,6 +20,9 @@
         public string CommentContent { get; set; }
 
         public int ArticleID { get; set; }
+
         public int CourseID { get; set; }
+
+        public string SanitazedContent => new HtmlSanitizer().Sanitize(this.CommentContent);
     }
 }

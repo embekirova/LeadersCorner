@@ -12,7 +12,6 @@ namespace LeadersCorner.Web.ViewModels.Home
         public List<Data.Models.Article> Articles { get; set; } = new List<Data.Models.Article>();
         public List<Data.Models.Course> Courses { get; set; } = new List<Data.Models.Course>();
 
-      //  public string Panel1 {get; set;}
 
     }
 }

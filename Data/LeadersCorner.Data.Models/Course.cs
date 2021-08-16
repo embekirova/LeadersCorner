@@ -1,5 +1,6 @@
 ﻿namespace LeadersCorner.Data.Models
 {
+    using LeadersCorner.Data.Common;
     using LeadersCorner.Data.Common.Models;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -16,12 +17,15 @@
         }
 
         [Required]
+        [MinLength(DataConstants.Course.TitleMinLength)]
+        [MaxLength(DataConstants.Course.TitleMaxLength)]
         public string Title { get; set; }
 
         [Required]
         public int DurationInWeeks { get; set; }
 
         [Required]
+        [MinLength(DataConstants.Course.ContentMinLength)]
         public string CourseContent { get; set; }
 
         [Required]
