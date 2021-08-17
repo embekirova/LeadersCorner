@@ -120,10 +120,9 @@
             return this.View(viewNodel);
         }
 
-        [HttpPost]
         [Authorize(Roles = "Administrator")]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> DeleteCommentAsync(int id)
+        public async Task<IActionResult> DeleteComment(int id, int articleId)
         {
             var commentArticle = this.data.Comments.Find(id).ArticleID;
             var commentCours = this.data.Comments.Find(id).CourseId;

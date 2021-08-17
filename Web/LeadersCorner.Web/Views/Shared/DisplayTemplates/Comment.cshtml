@@ -25,16 +25,16 @@
                     <a
                         asp-route-id="@Model.Id"
                         asp-route-articleId="@Model.ArticleID"
-                        
                         id="@Model.Id" asp-action="DeleteComment" asp-controller="Article" class="btn btn-secondary">Delete comment</a>
                      }
                 else
                 {
-                    <p>
-                        asp-route-courseId="@Model.CourseId"
+                        <a 
+                           
+                           asp-route-courseId="@Model.CourseId"
                         asp-route-id="@Model.Id"
-                        <a id="@Model.Id" asp-action="DeleteComment" asp-controller="Course" class="btn btn-secondary">Delete comment</a>
-                    </p>
+                         id="@Model.Id" asp-action="DeleteComment" asp-controller="Course" class="btn btn-secondary">Delete comment</a>
+                    
                 }
 
             </div>
