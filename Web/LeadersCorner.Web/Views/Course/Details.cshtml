@@ -7,23 +7,28 @@
 }
 <article>
     <p class="h1" text-align: center>@Model.Title</p>
-    <img src="@Model.ImageUrl" class="img-fluid">
-        <h6>The duration of the course is @Model.DurationInWeeks weeks.</h6>
-        <p>@Html.Raw(Model.SanitazedContent)</p>
+    <img src="@Model.ImageUrl" class="img-fluid mt-2">
+        <h6 class="mt-2">The duration of the course is @Model.DurationInWeeks weeks.</h6>
+        <p class="mt-2">@Html.Raw(Model.SanitazedContent)</p>
         <partial name="CommentPartialCourse"/>
 </article>
 
-<div id="CreateCommentFormModel">
-    <form asp-controller="Comment" asp-action="CreateComment" method="post">
-        <input type="hidden" name="CourseId" value="@Model.Id" />
-        <input type="hidden" name="ArticleId" value="@Model.Id" />
-        <input type="hidden" name="UserId" value="@Model.AuthorId" />
-        <div>
-            <label for="CommentContent"></label>
-            <textarea name="CommentContent" id="CommentContent" class="form-control"></textarea>
+<div class="row">
+    <div class="col col-lg-8 col-12">
+        <div id="CreateCommentFormModel">
+            <form asp-controller="Comment" asp-action="CreateComment" method="post">
+                <input type="hidden" name="CourseId" value="@Model.Id" />
+                <input type="hidden" name="ArticleId" value="@Model.Id" />
+                <input type="hidden" name="UserId" value="@Model.AuthorId" />
+                <div>
+                    <label for="CommentContent"></label>
+                    <textarea name="CommentContent" id="CommentContent" class="form-control"></textarea>
+                </div>
+                <div class="mt-4">
+                    <input type="submit" value="Add comment" class="btn btn-primary" />
+                </div>
+            </form>
         </div>
-        <div>
-            <input type="submit" value="Add comment" class="btn btn-primary" />
-        </div>
-    </form>
+    </div>
 </div>
+        

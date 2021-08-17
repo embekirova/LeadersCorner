@@ -10,7 +10,7 @@
 
 
 <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
-<ul class="navbar-nav">
+<ul class="navbar-nav ms-md-auto">
     @if (this.SignInManager.IsSignedIn(User))
     {
         var userId = User.GetId();

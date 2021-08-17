@@ -4,35 +4,34 @@
 @model LeadersCorner.Web.ViewModels.Course.AllCourseQueryModel
 
 <div class="row">
-    <form method="get" class=" row" enctype="multipart/form-data">
+    <form method="get" class="form-inline col" enctype="multipart/form-data">
         <div class="row">
-            <div class="form-group col-md-4">
-                <div class="form-group">
-                    <div class="dropdown">
-                        <label>Filter by category</label>
-                        <select asp-for="CategoryId" class="form-control">
-                            <option value="">All</option>
-                            @foreach (var category in Model.Categories)
-                            {
-                                <option value="@category.Id">@category.CategoryLabel</option>
-                            }
-                        </select>
-                    </div>
+            <div class="col col-lg-5 col-12">
+                <div class="dropdown">
+                    <label for="categoryId" class="form-label mt-4">Filter by category</label>
+                    <select asp-for="CategoryId" class="form-control mb-2 mr-sm-2">
+                        <option value="">All</option>
+                        @foreach (var category in Model.Categories)
+                        {
+            <option value="@category.Id">@category.CategoryLabel</option>}
+                    </select>
                 </div>
-                <div class="form-group col-md-4">
-                    <div class="form-group">
-                        <div class="dropdown">
-                            <label asp-for="Sorting">Sort by</label>
-                            <select asp-for="Sorting" class="form-control">
-                                <option value="0">Random</option>
-                                <option value="2">Newest first</option>
-                                <option value="1">Oldest first</option>
-                                @* <option value="3">Author</option>*@
-                            </select>
-                            <button class="btn btn-primary btn-filter" type="submit">Filter</button>
-                        </div>
-                    </div>
+            </div>
+            <div class="col col-lg-5 col-12">
+                <div class="dropdown">
+                    <label asp-for="Sorting" class="form-label mt-4">Sort by</label>
+                    <select asp-for="Sorting" class="form-control mb-2 mr-sm-2">
+                        <option value="0">Random</option>
+                        <option value="2">Newest first</option>
+                        <option value="1">Oldest first</option>
+                    </select>
+
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-lg-2 mt-4">
+                <button class="btn btn-primary btn-filter" type="submit">Filter</button>
             </div>
 
         </div>
@@ -40,38 +39,38 @@
 </div>
 
 
-
-@foreach (var course in Model.Courses)
-{
-    <div class="col-md-5">
-        <div class="card mb-6">
+<div class="row mt-5">
+    @foreach (var course in Model.Courses)
+    {
+    <div class="col-lg-6 col-12">
             <h5 class="card-title text-center"><b>@course.Title</b></h5>
             <img class="card-img-top" src="@course.ImageUrl" alt="@course.Title">
-            <label asp-for="DurationInWeeks">@course.DurationInWeeks</label>
-            <div class="card-body text-center">
+            <label asp-for="DurationInWeeks">Duration: @course.DurationInWeeks weeks</label>
+            <div class="float-end mt-4">
 
                 <a asp-controller="Course"
                    asp-action="Details"
                    asp-route-id="@course.Id"
                    class="btn btn-primary">View More</a>
             </div>
-        </div>
     </div>
+   }
 
+</div>
 
-}
-@{
-    var previousPage = Model.CurrentPage - 1;
+@{ var previousPage = Model.CurrentPage - 1;
     if (previousPage < 1)
     {
         previousPage = 1;
     }
 
-    var maxPage = Math.Ceiling((double)Model.TotalCourses / LeadersCorner.Web.ViewModels.Course.AllCourseQueryModel.CoursesPerPage);
-}
+    var maxPage = Math.Ceiling((double)Model.TotalCourses / LeadersCorner.Web.ViewModels.Course.AllCourseQueryModel.CoursesPerPage); }
 
-<div class="row mb=5">
-    <div class="col-md-6">
+@{ var shouldButtonBeDisabled = Model.CurrentPage == maxPage ||
+                                              !Model.Courses.Any(); }
+
+<div class="row mt-5">
+    <div class="col col-auto">
         <a class="btn btn-primary @(Model.CurrentPage == 1? "disabled" : string.Empty)"
            asp-controller="Course"
            asp-action="All"
@@ -79,21 +78,12 @@
            asp-route-category="@Model.CategoryId"
            asp-route-sorting="@((int)Model.Sorting)">Previuos page</a>
         >
-
     </div>
-</div>
-
-
-<div class="form-group">
-    <label asp-for="CurrentPage" class="form-control">@Model.CurrentPage</label>
-</div>
-@{
-    var shouldButtonBeDisabled = Model.CurrentPage == maxPage ||
-                                 !Model.Courses.Any();
-}
-<div class="row">
-    <div class="col-md-6">
-        <a class="btn btn-primary float-right @(shouldButtonBeDisabled? "disabled" : string.Empty)" style="margin-top: 10px"
+    <div class="col col-auto">
+        <label asp-for="CurrentPage" class="form-control">@Model.CurrentPage</label>
+    </div>
+    <div class="col col-auto">
+        <a class="btn btn-primary @(shouldButtonBeDisabled? "disabled" : string.Empty)"
            asp-controller="Course"
            asp-action="All"
            asp-route-currentPage="@(Model.CurrentPage + 1)"
@@ -102,11 +92,12 @@
     </div>
 </div>
 
+
 @if (!Model.Courses.Any())
 {
     <h2 class="text-center">No courses was found by the given criteria!</h2>
 }
 
 @section message {
-    We have more than @(Model.TotalCourses-1) courses!
+    More than @(Model.TotalCourses-1) courses!
 }

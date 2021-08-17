@@ -23,6 +23,7 @@
 
         [Required]
         [DisplayName("Duration in weeks")]
+        [Range(1, int.MaxValue, ErrorMessage = "Only positive number allowed")]
         public int DurationInWeeks { get; set; }
 
         [Required]

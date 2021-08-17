@@ -18,12 +18,13 @@ namespace LeadersCorner.Web.Areas.Identity.Pages.Account.Manage
 
         public IndexModel(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            LeadersCornerDbContext data
+            )
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-            var user = this.userManager.GetUserAsync(User);
-            // var currentUser = data.Users.Select(c => c.Id == userId);
+            this.data = data;
         }
 
         public string Username { get; set; }
@@ -34,22 +35,15 @@ namespace LeadersCorner.Web.Areas.Identity.Pages.Account.Manage
         [TempData]
         public string StatusMessage { get; set; }
 
-        [BindProperty]
-        public InputModel Input { get; set; }
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
 
-        public class InputModel
-        {
-            [Phone]
-            [Display(Name = "Phone Number")]
-            public string PhoneNumber { get; set; }
+        [Display(Name = "Last Name")]
+        public string UserLastName { get; set; }
 
-            [Display(Name = "Last Name")]
-            public string UserLastName { get; set; }
-
-
-            [Display(Name = "Profession")]
-            public string Profession { get; internal set; }
-        }
+        [Display(Name = "Profession")]
+        public string Profession { get; internal set; }
 
         private async Task LoadAsync(ApplicationUser user)
         {
@@ -57,13 +51,10 @@ namespace LeadersCorner.Web.Areas.Identity.Pages.Account.Manage
             var phoneNumber = await this.userManager.GetPhoneNumberAsync(user);
 
             this.Username = userName;
-
-            this.Input = new InputModel
-            {
-                PhoneNumber = phoneNumber,
-                UserLastName = user.UserLastName,
-                Profession = user.Profession,
-            };
+            this.UserFirstName = user.UserFirstName;
+            this.UserLastName = user.UserLastName;
+            this.Profession = user.Profession;
+            this.PhoneNumber = user.PhoneNumber;
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -78,9 +69,10 @@ namespace LeadersCorner.Web.Areas.Identity.Pages.Account.Manage
             return this.Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string userFirstName, string userLastName, string phoneNumber, string profession)
         {
             var user = await this.userManager.GetUserAsync(User);
+            
             if (user == null)
             {
                 return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(User)}'.");
@@ -89,38 +81,57 @@ namespace LeadersCorner.Web.Areas.Identity.Pages.Account.Manage
             if (!this.ModelState.IsValid)
             {
                 await this.LoadAsync(user);
+                
                 return this.Page();
             }
 
-            var phoneNumber = await this.userManager.GetPhoneNumberAsync(user);
-            if (Input.PhoneNumber != phoneNumber)
+            if (this.ModelState.IsValid)
             {
-                var setPhoneResult = await this.userManager.SetPhoneNumberAsync(user, this.Input.PhoneNumber);
-                if (!setPhoneResult.Succeeded)
+              if(  await TryUpdateModelAsync<ApplicationUser>(
+                    user,
+                    "",
+                    c=> c.UserFirstName, c=>c.UserLastName, c=>c.Profession, c => c.PhoneNumber))
                 {
-                    this.StatusMessage = "Unexpected error when trying to set data.";
-                    return this.RedirectToPage();
-                }
-            }
+                    user.UserFirstName = userFirstName;
+                    user.UserLastName = userLastName;
+                    user.Profession = profession;
+                    user.PhoneNumber = phoneNumber;
 
-            if (this.Input.UserLastName == user.UserLastName || this.Input.UserLastName != "")
-            {
-                this.StatusMessage = "Unexpected error when trying to set phone number.";
-                return this.RedirectToPage();
+                }
+                await this.data.SaveChangesAsync();
             }
-            else
-            {
-                user.UserLastName = this.Input.UserLastName;
-            }
-            if (this.Input.Profession == user.Profession || this.Input.UserLastName != "")
-            {
-                this.StatusMessage = "Unexpected error when trying to set phone number.";
-                return this.RedirectToPage();
-            }
-            else
-            {
-                user.Profession = this.Input.Profession;
-            }
+           // var setPhoneResult = await this.userManager.SetPhoneNumberAsync(user, this.PhoneNumber);
+          
+           
+            //var phoneNumber = await this.userManager.GetPhoneNumberAsync(user);
+            //if (Input.PhoneNumber != phoneNumber)
+            //{
+            //    var setPhoneResult = await this.userManager.SetPhoneNumberAsync(user, this.Input.PhoneNumber);
+            //    if (!setPhoneResult.Succeeded)
+            //    {
+            //        this.StatusMessage = "Unexpected error when trying to set data.";
+            //        return this.RedirectToPage();
+            //    }
+            //}
+
+            //if (this.Input.UserLastName == user.UserLastName || this.Input.UserLastName != "")
+            //{
+            //    this.StatusMessage = "Unexpected error when trying to set phone number.";
+            //    return this.RedirectToPage();
+            //}
+            //else
+            //{
+            //    user.UserLastName = this.Input.UserLastName;
+            //}
+            //if (this.Input.Profession == user.Profession || this.Input.UserLastName != "")
+            //{
+            //    this.StatusMessage = "Unexpected error when trying to set phone number.";
+            //    return this.RedirectToPage();
+            //}
+            //else
+            //{
+            //    user.Profession = this.Input.Profession;
+            //}
 
             await this.signInManager.RefreshSignInAsync(user);
             this.StatusMessage = "Your profile has been updated";
