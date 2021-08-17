@@ -65,7 +65,8 @@
 
             if (!this.data.Categories.Any(c => c.Id == c.Id))
             {
-                this.ModelState.AddModelError(nameof(article.Id), "Category does not exist.");
+                this.ModelState.AddModelError(nameof(article.Id), "C" +
+                    "ategory does not exist.");
             }
 
             if (!this.ModelState.IsValid)

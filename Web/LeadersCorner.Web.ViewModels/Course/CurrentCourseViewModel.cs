@@ -1,7 +1,7 @@
 ﻿namespace LeadersCorner.Web.ViewModels.Course
 {
     using System.Collections.Generic;
-
+    using Ganss.XSS;
     using LeadersCorner.Data.Models;
 
     public class CurrentCourseViewModel
@@ -21,5 +21,7 @@
         public ICollection<Comment>? Comments { get; set; }
 
         public Comment NewComment { get; set; }
+
+        public string SanitazedContent => new HtmlSanitizer().Sanitize(this.CourseContent);
     }
 }

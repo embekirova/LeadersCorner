@@ -9,7 +9,7 @@
     <p class="h1" text-align: center>@Model.Title</p>
     <img src="@Model.ImageUrl" class="img-fluid">
         <h6>The duration of the course is @Model.DurationInWeeks weeks.</h6>
-        <p>@Model.CourseContent</p>
+        <p>@Html.Raw(Model.SanitazedContent)</p>
         <partial name="CommentPartialCourse"/>
 </article>
 

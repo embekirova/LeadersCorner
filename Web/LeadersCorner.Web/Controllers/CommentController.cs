@@ -9,6 +9,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using LeadersCorner.Web.Infrastructure;
 
     public class CommentController : BaseController
     {
@@ -28,7 +29,9 @@
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> CreateComment(CreateCommentFormModel comment)
         {
-            await this.commentService.Create(comment.CommentContent, comment.ArticleID, comment.CourseID, comment.UserId);
+            var userId = this.User.GetId();
+            
+            await this.commentService.Create(comment.CommentContent, comment.ArticleID, comment.CourseID, userId);
             if (comment.ArticleID != 0)
             {
                 return this.RedirectToAction("Details", "Article", new { id = comment.ArticleID });

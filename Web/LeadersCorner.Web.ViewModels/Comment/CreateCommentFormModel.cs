@@ -11,7 +11,7 @@
     {
         public int Id { get; set; }
 
-        public int UserId { get; }
+        public string UserId { get; }
 
         public string UseName { get; set; }
 

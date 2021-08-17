@@ -1,4 +1,12 @@
 ﻿@using LeadersCorner.Common
+@using LeadersCorner.Services.Data
+@using Microsoft.AspNetCore.Identity
+@using LeadersCorner.Web.Infrastructure
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@inject IAuthorService Authors
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,10 +29,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
-                    @*<form class="d-flex">
-                        <input class="form-control me-sm-2" type="text" placeholder="Search">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                    </form>*@
+
                     <div>
                         <span class="me-auto">
                             @RenderSection("message", required: false)
@@ -35,20 +40,23 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        @if (this.User.Identity.IsAuthenticated)
+                        
+                        @if (this.SignInManager.IsSignedIn(User))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Article" asp-action="Create">Create an article</a>
-                            </li>
+                            var userId = User.GetId();
+                            var userIsAuthor = Authors.IsAuthor(userId);
+                            if (userIsAuthor)
+                            {<li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Article" asp-action="Create">Create an article</a>
+                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Course" asp-action="Create">Create a course</a>
-                            </li>
+                            </li>}
 
-                        }
-
+                            }
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Article" asp-action="All">All articles</a>
-                        </li
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Course" asp-action="All">All courses</a>
                         </li>

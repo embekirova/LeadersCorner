@@ -22,8 +22,8 @@ namespace LeadersCorner.Web.Areas.Identity.Pages.Account.Manage
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-            var userId = this.User.GetId();
-            var currentUser = data.Users.Select(c => c.Id == userId);
+            var user = this.userManager.GetUserAsync(User);
+            // var currentUser = data.Users.Select(c => c.Id == userId);
         }
 
         public string Username { get; set; }

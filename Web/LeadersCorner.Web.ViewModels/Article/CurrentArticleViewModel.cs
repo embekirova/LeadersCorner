@@ -1,7 +1,7 @@
 ﻿namespace LeadersCorner.Web.ViewModels.Article
 {
     using System.Collections.Generic;
-
+    using Ganss.XSS;
     using LeadersCorner.Data.Models;
     using LeadersCorner.Services.Mapping;
 
@@ -20,5 +20,7 @@
         public ICollection<Comment>? Comments { get; set; }
 
         public Comment NewComment { get; set; }
+
+        public string SanitazedContent => new HtmlSanitizer().Sanitize(this.ArticleContent);
     }
 }

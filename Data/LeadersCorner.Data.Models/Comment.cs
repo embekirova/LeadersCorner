@@ -9,10 +9,10 @@
     {
         public string UserName { get; set; }
 
-        public string FirstName { get; set; }
+        public string UserFirstName { get; set; }
 
         [Required]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         [MinLength(DataConstants.Comment.ContentMinLength)]

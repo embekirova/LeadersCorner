@@ -14,9 +14,10 @@
             this.data = data;
         }
 
-        public async Task Create(string commentcontent, int articleId, int courseId, int userId)
+        public async Task Create(string commentcontent, int articleId, int courseId, string userId)
         {
             var comment = new Comment();
+            var userFirstNameLocal = this.data.Users.Find(userId);
 
             if (articleId == 0)
             {
@@ -25,6 +26,7 @@
                     CommentContent = commentcontent,
                     CourseId = courseId,
                     UserId = userId,
+                    UserFirstName = userFirstNameLocal.UserFirstName,
                 };
             }
             else
@@ -34,6 +36,7 @@
                     CommentContent = commentcontent,
                     ArticleID = articleId,
                     UserId = userId,
+                    UserFirstName = userFirstNameLocal.UserFirstName,
                 };
             }
 
