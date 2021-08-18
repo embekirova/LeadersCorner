@@ -56,5 +56,10 @@
                 return this.RedirectToAction("Details", "Course", new { id = courseId });
             }
         }
+
+        public void CreateComment()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

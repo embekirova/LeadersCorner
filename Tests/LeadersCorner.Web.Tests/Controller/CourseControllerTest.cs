@@ -140,5 +140,17 @@ namespace LeadersCorner.Web.Tests
               .AndAlso()
               .ShouldReturn()
               .View();
+
+        [Fact]
+        public void GetCreatArticleShouldReturnView() =>
+        MyPipeline
+        .Configuration()
+        .ShouldMap(request => request
+        .WithPath("/Course/Create")
+        .WithUser())
+        .To<CourseController>(c => c.Create())
+        .Which()
+        .ShouldReturn()
+        .View();
     }
 }

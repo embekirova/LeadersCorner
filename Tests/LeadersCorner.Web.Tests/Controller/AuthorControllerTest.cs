@@ -4,7 +4,9 @@ namespace LeadersCorner.Web.Tests
 
     using LeadersCorner.Data;
     using LeadersCorner.Data.Models;
+    using LeadersCorner.Web.Controllers;
     using Microsoft.EntityFrameworkCore;
+    using MyTested.AspNetCore.Mvc;
     using Xunit;
 
     public class AuthorControllerTest
@@ -30,7 +32,7 @@ namespace LeadersCorner.Web.Tests
             dbContext.Authors.Add(model);
             dbContext.SaveChanges();
 
-           // var controller = new CourseController(dbContext);
+            // var controller = new CourseController(dbContext);
 
             Author result = dbContext.Authors.Find(564);
 
@@ -48,5 +50,19 @@ namespace LeadersCorner.Web.Tests
                 this.data.SaveChanges();
             });
         }
+
+        [Fact]
+        public void GetCreateMembersShouldReturnView() =>
+        MyPipeline
+        .Configuration()
+        .ShouldMap(request => request
+        .WithPath("/Author/Become")
+        .WithUser())
+        .To<AuthorController>(c => c.Become())
+        .Which()
+        .ShouldReturn()
+        .View();
+
+
     }
 }

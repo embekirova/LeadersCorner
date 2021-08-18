@@ -157,5 +157,18 @@ namespace LeadersCorner.Web.Tests
                 .View(view => view
                     .WithModelOfType<CurrentArticleViewModel>()
                     .Passing(article => article.Id == 1));
+
+        [Fact]
+        public void GetCreatArticleShouldReturnView() =>
+        MyPipeline
+        .Configuration()
+        .ShouldMap(request => request
+        .WithPath("/Article/Create")
+        .WithUser())
+        .To<ArticleController>(c => c.Create())
+        .Which()
+        .ShouldReturn()
+        .View();
+
     }
 }
