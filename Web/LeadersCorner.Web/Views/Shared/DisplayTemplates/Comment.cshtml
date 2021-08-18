@@ -4,39 +4,32 @@
 
 
 
-            <div class="card mb-4">
-                <div class=" card-header">
-                    <div class="media flex-wrap w-100 align-items-lg-center">
-                        <div class="media-body ml-3">
-                            @Model.UserFirstName
-                        </div>
-                    </div>
-                </div>
-                <div class=" card-body">
-                    @Model.CommentContent
-                </div>
-                @if (User.IsInRole("Administrator"))
-                {
-            <div>
-                @if (@Model.ArticleID != 0)
-                {
-                    <a
-                        asp-route-id="@Model.Id"
-                        asp-route-articleId="@Model.ArticleID"
-                        id="@Model.Id" asp-action="DeleteComment" asp-controller="Article" class="btn btn-secondary">Delete comment</a>
-                     }
+<div class="card mb-4">
+    <div class=" card-header">
+        <div class="media flex-wrap w-100 align-items-lg-center">
+            <div class="media-body ml-3">
+                @Model.UserFirstName
+            </div>
+        </div>
+    </div>
+    <div class=" card-body">
+        @Model.CommentContent
+    </div>
+    @if (User.IsInRole("Administrator"))
+    {
+<div>
+    @if (@Model.ArticleID != 0)
+    {
+<a asp-route-id="@Model.Id"
+   asp-route-articleId="@Model.ArticleID"
+   id="@Model.Id" asp-action="DeleteComment" asp-controller="Article" class="btn btn-secondary">Delete comment</a> }
                 else
                 {
-                        <a 
-                           
-                           asp-route-courseId="@Model.CourseId"
-                        asp-route-id="@Model.Id"
-                         id="@Model.Id" asp-action="DeleteComment" asp-controller="Course" class="btn btn-secondary">Delete comment</a>
-                    
-                }
+<a asp-route-courseId="@Model.CourseId"
+   asp-route-id="@Model.Id"
+   id="@Model.Id" asp-action="DeleteComment" asp-controller="Course" class="btn btn-secondary">Delete comment</a>                }
 
-            </div>
-        }
-            </div>
+</div>}
+</div>
 
 

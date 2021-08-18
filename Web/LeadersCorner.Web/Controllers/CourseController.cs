@@ -110,6 +110,8 @@ namespace LeadersCorner.Web.Controllers
 
             var courseQuery = this.data.Courses.AsQueryable();
             var courses = new List<Course>();
+            var totalcoursesOfAll = courseQuery.Count();
+            var totalcourses = courseQuery.Count();
 
             if (sorting != 0 && sorting != 1 && sorting == 2)
             {
@@ -127,6 +129,10 @@ namespace LeadersCorner.Web.Controllers
 
             if (categoryId == 0)
             {
+                totalcourses = this.data
+               .Courses
+               .Count();
+
                 courses = this.data
                .Courses
                .Skip((currentPage - 1) * AllCourseQueryModel.CoursesPerPage)
@@ -136,6 +142,11 @@ namespace LeadersCorner.Web.Controllers
             }
             else
             {
+                totalcourses = this.data
+               .Courses
+               .Where(c => c.CategoryId == categoryId)
+               .Count();
+
                 courses = this.data
                     .Courses
                     .Where(c => c.CategoryId == categoryId)
@@ -145,8 +156,6 @@ namespace LeadersCorner.Web.Controllers
                     .ToList();
             }
 
-            var totalcourses = courseQuery.Count();
-
             return this.View(new AllCourseQueryModel
             {
                 CategoryId = categoryId,
@@ -155,11 +164,17 @@ namespace LeadersCorner.Web.Controllers
                 Sorting = sortingType,
                 CurrentPage = currentPage,
                 TotalCourses = totalcourses,
+                TotalCoursesOfAll = totalcoursesOfAll,
             });
         }
 
         public IActionResult Details(string id)
         {
+
+            if (!this.data.Courses.Any(c => c.Id == int.Parse(id)))
+            {
+                return this.View("_NotFound");
+            }
             var comments = this.data
                 .Comments
                 .Where(c => c.CourseId == int.Parse(id))

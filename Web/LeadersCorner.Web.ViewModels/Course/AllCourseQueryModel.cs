@@ -47,6 +47,8 @@ namespace LeadersCorner.Web.ViewModels.Course
 
         public int TotalCourses { get; set; }
 
+        public int TotalCoursesOfAll { get; set; }
+
         public int CategoryId { get; set; }
 
         [DisplayName("Category")]

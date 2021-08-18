@@ -46,6 +46,8 @@
 
         public int TotalArticles { get; set; }
 
+        public int TotalArticlesOfAll { get; set; }
+
         public int CategoryId { get; set; }
 
         [DisplayName("Category")]

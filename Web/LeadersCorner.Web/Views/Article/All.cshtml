@@ -94,12 +94,12 @@
     </div>
 </div>
 
-@if (!Model.Articles.Any())
+@if (Model.TotalArticles == 0)
 {
     <h2 class="text-center">No articles found by the given criteria!</h2>
 }
 
 
 @section message {
-    More than @(Model.TotalArticles-1) articles!
+    More than @(Model.TotalArticlesOfAll-1) articles!
 }

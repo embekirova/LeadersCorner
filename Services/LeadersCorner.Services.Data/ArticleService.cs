@@ -30,6 +30,8 @@
             var articleQuery = this.data.Articles.AsQueryable();
             var articles = new List<Article>();
             articles = this.data.Articles.ToList();
+            var totalArticles = articleQuery.Count();
+            var totalArticlesOfAll = articleQuery.Count();
 
             if (sorting != 0 && sorting != 1 && sorting == 2)
             {
@@ -46,14 +48,24 @@
 
             if (categoryId == 0)
             {
+                totalArticles = articles.
+                    OrderByDescending(article => article.Id)
+                    .Count();
+
                 articles = articles
                .Skip((currentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
                .Take(AllArticleQueryModel.ArticlesPerPage)
                .OrderByDescending(article => article.Id)
                .ToList();
+
             }
             else
             {
+                totalArticles = articles
+                   .Where(c => c.CategoryId == categoryId)
+                   .OrderByDescending(article => article.Id)
+                   .Count();
+
                 articles = articles
                     .Where(c => c.CategoryId == categoryId)
                     .Skip((currentPage - 1) * AllArticleQueryModel.ArticlesPerPage)
@@ -61,8 +73,6 @@
                     .OrderByDescending(article => article.Id)
                     .ToList();
             }
-
-            var totalArticles = articleQuery.Count();
 
             var viewModel = new AllArticleQueryModel
             {
@@ -72,6 +82,7 @@
                 Sorting = sortingType,
                 CurrentPage = currentPage,
                 TotalArticles = totalArticles,
+                TotalArticlesOfAll = totalArticlesOfAll,
             };
 
             return viewModel;

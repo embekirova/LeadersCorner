@@ -113,5 +113,32 @@ namespace LeadersCorner.Web.Tests
                 .View(view => view
                     .WithModelOfType<CurrentCourseViewModel>()
                     .Passing(article => article.Id == 1));
+
+        [Fact]
+        public void DetailsShouldReturnNotFoundWhenInvalidCourseeId()
+         => MyController<CourseController>
+             .Calling(c => c.Details("5666666"))
+             .ShouldReturn()
+             .View("_NotFound");
+
+        [Fact]
+        public void DetailsShouldReturnNotFoundWhenCourseIdIsInvalid()
+            => MyController<CourseController>
+                .Instance()
+                .WithUser()
+                .Calling(c => c.Details(9.ToString()))
+                .ShouldReturn()
+                .View("_NotFound");
+
+        [Fact]
+        public void CreateGetShouldHaveRestrictionsForAuthorizedUsersAndShouldReturnView()
+          => MyController<CourseController>
+              .Calling(c => c.Create())
+              .ShouldHave()
+              .ActionAttributes(attrs => attrs
+                  .RestrictingForAuthorizedRequests())
+              .AndAlso()
+              .ShouldReturn()
+              .View();
     }
 }

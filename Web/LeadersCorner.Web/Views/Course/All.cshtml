@@ -13,7 +13,8 @@
                         <option value="">All</option>
                         @foreach (var category in Model.Categories)
                         {
-            <option value="@category.Id">@category.CategoryLabel</option>}
+            <option value="@category.Id">@category.CategoryLabel</option>
+}
                     </select>
                 </div>
             </div>
@@ -42,19 +43,18 @@
 <div class="row mt-5">
     @foreach (var course in Model.Courses)
     {
-    <div class="col-lg-6 col-12">
-            <h5 class="card-title text-center"><b>@course.Title</b></h5>
-            <img class="card-img-top" src="@course.ImageUrl" alt="@course.Title">
-            <label asp-for="DurationInWeeks">Duration: @course.DurationInWeeks weeks</label>
-            <div class="float-end mt-4">
+<div class="col-lg-6 col-12">
+    <h5 class="card-title text-center"><b>@course.Title</b></h5>
+    <img class="card-img-top" src="@course.ImageUrl" alt="@course.Title">
+    <label asp-for="DurationInWeeks">Duration: @course.DurationInWeeks weeks</label>
+    <div class="float-end mt-4">
 
-                <a asp-controller="Course"
-                   asp-action="Details"
-                   asp-route-id="@course.Id"
-                   class="btn btn-primary">View More</a>
-            </div>
+        <a asp-controller="Course"
+           asp-action="Details"
+           asp-route-id="@course.Id"
+           class="btn btn-primary">View More</a>
     </div>
-   }
+</div>}
 
 </div>
 
@@ -67,7 +67,11 @@
     var maxPage = Math.Ceiling((double)Model.TotalCourses / LeadersCorner.Web.ViewModels.Course.AllCourseQueryModel.CoursesPerPage); }
 
 @{ var shouldButtonBeDisabled = Model.CurrentPage == maxPage ||
-                                              !Model.Courses.Any(); }
+                                               !Model.Courses.Any(); }
+
+@if (Model.TotalCourses == 0)
+{
+<h2 class="text-center">No courses was found by the given criteria!</h2>}
 
 <div class="row mt-5">
     <div class="col col-auto">
@@ -93,11 +97,8 @@
 </div>
 
 
-@if (!Model.Courses.Any())
-{
-    <h2 class="text-center">No courses was found by the given criteria!</h2>
-}
+
 
 @section message {
-    More than @(Model.TotalCourses-1) courses!
+    More than @((Model.TotalCoursesOfAll)-1) courses!
 }

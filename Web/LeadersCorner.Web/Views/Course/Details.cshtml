@@ -1,24 +1,27 @@
 @using LeadersCorner.Data.Models
 @using LeadersCorner.Common
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 
 @model LeadersCorner.Web.ViewModels.Course.CurrentCourseViewModel
-@{
-    this.ViewData["Title"] = "@Model.Title";
-}
+@{ this.ViewData["Title"] = "@Model.Title"; }
 <article>
     <p class="h1" text-align: center>@Model.Title</p>
     <img src="@Model.ImageUrl" class="img-fluid mt-2">
-        <h6 class="mt-2">The duration of the course is @Model.DurationInWeeks weeks.</h6>
-        <p class="mt-2">@Html.Raw(Model.SanitazedContent)</p>
-        <partial name="CommentPartialCourse"/>
+    <h6 class="mt-2">The duration of the course is @Model.DurationInWeeks weeks.</h6>
+    <p class="mt-2">@Html.Raw(Model.SanitazedContent)</p>
+    <partial name="CommentPartialCourse" />
 </article>
-
+@if (this.SignInManager.IsSignedIn(User))
+{
 <div class="row">
     <div class="col col-lg-8 col-12">
         <div id="CreateCommentFormModel">
             <form asp-controller="Comment" asp-action="CreateComment" method="post">
                 <input type="hidden" name="CourseId" value="@Model.Id" />
-                <input type="hidden" name="ArticleId" value="@Model.Id" />
                 <input type="hidden" name="UserId" value="@Model.AuthorId" />
                 <div>
                     <label for="CommentContent"></label>
@@ -31,4 +34,5 @@
         </div>
     </div>
 </div>
-        
+}
+

@@ -1,17 +1,23 @@
 ﻿@using LeadersCorner.Common
 @using LeadersCorner.Data.Models
+@using Microsoft.AspNetCore.Identity
+
 @model LeadersCorner.Web.ViewModels.Article.CurrentArticleViewModel
-@{
-    this.ViewData["Title"] = "@Model.Title";
-}
+
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{ this.ViewData["Title"] = "@Model.Title"; }
 
 <article>
     <p class="h1" text-align: center>@Model.Title</p>
     <img src="@Model.ImageUrl" class="img-fluid mt-2">
     <p class="mt-2">@Html.Raw(Model.SanitazedContent)</p>
-        <partial name="_CommentPartial" />
+    <partial name="_CommentPartial" />
 </article>
-
+@if (this.SignInManager.IsSignedIn(User))
+{
 <div class="row">
     <div class="col col-lg-8 col-12">
         <div id="CreateCommentFormModel">
@@ -25,13 +31,8 @@
                 <div class="mt-4">
                     <input type="submit" value="Add comment" class="btn btn-primary" />
                 </div>
-
-
             </form>
         </div>
     </div>
 </div>
-
-
-
-
+}

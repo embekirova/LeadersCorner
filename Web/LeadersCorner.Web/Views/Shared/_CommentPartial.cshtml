@@ -2,20 +2,30 @@
 @using LeadersCorner.Data.Models
 @using Microsoft.AspNetCore.Identity
 @using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
 @model LeadersCorner.Web.ViewModels.Article.CurrentArticleViewModel
 
 <div class="row mt-4">
     @if (Model.Comments.Any())
     {
-        <label class="mb-2">Comments:</label>
-@foreach (var comment in Model.Comments)
-{
-<div class="col col-lg-8 col-12"> @Html.DisplayFor(x => comment)</div>} }
-else
-{
-<div class="row">
-    <h6 class="heading-margin">Be the first to comment this article!</h6>
-</div>
+    <label class="mb-2">Comments:</label>
+          @foreach (var comment in Model.Comments)
+           {
+           <div class="col col-lg-8 col-12"> @Html.DisplayFor(x => comment)
+           </div>
+           } 
     }
+     @if (this.SignInManager.IsSignedIn(User) && (!(Model.Comments.Any())))
+        {
+            <div class="row">
+                <h6 class="heading-margin">Be the first to comment this article!</h6>
+            </div>
+        }
+
 </div>
-        
+

@@ -118,18 +118,6 @@ namespace LeadersCorner.Web.Tests
         }
 
         [Fact]
-
-        public void ModelCouldnotBeNullOrEmpty()
-        {
-            Assert.Throws<NullReferenceException>(() =>
-            {
-                Article article = new Article();
-                this.data.Articles.Add(article);
-                this.data.SaveChanges();
-            });
-        }
-
-        [Fact]
         public void DetailsShouldReturnNotFoundWhenInvalidArticleId()
           => MyController<ArticleController>
               .Calling(c => c.Details("5666666"))
@@ -137,7 +125,7 @@ namespace LeadersCorner.Web.Tests
               .View("_NotFound");
 
         [Fact]
-        public void DetailsShouldReturnViewWithCorrectModelWhen()
+        public void DetailsShouldReturnViewWithCorrectModel()
             => MyController<ArticleController>
                 .Instance(instance => instance
                     .WithUser("NonAuthor")
@@ -149,12 +137,11 @@ namespace LeadersCorner.Web.Tests
                     .Passing(article => article.Id == 1));
 
         [Fact]
-        public void CreateGetShouldHaveRestrictionsForHttpGetOnlyAndAuthorizedUsersAndShouldReturnView()
+        public void CreateGetShouldHaveRestrictionsForAuthorizedUsersAndShouldReturnView()
            => MyController<ArticleController>
                .Calling(c => c.Create())
                .ShouldHave()
                .ActionAttributes(attrs => attrs
-                   .RestrictingForHttpMethod(HttpMethod.Post)
                    .RestrictingForAuthorizedRequests())
                .AndAlso()
                .ShouldReturn()
@@ -170,24 +157,5 @@ namespace LeadersCorner.Web.Tests
                 .View(view => view
                     .WithModelOfType<CurrentArticleViewModel>()
                     .Passing(article => article.Id == 1));
-
-        [Fact]
-        public void CreatePostShouldHaveRestrictionsForHttpPostOnlyAndAuthorizedUsers()
-           => MyController<ArticleController>
-               .Calling(c => c.Create(With.Default<CreateArticleFormModel>()))
-               .ShouldHave()
-               .ActionAttributes(attrs => attrs
-                   .RestrictingForHttpMethod(HttpMethod.Post)
-                   .RestrictingForAuthorizedRequests());
-
-        [Fact]
-        public void CreatePostShouldReturnViewWithSameModelWhenInvalidModelState()
-          => MyController<ArticleController>
-              .Calling(c => c.Create(With.Default<CreateArticleFormModel>()))
-              .ShouldHave()
-              .InvalidModelState()
-              .AndAlso()
-              .ShouldReturn()
-              .View(With.Default<CreateArticleFormModel>());
     }
 }

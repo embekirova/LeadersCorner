@@ -21,15 +21,6 @@
             this.browser = new ChromeDriver(opts);
         }
 
-        [Fact]
-        public void FooterOfThePageContainsPrivacyLink()
-        {
-            this.browser.Navigate().GoToUrl(this.server.RootUri);
-            Assert.EndsWith(
-                "/Home/Privacy",
-                this.browser.FindElements(By.CssSelector("footer a")).First().GetAttribute("href"));
-        }
-
         public void Dispose()
         {
             this.Dispose(true);
